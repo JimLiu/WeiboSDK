@@ -54,7 +54,7 @@
 	weiboClient = [[SinaWeiboClient alloc] initWithDelegate:self 
 											   action:@selector(timelineDidReceive:obj:)];
 	[weiboClient getFollowedTimelineSinceID:0 
-							 startingAtPage:0 count:1];
+							 startingAtPage:0 count:500];
 }
 
 - (void)loadTimeline {
