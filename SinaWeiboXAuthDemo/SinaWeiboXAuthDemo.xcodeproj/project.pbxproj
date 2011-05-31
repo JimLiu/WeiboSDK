@@ -767,10 +767,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SinaWeiboXAuthDemo/SinaWeiboXAuthDemo-Prefix.pch";
 				INFOPLIST_FILE = "SinaWeiboXAuthDemo/SinaWeiboXAuthDemo-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/junminliu/Documents/work/github/WeiboSDK/SinaWeiboXAuthDemo/SinaWeiboXAuthDemo/WeiboEngine,
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -784,10 +781,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SinaWeiboXAuthDemo/SinaWeiboXAuthDemo-Prefix.pch";
 				INFOPLIST_FILE = "SinaWeiboXAuthDemo/SinaWeiboXAuthDemo-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/junminliu/Documents/work/github/WeiboSDK/SinaWeiboXAuthDemo/SinaWeiboXAuthDemo/WeiboEngine,
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
