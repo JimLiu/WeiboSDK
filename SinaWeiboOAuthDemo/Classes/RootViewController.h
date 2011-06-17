@@ -13,19 +13,23 @@
 
 @class OAuthEngine;
 
-@interface RootViewController : UITableViewController {
+@interface RootViewController : UIViewController<OAuthControllerDelegate> {
 	OAuthEngine				*_engine;
 	WeiboClient *weiboClient;
 	NSMutableArray *statuses;
 	ComposeViewController *composeViewController;
+    UITableView *_tableView;
 }
 
 @property (nonatomic, retain) IBOutlet ComposeViewController *composeViewController;
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
 
 - (void)openAuthenticateView;
 
 - (IBAction)refresh:(id)sender;
 
 - (IBAction)compose:(id)sender;
+
+- (IBAction)signOut:(id)sender;
 
 @end

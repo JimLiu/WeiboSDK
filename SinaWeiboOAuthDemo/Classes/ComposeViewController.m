@@ -8,6 +8,12 @@
 
 #import "ComposeViewController.h"
 
+@interface ComposeViewController (Private)
+
+- (void)postNewStatus;
+
+
+@end
 
 @implementation ComposeViewController
 @synthesize btnSend, btnCancel, btnInsert, sendingView, imgAttachment;

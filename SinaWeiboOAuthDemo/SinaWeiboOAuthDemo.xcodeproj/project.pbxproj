@@ -11,7 +11,7 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
-		28F335F11007B36200424DE2 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F335F01007B36200424DE2 /* RootViewController.xib */; };
+		B5825C2F13AB04460029987E /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5825C2E13AB04460029987E /* RootViewController.xib */; };
 		B5AC545512D23CFB00DEB03A /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = B5AC544912D23CFB00DEB03A /* NSObject+SBJSON.m */; };
 		B5AC545612D23CFB00DEB03A /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = B5AC544B12D23CFB00DEB03A /* NSString+SBJSON.m */; };
 		B5AC545712D23CFB00DEB03A /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = B5AC544D12D23CFB00DEB03A /* SBJsonBase.m */; };
@@ -95,9 +95,9 @@
 		28AD735F0D9D9599002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		28C286DF0D94DF7D0034E888 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		28C286E00D94DF7D0034E888 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		28F335F01007B36200424DE2 /* RootViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* SinaWeiboOAuthDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SinaWeiboOAuthDemo-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		B5825C2E13AB04460029987E /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
 		B5AC544712D23CFB00DEB03A /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		B5AC544812D23CFB00DEB03A /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		B5AC544912D23CFB00DEB03A /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -271,6 +271,7 @@
 				B5AC545B12D23D1D00DEB03A /* WeiboEngine */,
 				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
 				28C286E00D94DF7D0034E888 /* RootViewController.m */,
+				B5825C2E13AB04460029987E /* RootViewController.xib */,
 				1D3623240D0F684500981E51 /* SinaWeiboOAuthDemoAppDelegate.h */,
 				1D3623250D0F684500981E51 /* SinaWeiboOAuthDemoAppDelegate.m */,
 				B5AC577612D3518D00DEB03A /* ComposeViewController.h */,
@@ -315,7 +316,6 @@
 			children = (
 				B5AC577F12D354EA00DEB03A /* Icon.png */,
 				B5AC578012D354EA00DEB03A /* Icon@2x.png */,
-				28F335F01007B36200424DE2 /* RootViewController.xib */,
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* SinaWeiboOAuthDemo-Info.plist */,
 			);
@@ -589,10 +589,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
-				28F335F11007B36200424DE2 /* RootViewController.xib in Resources */,
 				B5AC577A12D3518D00DEB03A /* ComposeViewController.xib in Resources */,
 				B5AC578112D354EA00DEB03A /* Icon.png in Resources */,
 				B5AC578212D354EA00DEB03A /* Icon@2x.png in Resources */,
+				B5825C2F13AB04460029987E /* RootViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

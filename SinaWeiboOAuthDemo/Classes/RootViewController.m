@@ -20,7 +20,7 @@
 
 @implementation RootViewController
 @synthesize composeViewController;
-
+@synthesize tableView = _tableView;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -279,6 +279,8 @@
  	[_engine release];
 	[statuses release];
 	[weiboClient release];
+    [composeViewController release];
+    [_tableView release];
     [super dealloc];
 }
 
@@ -291,6 +293,11 @@
 	[composeViewController newTweet];
 }
 
+
+- (IBAction)signOut:(id)sender {
+    [_engine signOut];
+    [self loadTimeline];
+}
 
 //=============================================================================================================================
 #pragma mark OAuthEngineDelegate

@@ -27,7 +27,8 @@
 @synthesize userKey;
 
 - (id)initWithStatement:(Statement *)stmt {
-	if (self = [super init]) {
+    self = [super init];
+	if (self) {
 		userId = [stmt getInt32:0];
 		userKey = [[NSNumber alloc] initWithInt:userId];
 		screenName = [[stmt getString:1] retain];
@@ -81,8 +82,8 @@
 	screenName      = [dic objectForKey:@"screen_name"];
     name            = [dic objectForKey:@"name"];
 	
-	int provinceId = [[dic objectForKey:@"province"] intValue];
-	int cityId = [[dic objectForKey:@"city"] intValue];
+	//int provinceId = [[dic objectForKey:@"province"] intValue];
+	//int cityId = [[dic objectForKey:@"city"] intValue];
 	province		= @"";
 	city			= @"";
 	
@@ -188,7 +189,7 @@
 
 + (User*)userWithJsonDictionary:(NSDictionary*)dic
 {
-	int userId = [[dic objectForKey:@"id"] intValue];
+	//int userId = [[dic objectForKey:@"id"] intValue];
     User *u;
     
     u = [[User alloc] initWithJsonDictionary:dic];

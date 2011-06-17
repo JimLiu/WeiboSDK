@@ -172,7 +172,7 @@ const char *optimize_sql = "VACUUM; ANALYZE";
 
 + (void)alert
 {
-    NSString *sqlite3err = [NSString stringWithUTF8String:sqlite3_errmsg(theDatabase)];
+    //NSString *sqlite3err = [NSString stringWithUTF8String:sqlite3_errmsg(theDatabase)];
 }
 
 @end

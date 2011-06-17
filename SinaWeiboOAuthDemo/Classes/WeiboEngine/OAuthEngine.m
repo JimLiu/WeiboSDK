@@ -88,7 +88,8 @@ static OAuthEngine * _currentOAuthEngine;
 }
 
 - (OAConsumer *) consumer {
-	if (_consumer) return _consumer;
+	if (_consumer) 
+        return _consumer;
 	
 	NSAssert(self.consumerKey.length > 0 && self.consumerSecret.length > 0, @"You must first set your Consumer Key and Consumer Secret properties. Visit http://open.t.sina.com.cn/ to obtain these.");
 	_consumer = [[OAConsumer alloc] initWithKey: self.consumerKey secret: self.consumerSecret];
@@ -110,8 +111,7 @@ static OAuthEngine * _currentOAuthEngine;
 }
 
 - (void)signOut {
-	[_accessToken release];
-	_accessToken = nil;
+	[self clearAccessToken];
 }
 
 - (BOOL) isAuthorized {	
