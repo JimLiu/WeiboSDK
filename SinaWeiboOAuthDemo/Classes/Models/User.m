@@ -29,8 +29,8 @@
 - (id)initWithStatement:(Statement *)stmt {
     self = [super init];
 	if (self) {
-		userId = [stmt getInt32:0];
-		userKey = [[NSNumber alloc] initWithInt:userId];
+		userId = [stmt getInt64:0];
+		userKey = [[NSNumber alloc] initWithLongLong:userId];
 		screenName = [[stmt getString:1] retain];
 		name = [[stmt getString:2] retain];
 		province = [[stmt getString:3]retain];
@@ -77,7 +77,7 @@
     [profileImageUrl release];
 	[domain release];
     
-    userId          = [[dic objectForKey:@"id"] intValue];
+    userId          = [[dic objectForKey:@"id"] longLongValue];
     userKey			= [[NSNumber alloc] initWithInt:userId];
 	screenName      = [dic objectForKey:@"screen_name"];
     name            = [dic objectForKey:@"name"];
@@ -157,12 +157,12 @@
         return nil;
     }
     
-	int userId = [stmt getInt32:0];
+	int userId = [stmt getInt64:0];
     [stmt reset];
 	return [User userWithId:userId];
 }
 
-+ (User*)userWithId:(int)id
++ (User*)userWithId:(long long)uid
 {
     User *user;
     
@@ -173,7 +173,7 @@
         [stmt retain];
     }
     
-    [stmt bindInt64:id forIndex:1];
+    [stmt bindInt64:uid forIndex:1];
     int ret = [stmt step];
     if (ret != SQLITE_ROW) {
         [stmt reset];
@@ -221,7 +221,7 @@
         stmt = [DBConnection statementWithQuery:"REPLACE INTO users VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"];
         [stmt retain];
     }
-    [stmt bindInt32:userId              forIndex:1];
+    [stmt bindInt64:userId              forIndex:1];
     [stmt bindString:screenName               forIndex:2];
     [stmt bindString:name         forIndex:3];
     [stmt bindString:province         forIndex:4];
@@ -244,7 +244,7 @@
 	
 	int step = [stmt step];
     if (step != SQLITE_DONE) {
-		NSLog(@"update error username: %d.%@,%@,%@", userId, screenName, province, city);
+		NSLog(@"update error username: %lld.%@,%@,%@", userId, screenName, province, city);
         [DBConnection alert];
     }
     [stmt reset];

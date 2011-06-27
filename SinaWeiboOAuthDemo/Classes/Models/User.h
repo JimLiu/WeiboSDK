@@ -13,7 +13,7 @@ typedef enum {
 
 @interface User : NSObject
 {
-	int    userId; //用户UID
+	long long    userId; //用户UID
 	NSNumber		*userKey;
 	NSString*   screenName; //微博昵称
     NSString*   name; //友好显示名称，如Bill Gates(此特性暂不支持)
@@ -37,7 +37,7 @@ typedef enum {
 	BOOL		geoEnabled; //?
 }
 
-@property (nonatomic, assign) int  userId;
+@property (nonatomic, assign) long long  userId;
 @property (nonatomic, retain) NSNumber*		userKey;
 @property (nonatomic, retain) NSString* screenName;
 @property (nonatomic, retain) NSString* name;
@@ -60,7 +60,7 @@ typedef enum {
 @property (nonatomic, assign) BOOL		allowAllActMsg;
 @property (nonatomic, assign) BOOL		geoEnabled;
 
-+ (User*)userWithId:(int)id;
++ (User*)userWithId:(long long)uid;
 + (User*)userWithScreenName:(NSString *)_screenName;
 + (User*)userWithJsonDictionary:(NSDictionary*)dic;
 
