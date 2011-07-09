@@ -97,6 +97,36 @@
 }
 
 
+#pragma mark -
+#pragma mark Comments
+
+
+- (void)getCommentCounts:(NSArray *)_statusIds {
+	needAuth = YES;
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
+	
+	NSMutableString *ids = [[NSMutableString alloc]init];
+	
+	int count = _statusIds.count;
+	int maxCount = 100;
+	for (int i=0; i<count; i++) {
+		NSNumber *statusId = [_statusIds objectAtIndex:i];
+		[ids appendFormat:@"%lld", [statusId longLongValue]];
+		maxCount--;
+		if (i < count - 1 && maxCount > 0 ) {
+			[ids appendString:@","];
+		}
+		if (maxCount <= 0) { 
+			break;
+		}
+	}
+	[params setObject:ids forKey:@"ids"];
+	[ids release];
+	[super asyncGet:@"statuses/counts.json" params:params];
+}
+
+#pragma mark -
+#pragma mark Compose new Tweet
 
 - (void)post:(NSString*)tweet
 {

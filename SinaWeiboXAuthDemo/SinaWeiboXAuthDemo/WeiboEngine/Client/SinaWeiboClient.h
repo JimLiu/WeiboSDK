@@ -27,6 +27,13 @@
 - (void)getFollowedTimelineSinceID:(long long)sinceID startingAtPage:(int)pageNum count:(int)count; // statuses/friends_timeline
 - (void)getFollowedTimelineSinceID:(long long)sinceID withMaximumID:(long long)maxID startingAtPage:(int)pageNum count:(int)count; // statuses/friends_timeline
 
+#pragma mark -
+#pragma mark Comments
+
+- (void)getCommentCounts:(NSArray *)_statusIds;
+
+#pragma mark -
+#pragma mark Compose new Tweet
 
 - (void)post:(NSString*)tweet;
 

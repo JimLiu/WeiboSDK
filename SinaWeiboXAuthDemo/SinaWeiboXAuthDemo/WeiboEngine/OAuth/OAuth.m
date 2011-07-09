@@ -313,7 +313,7 @@
 	
 	if ([request error]) {
 		NSError *err = [request error];
-		NSLog(@"synchronousAuthorizeTokenWithUsername request error:  %@", [err localizedDescription]);
+		NSLog(@"synchronousAuthorizeTokenWithUsername request error(%d):  %@", request.responseStatusCode, [err localizedDescription]);
 		if ([self.delegate respondsToSelector:@selector(authorizeTokenDidFail:)]) {
 			[delegate authorizeTokenDidFail:self];
 		}
