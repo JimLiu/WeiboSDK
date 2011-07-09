@@ -78,7 +78,7 @@
 	[domain release];
     
     userId          = [[dic objectForKey:@"id"] longLongValue];
-    userKey			= [[NSNumber alloc] initWithInt:userId];
+    userKey			= [[NSNumber alloc] initWithLongLong:userId];
 	screenName      = [dic objectForKey:@"screen_name"];
     name            = [dic objectForKey:@"name"];
 	
