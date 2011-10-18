@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1538413A144D824800463F31 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 15384139144D824800463F31 /* libz.dylib */; };
 		B5098311138E46D20027348B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5098310138E46D20027348B /* UIKit.framework */; };
 		B5098313138E46D20027348B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5098312138E46D20027348B /* Foundation.framework */; };
 		B5098315138E46D20027348B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5098314138E46D20027348B /* CoreGraphics.framework */; };
@@ -21,7 +22,6 @@
 		B5098379138E480D0027348B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5098378138E480D0027348B /* SystemConfiguration.framework */; };
 		B509837B138E48130027348B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B509837A138E48130027348B /* QuartzCore.framework */; };
 		B509837D138E481B0027348B /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B509837C138E481B0027348B /* MessageUI.framework */; };
-		B509837F138E48230027348B /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B509837E138E48230027348B /* libz.1.2.3.dylib */; };
 		B5098381138E482D0027348B /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B5098380138E482D0027348B /* libicucore.dylib */; };
 		B5098510138E52200027348B /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B509850F138E52200027348B /* libsqlite3.0.dylib */; };
 		B581E67013911E6D00F538EF /* alertView-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B581E63613911E6D00F538EF /* alertView-bg.png */; };
@@ -91,6 +91,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		15384139144D824800463F31 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		B509830C138E46D20027348B /* SinaWeiboXAuthDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SinaWeiboXAuthDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5098310138E46D20027348B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B5098312138E46D20027348B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -109,7 +110,6 @@
 		B5098378138E480D0027348B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B509837A138E48130027348B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B509837C138E481B0027348B /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		B509837E138E48230027348B /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		B5098380138E482D0027348B /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		B509850F138E52200027348B /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		B581E63613911E6D00F538EF /* alertView-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alertView-bg.png"; sourceTree = "<group>"; };
@@ -247,9 +247,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1538413A144D824800463F31 /* libz.dylib in Frameworks */,
 				B5098510138E52200027348B /* libsqlite3.0.dylib in Frameworks */,
 				B5098381138E482D0027348B /* libicucore.dylib in Frameworks */,
-				B509837F138E48230027348B /* libz.1.2.3.dylib in Frameworks */,
 				B509837D138E481B0027348B /* MessageUI.framework in Frameworks */,
 				B509837B138E48130027348B /* QuartzCore.framework in Frameworks */,
 				B5098379138E480D0027348B /* SystemConfiguration.framework in Frameworks */,
@@ -287,9 +287,9 @@
 		B509830F138E46D20027348B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				15384139144D824800463F31 /* libz.dylib */,
 				B509850F138E52200027348B /* libsqlite3.0.dylib */,
 				B5098380138E482D0027348B /* libicucore.dylib */,
-				B509837E138E48230027348B /* libz.1.2.3.dylib */,
 				B509837C138E481B0027348B /* MessageUI.framework */,
 				B509837A138E48130027348B /* QuartzCore.framework */,
 				B5098378138E480D0027348B /* SystemConfiguration.framework */,

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15384133144D818200463F31 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 15384132144D818200463F31 /* libz.dylib */; };
 		1D3623260D0F684500981E51 /* SinaWeiboOAuthDemoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* SinaWeiboOAuthDemoAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
@@ -43,7 +44,6 @@
 		B5AC55C412D23D7200DEB03A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5AC55B812D23D7200DEB03A /* Security.framework */; };
 		B5AC55C512D23D7200DEB03A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5AC55B912D23D7200DEB03A /* SystemConfiguration.framework */; };
 		B5AC55C612D23D7200DEB03A /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B5AC55BA12D23D7200DEB03A /* libicucore.dylib */; };
-		B5AC55C712D23D7200DEB03A /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B5AC55BB12D23D7200DEB03A /* libz.1.2.3.dylib */; };
 		B5AC55C812D23D7200DEB03A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B5AC55BC12D23D7200DEB03A /* libsqlite3.dylib */; };
 		B5AC55C912D23D7200DEB03A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5AC55BD12D23D7200DEB03A /* QuartzCore.framework */; };
 		B5AC55CA12D23D7200DEB03A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5AC55BE12D23D7200DEB03A /* MessageUI.framework */; };
@@ -88,6 +88,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		15384132144D818200463F31 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* SinaWeiboOAuthDemoAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaWeiboOAuthDemoAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* SinaWeiboOAuthDemoAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaWeiboOAuthDemoAppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* SinaWeiboOAuthDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SinaWeiboOAuthDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,7 +157,6 @@
 		B5AC55B812D23D7200DEB03A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B5AC55B912D23D7200DEB03A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B5AC55BA12D23D7200DEB03A /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
-		B5AC55BB12D23D7200DEB03A /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		B5AC55BC12D23D7200DEB03A /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		B5AC55BD12D23D7200DEB03A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B5AC55BE12D23D7200DEB03A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -244,6 +244,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15384133144D818200463F31 /* libz.dylib in Frameworks */,
 				B5AC55BF12D23D7200DEB03A /* UIKit.framework in Frameworks */,
 				B5AC55C012D23D7200DEB03A /* Foundation.framework in Frameworks */,
 				B5AC55C112D23D7200DEB03A /* CoreGraphics.framework in Frameworks */,
@@ -252,7 +253,6 @@
 				B5AC55C412D23D7200DEB03A /* Security.framework in Frameworks */,
 				B5AC55C512D23D7200DEB03A /* SystemConfiguration.framework in Frameworks */,
 				B5AC55C612D23D7200DEB03A /* libicucore.dylib in Frameworks */,
-				B5AC55C712D23D7200DEB03A /* libz.1.2.3.dylib in Frameworks */,
 				B5AC55C812D23D7200DEB03A /* libsqlite3.dylib in Frameworks */,
 				B5AC55C912D23D7200DEB03A /* QuartzCore.framework in Frameworks */,
 				B5AC55CA12D23D7200DEB03A /* MessageUI.framework in Frameworks */,
@@ -325,6 +325,9 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B5AC55BA12D23D7200DEB03A /* libicucore.dylib */,
+				B5AC55BC12D23D7200DEB03A /* libsqlite3.dylib */,
+				15384132144D818200463F31 /* libz.dylib */,
 				B5AC55B312D23D7200DEB03A /* UIKit.framework */,
 				B5AC55B412D23D7200DEB03A /* Foundation.framework */,
 				B5AC55B512D23D7200DEB03A /* CoreGraphics.framework */,
@@ -332,9 +335,6 @@
 				B5AC55B712D23D7200DEB03A /* MobileCoreServices.framework */,
 				B5AC55B812D23D7200DEB03A /* Security.framework */,
 				B5AC55B912D23D7200DEB03A /* SystemConfiguration.framework */,
-				B5AC55BA12D23D7200DEB03A /* libicucore.dylib */,
-				B5AC55BB12D23D7200DEB03A /* libz.1.2.3.dylib */,
-				B5AC55BC12D23D7200DEB03A /* libsqlite3.dylib */,
 				B5AC55BD12D23D7200DEB03A /* QuartzCore.framework */,
 				B5AC55BE12D23D7200DEB03A /* MessageUI.framework */,
 			);
