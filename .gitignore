@@ -12,4 +12,6 @@ ld/*
 xcuserdata
 profile
 *.moved-aside
+.gitignore
+.svn/*
 
