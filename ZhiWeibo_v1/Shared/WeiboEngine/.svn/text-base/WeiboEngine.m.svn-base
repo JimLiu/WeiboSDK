@@ -1,0 +1,177 @@
+//
+//  WeiboEngine.m
+//  ZhiWeibo
+//
+//  Created by junmin liu on 10-11-20.
+//  Copyright 2010 Openlab. All rights reserved.
+//
+
+#import "WeiboEngine.h"
+
+#define kServiceName					@"zhiweibo"
+#define kConsumerKey					@"3326691039"		//REPLACE ME
+#define kConsumerSecret					@"75dd27596a081b28651d214e246c1b15"		//REPLACE ME
+
+static NSString *_consumerKey;
+static NSString *_consumerSecret;
+static NSString *_username;
+static NSString *_password;
+static WeiboAccounts *_weiboAccounts;
+
+@implementation WeiboEngine
+
+
++ (NSString *)username
+{
+	if(!_username)
+		_username = [[[NSUserDefaults standardUserDefaults] stringForKey:@"DefaultAccount"] copy];
+    return _username;
+}
+
+
++ (NSString *)password
+{
+	if(!_password && [WeiboEngine username])
+	{
+		NSError *error = nil;
+		_password = [[SFHFKeychainUtils getPasswordForUsername:[WeiboEngine username] andServiceName:kServiceName error:&error] copy];
+	}
+	
+    return _password;
+}
+
++ (WeiboAccounts *)weiboAccounts
+{
+	if (!_weiboAccounts) {
+		[WeiboEngine loadWeiboAccounts];
+	}
+	return _weiboAccounts;
+}
+
+
+
++ (void)setUsername:(NSString *)newUsername password:(NSString *)newPassword remember:(BOOL)storePassword
+{
+    // Set new credentials.
+    [_username release];
+    _username = [newUsername copy];
+    [_password release];
+    _password = [newPassword copy];
+	
+	if(storePassword)
+	{
+		NSError *error = nil;
+		[[NSUserDefaults standardUserDefaults] setObject:_username forKey:@"DefaultAccount"];
+		[SFHFKeychainUtils storeUsername:_username andPassword:_password forServiceName:kServiceName updateExisting:YES error:&error];
+	}
+	else
+	{
+		[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"DefaultAccount"];
+	}
+}
+
++ (void)forgetPassword
+{
+	NSError *error = nil;
+	[SFHFKeychainUtils deleteItemForUsername:_username andServiceName:kServiceName error:&error];
+	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"DefaultAccount"];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (void)remindPassword
+{
+	[[NSUserDefaults standardUserDefaults] setObject:[WeiboEngine username] forKey:@"DefaultAccount"];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (void)selectUser:(User *)user {
+	if (user) {
+		[_username release];
+		[_password release];
+		NSError *error = nil;
+		_username = [user.username copy];
+		_password = [[SFHFKeychainUtils getPasswordForUsername:_username andServiceName:kServiceName error:&error] copy];
+	}
+}
+
++ (NSString *)consumerKey {
+	if (!_consumerKey) {
+		_consumerKey = [kConsumerKey retain];
+	}
+	return _consumerKey;
+}
+
++ (NSString *)consumerSecret {
+	if (!_consumerSecret) {
+		_consumerSecret = [kConsumerSecret retain];
+	}
+	return _consumerSecret;
+}
+
++ (void)setConsumerKey:(NSString *)key secret:(NSString *)secret {
+	[_consumerKey release];
+	[_consumerSecret release];
+	_consumerKey = [key retain];
+	_consumerSecret = [secret retain];
+}
+
++ (NSString *)getCurrentUserStoreagePath:(NSString *)filename {
+	User *user = [self.weiboAccounts currentUser];
+	if (!user) {
+		return nil;
+	}
+	return [[PathHelper documentDirectoryPathWithName:[NSString stringWithFormat:@"%lld", user.userId]]
+			stringByAppendingPathComponent:filename];
+}
+
++ (NSString *)getWeiboAccountsStoragePath {
+	NSString *filePath = [[PathHelper documentDirectoryPathWithName:@"db"] 
+						  stringByAppendingPathComponent:@"accounts.weibo"];
+	return filePath;
+}
+
++ (void)loadWeiboAccounts {
+	NSString *filePath = [WeiboEngine getWeiboAccountsStoragePath];
+	WeiboAccounts *weiboAccounts = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+	if (!weiboAccounts) {
+		weiboAccounts = [[[WeiboAccounts alloc] init] autorelease];
+		[NSKeyedArchiver archiveRootObject:weiboAccounts toFile:filePath];
+	}
+	[_weiboAccounts release];
+	_weiboAccounts = [weiboAccounts retain];
+}
+
++ (void)addWeiboAccount:(User *)user selected:(BOOL)selected {
+	[self.weiboAccounts addUser:user selected:selected];
+	NSString *filePath = [WeiboEngine getWeiboAccountsStoragePath];
+	[NSKeyedArchiver archiveRootObject:self.weiboAccounts toFile:filePath];
+	if (selected) {
+		[WeiboEngine selectUser:user];
+	}
+}
+
++ (void)removeWeiboAccount:(User *)user {
+	[self.weiboAccounts removeUser:user];
+	NSString *filePath = [WeiboEngine getWeiboAccountsStoragePath];
+	[NSKeyedArchiver archiveRootObject:self.weiboAccounts toFile:filePath];
+}
+
++ (void)selectWeiboAccount:(int)selectedIndex {
+	self.weiboAccounts.selectedIndex = selectedIndex;
+	NSString *filePath = [WeiboEngine getWeiboAccountsStoragePath];
+	[NSKeyedArchiver archiveRootObject:self.weiboAccounts toFile:filePath];	
+	
+	User *user = [self.weiboAccounts currentUser];
+	[WeiboEngine selectUser:user];
+}
+
++ (void)selectCurrentUser {
+	User *user = [self.weiboAccounts currentUser];
+	[WeiboEngine selectUser:user];
+}
+
++ (User *)getCurrentUser {
+	return [self.weiboAccounts currentUser];
+}
+
+@end

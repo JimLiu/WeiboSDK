@@ -1,0 +1,26 @@
+//
+//  WeiboAccounts.h
+//  ZhiWeibo
+//
+//  Created by junmin liu on 10-12-3.
+//  Copyright 2010 Openlab. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "User.h"
+
+@interface WeiboAccounts : NSObject {
+	NSMutableArray *users;
+	int selectedIndex;
+}
+
+@property (nonatomic, retain) NSMutableArray *users;
+@property (nonatomic, assign) int selectedIndex;
+
+- (User *)currentUser;
+
+- (void)addUser:(User *)user selected:(BOOL)selected;
+
+- (void)removeUser:(User *)user;
+
+@end

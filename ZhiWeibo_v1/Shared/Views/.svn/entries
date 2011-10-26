@@ -1,0 +1,49 @@
+10
+
+dir
+381
+svn://liujm@192.168.29.122:3690/svn/iphone/ZhiWeibo/Shared/Views
+svn://liujm@192.168.29.122:3690/svn/iphone
+
+
+
+2011-02-14T01:49:45.973270Z
+377
+liujm
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+20d65ac2-2b9b-4790-8484-8c9e61413583
+
+UserProfile
+dir
+
+Emoticons
+dir
+
+WebBrowser
+dir
+
+TableView
+dir
+
+TweetView
+dir
+
+PhotoViewer
+dir
+
+TabBar
+dir
+
