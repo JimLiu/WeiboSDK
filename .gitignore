@@ -12,6 +12,5 @@ ld/*
 xcuserdata
 profile
 *.moved-aside
-.gitignore
 .svn/*
-
+.DS_Store
