@@ -338,8 +338,8 @@
 	NSLog(@"Authentication Canceled.");
 	//UIViewController *controller = [OAuthController controllerToEnterCredentialsWithEngine: _engine delegate: self];
 	
-	if (controller) 
-		[self presentModalViewController: controller animated: YES];
+	//if (controller) 
+		//[self presentModalViewController: controller animated: YES];
 	
 }
 

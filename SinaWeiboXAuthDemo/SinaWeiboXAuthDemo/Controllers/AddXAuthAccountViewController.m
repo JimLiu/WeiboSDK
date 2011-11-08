@@ -136,7 +136,7 @@
      [WeiboEngine selectCurrentUser];
      [[ZhiWeiboAppDelegate getAppDelegate] closeAuthenticateView];
 	 */
-	[self.parentViewController dismissModalViewControllerAnimated:YES];
+	[self dismissModalViewControllerAnimated:YES];
 }
 
 - (IBAction)save:(id)sender
@@ -288,7 +288,7 @@
 	passwordField.text = @"";
     
     [sender release];
-	[self.parentViewController dismissModalViewControllerAnimated:YES];
+	[self dismissModalViewControllerAnimated:YES];
     
 }
 
