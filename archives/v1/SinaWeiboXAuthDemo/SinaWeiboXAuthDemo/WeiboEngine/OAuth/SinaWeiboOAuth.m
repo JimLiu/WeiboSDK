@@ -14,8 +14,8 @@
 
 - (id)init {
 
-	if (self = [super initWithConsumerKey:@"3983859935"
-						andConsumerSecret:@"201fea7b1e1203a76a10f3be570f5abb"]) {
+	if (self = [super initWithConsumerKey:@"3326691039"
+						andConsumerSecret:@"75dd27596a081b28651d214e246c1b15"]) {
 		self.requestTokenURL = [NSURL URLWithString: @"http://api.t.sina.com.cn/oauth/request_token"];
 		self.accessTokenURL = [NSURL URLWithString: @"http://api.t.sina.com.cn/oauth/access_token"];
 		self.authorizeURL = [NSURL URLWithString: @"http://api.t.sina.com.cn/oauth/authorize"];

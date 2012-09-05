@@ -94,21 +94,24 @@
 //=============================================================================================================================
 #pragma mark Actions
 - (void) denied {
-	if ([_delegate respondsToSelector: @selector(OAuthControllerFailed:)]) [_delegate OAuthControllerFailed: self];
-	[self performSelector: @selector(dismissModalViewControllerAnimated:) withObject: (id) kCFBooleanTrue afterDelay: 1.0];
+	if ([_delegate respondsToSelector: @selector(OAuthControllerFailed:)]) 
+        [_delegate OAuthControllerFailed: self];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (void) gotPin: (NSString *) pin {
 	_engine.pin = pin;
 	[_engine requestAccessToken];
 	
-	if ([_delegate respondsToSelector: @selector(OAuthController:authenticatedWithUsername:)]) [_delegate OAuthController: self authenticatedWithUsername: _engine.username];
-	[self performSelector: @selector(dismissModalViewControllerAnimated:) withObject: (id) kCFBooleanTrue afterDelay: 1.0];
+	if ([_delegate respondsToSelector: @selector(OAuthController:authenticatedWithUsername:)]) 
+        [_delegate OAuthController: self authenticatedWithUsername: _engine.username];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (void) cancel: (id) sender {
-	if ([_delegate respondsToSelector: @selector(OAuthControllerCanceled:)]) [_delegate OAuthControllerCanceled: self];
-	[self performSelector: @selector(dismissModalViewControllerAnimated:) withObject: (id) kCFBooleanTrue afterDelay: 0.0];
+	if ([_delegate respondsToSelector: @selector(OAuthControllerCanceled:)]) 
+        [_delegate OAuthControllerCanceled: self];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 //=============================================================================================================================
