@@ -1,0 +1,1057 @@
+//
+//  WeiboClient.m
+//  ZhiWeibo
+//
+//  Created by junmin liu on 10-11-20.
+//  Copyright 2010 Openlab. All rights reserved.
+//
+
+#import "WeiboClient.h"
+#import "CJSONDeserializer.h"
+
+
+#define API_FORMAT @"json"
+#define API_DOMAIN	@"api.t.sina.com.cn"
+
+
+@implementation WeiboClient
+@synthesize context;
+@synthesize hasError;
+@synthesize errorMessage;
+@synthesize errorDetail;
+
+
+- (id)initWithTarget:(id)aDelegate action:(SEL)anAction
+{
+    if (self = [super initWithDelegate:aDelegate]) {
+		action = anAction;
+		hasError = false;
+	};
+    
+    return self;
+}
+
+- (void)dealloc
+{
+    [errorMessage release];
+    [errorDetail release];
+    [super dealloc];
+}
+
+
+
+- (NSString*) nameValString: (NSDictionary*) dict {
+	NSArray* keys = [dict allKeys];
+	NSString* result = [NSString string];
+	int i;
+	for (i = 0; i < [keys count]; i++) {
+        result = [result stringByAppendingString:
+                  [@"--" stringByAppendingString:
+                   [WEIBO_FORM_BOUNDARY stringByAppendingString:
+                    [@"\r\nContent-Disposition: form-data; name=\"" stringByAppendingString:
+                     [[keys objectAtIndex: i] stringByAppendingString:
+                      [@"\"\r\n\r\n" stringByAppendingString:
+                       [[dict valueForKey: [keys objectAtIndex: i]] stringByAppendingString: @"\r\n"]]]]]]];
+	}
+	
+	return result;
+}
+
+- (NSString *)_encodeString:(NSString *)string
+{
+    NSString *result = (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, 
+																		   (CFStringRef)string, 
+																		   NULL, 
+																		   (CFStringRef)@";/?:@&=$+{}<>,",
+																		   kCFStringEncodingUTF8);
+    return [result autorelease];
+}
+
+
+- (NSString *)_queryStringWithBase:(NSString *)base parameters:(NSDictionary *)params prefixed:(BOOL)prefixed
+{
+    // Append base if specified.
+    NSMutableString *str = [NSMutableString stringWithCapacity:0];
+    if (base) {
+        [str appendString:base];
+    }
+    
+    // Append each name-value pair.
+    if (params) {
+        int i;
+        NSArray *names = [params allKeys];
+        for (i = 0; i < [names count]; i++) {
+            if (i == 0 && prefixed) {
+                [str appendString:@"?"];
+            } else if (i > 0) {
+                [str appendString:@"&"];
+            }
+            NSString *name = [names objectAtIndex:i];
+            [str appendString:[NSString stringWithFormat:@"%@=%@", 
+							   name, [self _encodeString:[params objectForKey:name]]]];
+        }
+    }
+    
+    return str;
+}
+
+
+- (NSString *)getURL:(NSString *)path 
+	 queryParameters:(NSMutableDictionary*)params {
+    NSString* fullPath = [NSString stringWithFormat:@"%@://%@/%@", 
+						  (_secureConnection) ? @"https" : @"http",
+						  API_DOMAIN, path];
+	if (params) {
+        fullPath = [self _queryStringWithBase:fullPath parameters:params prefixed:YES];
+    }
+	return fullPath;
+}
+
+#pragma mark -
+#pragma mark REST API methods
+#pragma mark -
+
+#pragma mark Status methods
+
+
+- (void)getPublicTimeline
+{
+	needAuth = NO;
+    NSString *path = [NSString stringWithFormat:@"statuses/public_timeline.%@", API_FORMAT];
+	[super get:[self getURL:path queryParameters:nil]];
+}
+
+#pragma mark -
+#pragma mark Followed Timeline
+
+- (void)getFollowedTimelineMaximumID:(long long)maxID startingAtPage:(int)page count:(int)count
+{
+    [self getFollowedTimelineSinceID:0 withMaximumID:maxID startingAtPage:page count:count];
+}
+
+- (void)getFollowedTimelineSinceID:(long long)sinceID startingAtPage:(int)page count:(int)count
+{
+    [self getFollowedTimelineSinceID:sinceID withMaximumID:0 startingAtPage:page count:count];
+}
+
+- (void)getFollowedTimelineSinceID:(long long)sinceID 
+					 withMaximumID:(long long)maxID startingAtPage:(int)page count:(int)count
+{
+	needAuth = YES;
+	NSString *path = [NSString stringWithFormat:@"statuses/friends_timeline.%@", API_FORMAT];
+	
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
+    if (sinceID > 0) {
+        [params setObject:[NSString stringWithFormat:@"%lld", sinceID] forKey:@"since_id"];
+    }
+    if (maxID > 0) {
+        [params setObject:[NSString stringWithFormat:@"%lld", maxID] forKey:@"max_id"];
+    }
+    if (page > 0) {
+        [params setObject:[NSString stringWithFormat:@"%d", page] forKey:@"page"];
+    }
+    if (count > 0) {
+        [params setObject:[NSString stringWithFormat:@"%d", count] forKey:@"count"];
+    }
+	[super get:[self getURL:path queryParameters:params]];
+}
+
+#pragma mark -
+#pragma mark User Timeline
+
+- (void)getUserTimelineUserId:(long long)userId maximumID:(long long)maxID startingAtPage:(int)page count:(int)count
+{
+    [self getUserTimelineSinceID:0 withUserId:userId maximumID:maxID startingAtPage:page count:count];
+}
+
+- (void)getUserTimelineSinceID:(long long)sinceID userId:(long long)userId startingAtPage:(int)page count:(int)count
+{
+    [self getUserTimelineSinceID:sinceID withUserId:userId maximumID:0 startingAtPage:page count:count];
+}
+
+- (void)getUserTimelineSinceID:(long long)sinceID 
+						withUserId:(long long)userId maximumID:(long long)maxID startingAtPage:(int)page count:(int)count
+{
+	needAuth = YES;
+	NSString *path = [NSString stringWithFormat:@"statuses/user_timeline.%@", API_FORMAT];
+	
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
+    if (sinceID > 0) {
+        [params setObject:[NSString stringWithFormat:@"%lld", sinceID] forKey:@"since_id"];
+    }
+	if (userId > 0) {
+		[params setObject:[NSString stringWithFormat:@"%lld", userId] forKey:@"user_id"];
+	}
+    if (maxID > 0) {
+        [params setObject:[NSString stringWithFormat:@"%lld", maxID] forKey:@"max_id"];
+    }
+    if (page > 0) {
+        [params setObject:[NSString stringWithFormat:@"%d", page] forKey:@"page"];
+    }
+    if (count > 0) {
+        [params setObject:[NSString stringWithFormat:@"%d", count] forKey:@"count"];
+    }
+	[super get:[self getURL:path queryParameters:params]];
+}
+
+#pragma mark -
+#pragma mark Repost Timeline
+
+- (void)getRepostTimelineStatusId:(long long)statusId maximumID:(long long)maxID startingAtPage:(int)page count:(int)count
+{
+    [self getRepostTimelineSinceID:0 withStatusId:statusId maximumID:maxID startingAtPage:page count:count];
+}
+
+- (void)getRepostTimelineSinceID:(long long)sinceID statusId:(long long)statusId startingAtPage:(int)page count:(int)count
+{
+    [self getRepostTimelineSinceID:sinceID withStatusId:statusId maximumID:0 startingAtPage:page count:count];
+}
+
+- (void)getRepostTimelineSinceID:(long long)sinceID 
+					withStatusId:(long long)statusId maximumID:(long long)maxID startingAtPage:(int)page count:(int)count
+{
+	needAuth = YES;
+	NSString *path = [NSString stringWithFormat:@"statuses/repost_timeline.%@", API_FORMAT];
+	
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
+    if (sinceID > 0) {
+        [params setObject:[NSString stringWithFormat:@"%lld", sinceID] forKey:@"since_id"];
+    }
+	if (statusId > 0) {
+		[params setObject:[NSString stringWithFormat:@"%lld", statusId] forKey:@"id"];
+	}
+    if (maxID > 0) {
+        [params setObject:[NSString stringWithFormat:@"%lld", maxID] forKey:@"max_id"];
+    }
+    if (page > 0) {
+        [params setObject:[NSString stringWithFormat:@"%d", page] forKey:@"page"];
+    }
+    if (count > 0) {
+        [params setObject:[NSString stringWithFormat:@"%d", count] forKey:@"count"];
+    }
+	[super get:[self getURL:path queryParameters:params]];
+}
+
+#pragma mark -
+#pragma mark Mentions
+
+- (void)getMentionsMaximumID:(long long)maxID startingAtPage:(int)page count:(int)count
+{
+    [self getMentionsSinceID:0 withMaximumID:maxID startingAtPage:page count:count];
+}
+
+- (void)getMentionsSinceID:(long long)sinceID startingAtPage:(int)page count:(int)count
+{
+    [self getMentionsSinceID:sinceID withMaximumID:0 startingAtPage:page count:count];
+}
+
+- (void)getMentionsSinceID:(long long)sinceID 
+			 withMaximumID:(long long)maxID startingAtPage:(int)page count:(int)count
+{
+	needAuth = YES;
+	NSString *path = [NSString stringWithFormat:@"statuses/mentions.%@", API_FORMAT];
+	
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
+    if (sinceID > 0) {
+        [params setObject:[NSString stringWithFormat:@"%lld", sinceID] forKey:@"since_id"];
+    }
+    if (maxID > 0) {
+        [params setObject:[NSString stringWithFormat:@"%lld", maxID] forKey:@"max_id"];
+    }
+    if (page > 0) {
+        [params setObject:[NSString stringWithFormat:@"%d", page] forKey:@"page"];
+    }
+    if (count > 0) {
+        [params setObject:[NSString stringWithFormat:@"%d", count] forKey:@"count"];
+    }
+	[super get:[self getURL:path queryParameters:params]];
+}
+
+#pragma mark -
+#pragma mark Favorite
+
+
+- (void)favorite:(long long)statusId
+{
+	needAuth = YES;
+    NSString *path = [NSString stringWithFormat:@"favorites/create.%@", API_FORMAT];
+    NSString *postString = [NSString stringWithFormat:@"id=%lld",
+                            statusId];
+	
+    [self post:[self getURL:path queryParameters:nil]
+		  body:postString];
+}
+
+- (void)unfavorite:(long long)statusId
+{
+	needAuth = YES;
+    NSString *path = [NSString stringWithFormat:@"favorites/destroy/%lld.%@", statusId, API_FORMAT];
+	
+    [self post:[self getURL:path queryParameters:nil]
+		  body:nil];
+}
+
+#pragma mark -
+#pragma mark Comments
+
+
+- (void)getCommentCounts:(NSArray *)_statusIds {
+	needAuth = YES;
+	NSString *path = [NSString stringWithFormat:@"statuses/counts.%@", API_FORMAT];
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
+	
+	NSMutableString *ids = [[NSMutableString alloc]init];
+	
+	int count = _statusIds.count;
+	int maxCount = 100;
+	for (int i=0; i<count; i++) {
+		NSNumber *statusId = [_statusIds objectAtIndex:i];
+		[ids appendFormat:@"%lld", [statusId longLongValue]];
+		maxCount--;
+		if (i < count - 1 && maxCount > 0 ) {
+			[ids appendString:@","];
+		}
+		if (maxCount <= 0) { 
+			break;
+		}
+	}
+	[params setObject:ids forKey:@"ids"];
+	[ids release];
+	[super get:[self getURL:path queryParameters:params]];
+}
+
+
+
+
+- (void)getComments:(long long)statusId 
+	 startingAtPage:(int)page 
+			  count:(int)count
+{
+	needAuth = YES;
+	NSString *path = [NSString stringWithFormat:@"statuses/comments.%@", API_FORMAT];
+	
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
+	[params setObject:[NSString stringWithFormat:@"%lld", statusId] forKey:@"id"];
+    if (page > 0) {
+        [params setObject:[NSString stringWithFormat:@"%d", page] forKey:@"page"];
+    }
+    if (count > 0) {
+        [params setObject:[NSString stringWithFormat:@"%d", count] forKey:@"count"];
+    }
+	[super get:[self getURL:path queryParameters:params]];
+}
+
+
+#pragma mark -
+#pragma mark Comments Timeline
+
+- (void)getCommentsTimelineMaximumID:(long long)maxID startingAtPage:(int)page count:(int)count
+{
+    [self getCommentsTimelineSinceID:0 withMaximumID:maxID startingAtPage:page count:count];
+}
+
+- (void)getCommentsTimelineSinceID:(long long)sinceID startingAtPage:(int)page count:(int)count
+{
+    [self getCommentsTimelineSinceID:sinceID withMaximumID:0 startingAtPage:page count:count];
+}
+
+- (void)getCommentsTimelineSinceID:(long long)sinceID 
+					 withMaximumID:(long long)maxID startingAtPage:(int)page count:(int)count
+{
+	needAuth = YES;
+	NSString *path = [NSString stringWithFormat:@"statuses/comments_to_me.%@", API_FORMAT];
+	
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
+    if (sinceID > 0) {
+        [params setObject:[NSString stringWithFormat:@"%lld", sinceID] forKey:@"since_id"];
+    }
+    if (maxID > 0) {
+        [params setObject:[NSString stringWithFormat:@"%lld", maxID] forKey:@"max_id"];
+    }
+    if (page > 0) {
+        [params setObject:[NSString stringWithFormat:@"%d", page] forKey:@"page"];
+    }
+    if (count > 0) {
+        [params setObject:[NSString stringWithFormat:@"%d", count] forKey:@"count"];
+    }
+	[super get:[self getURL:path queryParameters:params]];
+}
+
+#pragma mark -
+#pragma mark Trend Timeline
+
+- (void)getTrendsTimelineName:(NSString *)trend_name
+{
+    needAuth = YES;
+	NSString *path = [NSString stringWithFormat:@"trends/statuses.%@", API_FORMAT];
+	
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
+    if (trend_name) {
+        [params setObject:[NSString stringWithFormat:@"%@", trend_name] forKey:@"trend_name"];
+    }
+	[super get:[self getURL:path queryParameters:params]];
+}
+
+- (void)getPublicTrendsHourly {
+	needAuth = YES;
+	NSString *path = [NSString stringWithFormat:@"trends/hourly.%@", API_FORMAT];
+
+	[super get:[self getURL:path queryParameters:nil]];
+}
+
+- (void)getPublicTrendsDaily {
+	needAuth = YES;
+	NSString *path = [NSString stringWithFormat:@"trends/daily.%@", API_FORMAT];
+	
+	[super get:[self getURL:path queryParameters:nil]];
+}
+
+- (void)getPublicTrendsWeekly {
+	needAuth = YES;
+	NSString *path = [NSString stringWithFormat:@"trends/weekly.%@", API_FORMAT];
+	
+	[super get:[self getURL:path queryParameters:nil]];
+}
+
+- (void)getHotUserByCategory:(NSString*)category {
+	needAuth = YES;
+	NSString *path = [NSString stringWithFormat:@"users/hot.%@", API_FORMAT];
+	
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
+    if (category) {
+        [params setObject:[NSString stringWithFormat:@"%@", category] forKey:@"category"];
+    }
+	[super get:[self getURL:path queryParameters:params]];
+}
+
+- (void)getHotStatusesDaily:(int)count {
+	needAuth = YES;
+	NSString *path = [NSString stringWithFormat:@"statuses/hot/repost_daily.%@", API_FORMAT];
+	
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
+    if (count > 0) {
+        [params setObject:[NSString stringWithFormat:@"%d", count] forKey:@"count"];
+    }
+
+	[super get:[self getURL:path queryParameters:params]];
+}
+
+#pragma mark -
+#pragma mark Favorites Timeline
+
+- (void)getFavoritesTimelinePage:(int)page
+{
+	needAuth = YES;
+	NSString *path = [NSString stringWithFormat:@"favorites.%@", API_FORMAT];
+	
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
+    if (page >= 0) {
+        [params setObject:[NSString stringWithFormat:@"%d", page] forKey:@"page"];
+    }
+	[super get:[self getURL:path queryParameters:params]];
+}
+
+#pragma mark -
+#pragma mark DirectMessage
+
+- (void)getDirectMessagesMaximumID:(long long)maxID startingAtPage:(int)page count:(int)count
+{
+    [self getDirectMessagesSinceID:0 withMaximumID:maxID startingAtPage:page count:count];
+}
+
+- (void)getDirectMessagesSinceID:(long long)sinceID startingAtPage:(int)page count:(int)count
+{
+    [self getDirectMessagesSinceID:sinceID withMaximumID:0 startingAtPage:page count:count];
+}
+
+- (void)getDirectMessagesSinceID:(long long)sinceID 
+					 withMaximumID:(long long)maxID startingAtPage:(int)page count:(int)count
+{
+	needAuth = YES;
+	NSString *path = [NSString stringWithFormat:@"direct_messages.%@", API_FORMAT];
+	
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
+    if (sinceID > 0) {
+        [params setObject:[NSString stringWithFormat:@"%lld", sinceID] forKey:@"since_id"];
+    }
+    if (maxID > 0) {
+        [params setObject:[NSString stringWithFormat:@"%lld", maxID] forKey:@"max_id"];
+    }
+    if (page > 0) {
+        [params setObject:[NSString stringWithFormat:@"%d", page] forKey:@"page"];
+    }
+    if (count > 0) {
+        [params setObject:[NSString stringWithFormat:@"%d", count] forKey:@"count"];
+    }
+	[super get:[self getURL:path queryParameters:params]];																													
+}
+
+#pragma mark -
+#pragma mark DirectMessageSent
+
+- (void)getDirectMessagesSentMaximumID:(long long)maxID startingAtPage:(int)page count:(int)count
+{
+    [self getDirectMessagesSentSinceID:0 withMaximumID:maxID startingAtPage:page count:count];
+}
+
+- (void)getDirectMessagesSentSinceID:(long long)sinceID startingAtPage:(int)page count:(int)count
+{
+    [self getDirectMessagesSentSinceID:sinceID withMaximumID:0 startingAtPage:page count:count];
+}
+
+- (void)getDirectMessagesSentSinceID:(long long)sinceID 
+				   withMaximumID:(long long)maxID startingAtPage:(int)page count:(int)count
+{
+	needAuth = YES;
+	NSString *path = [NSString stringWithFormat:@"direct_messages/sent.%@", API_FORMAT];
+	
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
+    if (sinceID > 0) {
+        [params setObject:[NSString stringWithFormat:@"%lld", sinceID] forKey:@"since_id"];
+    }
+    if (maxID > 0) {
+        [params setObject:[NSString stringWithFormat:@"%lld", maxID] forKey:@"max_id"];
+    }
+    if (page > 0) {
+        [params setObject:[NSString stringWithFormat:@"%d", page] forKey:@"page"];
+    }
+    if (count > 0) {
+        [params setObject:[NSString stringWithFormat:@"%d", count] forKey:@"count"];
+    }
+	[super get:[self getURL:path queryParameters:params]];																													
+}
+
+#pragma mark -
+#pragma mark UserSearch
+
+- (void)getUserTimelineByName:(NSString*)name page:(int)page count:(int)count
+{
+	needAuth = NO;
+	NSString *path = [NSString stringWithFormat:@"users/search.%@", API_FORMAT];
+	
+	NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
+	if (name && ![name isEqualToString:@""]) {
+		[params setObject:[NSString stringWithFormat:@"%@", name] forKey:@"q"];
+	}
+	if (page > 0) {
+        [params setObject:[NSString stringWithFormat:@"%d", page] forKey:@"page"];
+    }
+    if (count > 0) {
+        [params setObject:[NSString stringWithFormat:@"%d", count] forKey:@"count"];
+    }
+	[super get:[self getURL:path queryParameters:params]];	
+}
+
+- (void)getStatusTimelineByName:(NSString*)name startTime:(time_t)startTime
+						endTime:(time_t)endTime page:(int)page count:(int)count
+{
+	needAuth = NO;
+	NSString *path = [NSString stringWithFormat:@"statuses/search.%@", API_FORMAT];
+	
+	NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
+	if (name && ![name isEqualToString:@""]) {
+		[params setObject:[NSString stringWithFormat:@"%@", name] forKey:@"q"];
+	}
+	if (startTime > 0) {
+		[params setObject:[NSString stringWithFormat:@"%llu", startTime] forKey:@"starttime"];
+	}
+	if (endTime > 0) {
+		[params setObject:[NSString stringWithFormat:@"%lld", endTime] forKey:@"endtime"];
+	}
+	if (page > 0) {
+        [params setObject:[NSString stringWithFormat:@"%d", page] forKey:@"page"];
+    }
+    if (count > 0) {
+        [params setObject:[NSString stringWithFormat:@"%d", count] forKey:@"count"];
+    }
+	[super get:[self getURL:path queryParameters:params]];	
+}
+
+#pragma mark -
+#pragma mark Account
+
+- (void)verify {
+	needAuth = YES;
+	NSString *path = [NSString stringWithFormat:@"account/verify_credentials.%@", API_FORMAT];
+	[super get:[self getURL:path queryParameters:nil]];
+}
+
+
+- (void)getFriends:(int)userId 
+			cursor:(int)cursor 
+			 count:(int)count
+{
+	needAuth = YES;
+	NSString *path = [NSString stringWithFormat:@"statuses/friends.%@", API_FORMAT];
+	
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
+	[params setObject:[NSString stringWithFormat:@"%d", userId] forKey:@"user_id"];
+	[params setObject:[NSString stringWithFormat:@"%d", cursor] forKey:@"cursor"];
+    if (count > 0) {
+        [params setObject:[NSString stringWithFormat:@"%d", count] forKey:@"count"];
+    }
+	[super get:[self getURL:path queryParameters:params]];
+}
+
+
+- (void)getFollowers:(int)userId 
+			  cursor:(int)cursor 
+			   count:(int)count
+{
+	needAuth = YES;
+	NSString *path = [NSString stringWithFormat:@"statuses/followers.%@", API_FORMAT];
+	
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
+	[params setObject:[NSString stringWithFormat:@"%d", userId] forKey:@"user_id"];
+	[params setObject:[NSString stringWithFormat:@"%d", cursor] forKey:@"cursor"];
+    if (count > 0) {
+        [params setObject:[NSString stringWithFormat:@"%d", count] forKey:@"count"];
+    }
+	[super get:[self getURL:path queryParameters:params]];
+}
+
+- (void)getUser:(int)userId
+{
+	needAuth = YES;
+    NSString *path = [NSString stringWithFormat:@"users/show.%@", API_FORMAT];
+	NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
+	[params setObject:[NSString stringWithFormat:@"%d", userId] forKey:@"user_id"];
+	[super get:[self getURL:path queryParameters:params]];
+}
+
+- (void)getUserByScreenName:(NSString *)screenName {
+	needAuth = YES;
+	NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
+	[params setObject:[NSString stringWithFormat:@"%@", screenName] forKey:@"screen_name"];
+	
+    NSString *path = [NSString stringWithFormat:@"users/show.%@", API_FORMAT];
+	[super get:[self getURL:path queryParameters:params]];
+}
+
+- (void)getFriendship:(int)userId {
+	needAuth = YES;//friendships/show.xml?target_id=10503
+    NSString *path = [NSString stringWithFormat:@"friendships/show.%@", API_FORMAT];
+	NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
+	[params setObject:[NSString stringWithFormat:@"%d", userId] forKey:@"target_id"];
+	[super get:[self getURL:path queryParameters:params]];
+}
+
+- (void)getUnread {
+	needAuth = YES;
+    NSString *path = [NSString stringWithFormat:@"statuses/unread.%@", API_FORMAT];
+	[super get:[self getURL:path queryParameters:nil]];
+}
+
+- (void)resetUnreadFollowers {
+	needAuth = YES;
+	NSString *path = [NSString stringWithFormat:@"statuses/reset_count.%@", API_FORMAT];
+	NSString *postString = [NSString stringWithFormat:@"type=4"];
+	[super post:[self getURL:path queryParameters:nil]
+		   body:postString];
+}
+
+- (void)follow:(int)userId {
+	needAuth = YES;///friendships/create.xml?user_id=1401881
+    NSString *path = [NSString stringWithFormat:@"friendships/create.%@", API_FORMAT];
+	NSString *postString = [NSString stringWithFormat:@"user_id=%d",userId];
+    [self post:[self getURL:path queryParameters:nil]
+		  body:postString];
+	
+}
+
+- (void)unfollow:(int)userId {
+	needAuth = YES;///friendships/destroy.xml?user_id=1401881
+    NSString *path = [NSString stringWithFormat:@"friendships/destroy.%@", API_FORMAT];
+	NSString *postString = [NSString stringWithFormat:@"user_id=%d",userId];
+    [self post:[self getURL:path queryParameters:nil]
+		  body:postString];
+}
+
+- (void)post:(NSString*)tweet latitude:(float)latitude 
+							longitude:(float)longitude
+{
+	needAuth = YES;
+    NSString *path = [NSString stringWithFormat:@"statuses/update.%@", API_FORMAT];
+    NSString *postString = [NSString stringWithFormat:@"status=%@&lat=%f&long=%f",
+                            [tweet encodeAsURIComponent], latitude, longitude];
+	
+    [self post:[self getURL:path queryParameters:nil]
+		  body:postString];
+}
+
+
+- (void)upload:(NSData*)jpeg status:(NSString *)status
+	  latitude:(float)latitude longitude:(float)longitude
+{
+	needAuth = YES;
+	NSString *path = [NSString stringWithFormat:@"statuses/upload.%@", API_FORMAT];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:
+						 status, @"status",
+						 [NSString stringWithFormat:@"%f", latitude], @"lat",
+						 [NSString stringWithFormat:@"%f", longitude], @"long",
+						 [WeiboEngine consumerKey], @"source",
+                         nil];
+    
+    NSString *param = [self nameValString:dic];
+    NSString *footer = [NSString stringWithFormat:@"\r\n--%@--\r\n", WEIBO_FORM_BOUNDARY];
+    
+    param = [param stringByAppendingString:[NSString stringWithFormat:@"--%@\r\n", WEIBO_FORM_BOUNDARY]];
+    param = [param stringByAppendingString:@"Content-Disposition: form-data; name=\"pic\";filename=\"image.jpg\"\r\nContent-Type: image/jpeg\r\n\r\n"];
+    NSLog(@"jpeg size: %d", [jpeg length]);
+	
+    NSMutableData *data = [NSMutableData data];
+    [data appendData:[param dataUsingEncoding:NSUTF8StringEncoding]];
+    [data appendData:jpeg];
+    [data appendData:[footer dataUsingEncoding:NSUTF8StringEncoding]];
+	
+	NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
+	[params setObject:[WeiboEngine consumerKey] forKey:@"source"];
+	[params setObject:status forKey:@"status"];
+	//[params setObject:[NSString stringWithFormat:@"%@", statusId] forKey:@"source"];
+	
+    [self post:[self getURL:path queryParameters:params] data:data];
+}
+
+
+- (void)repost:(long long)statusId
+		 tweet:(NSString*)tweet 
+	 isComment:(BOOL)isComment {
+	needAuth = YES;
+    NSString *path = [NSString stringWithFormat:@"statuses/repost.%@", API_FORMAT];
+	NSString *isCommentText = isComment ? @"&is_comment=1" : @"";
+    NSString *postString = [NSString stringWithFormat:@"id=%lld%@&status=%@",
+							statusId,
+							isCommentText,
+                            [tweet encodeAsURIComponent]];
+	
+    [self post:[self getURL:path queryParameters:nil]
+		  body:postString];
+}
+
+
+- (void)comment:(long long)statusId
+	  commentId:(long long)commentId
+		comment:(NSString*)comment {
+	needAuth = YES;
+    NSString *path = [NSString stringWithFormat:@"statuses/comment.%@", API_FORMAT];
+    NSString *postString;
+	if (commentId > 0) {
+		postString = [NSString stringWithFormat:@"id=%lld&cid=%lld&comment=%@",
+					  statusId,
+					  commentId,
+					  [comment encodeAsURIComponent]];
+	}
+	else {
+		postString = [NSString stringWithFormat:@"id=%lld&comment=%@",
+					  statusId,
+					  [comment encodeAsURIComponent]];
+	}
+	
+	
+    [self post:[self getURL:path queryParameters:nil]
+		  body:postString];
+}
+
+
+- (void)sendDirectMessage:(NSString*)text 
+					   to:(int)recipientedId
+{
+	needAuth = YES;
+    NSString *path = [NSString stringWithFormat:@"direct_messages/new.%@", API_FORMAT];
+    
+    NSString *postString = [NSString stringWithFormat:@"text=%@&user_id=%d"
+							, [text encodeAsURIComponent], recipientedId];
+    
+    [self post:[self getURL:path queryParameters:nil] body:postString];
+    
+}
+
+
+
+- (void)authError
+{
+    self.errorMessage = @"身份验证失败";
+    self.errorDetail  = @"帐号或密码输入错误，请您确认是否输入正确.";    
+    [delegate performSelector:action withObject:self withObject:nil];    
+	[[ZhiWeiboAppDelegate getAppDelegate] openAuthenticateView];
+}
+
+- (void)WeiboConnectionDidFailWithError:(NSError*)error
+{
+    hasError = true;
+    if (error.code ==  NSURLErrorUserCancelledAuthentication) {
+        statusCode = 401;
+        [self authError];
+    }
+    else {
+        self.errorMessage = @"网络连接失败";
+        self.errorDetail  = [error localizedDescription];
+        [delegate performSelector:action withObject:self withObject:nil];
+    }
+    //[self autorelease];
+}
+
+-(void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+{
+    if ([challenge previousFailureCount] == 0) {
+        NSLog(@"Authentication Challenge");
+        NSString *username = [[NSUserDefaults standardUserDefaults] stringForKey:@"username"];
+        NSString *password = [[NSUserDefaults standardUserDefaults] stringForKey:@"password"];
+        NSURLCredential* cred = [NSURLCredential credentialWithUser:username password:password persistence:NSURLCredentialPersistenceNone];
+        [[challenge sender] useCredential:cred forAuthenticationChallenge:challenge];
+    } else {
+        NSLog(@"Failed auth (%d times)", [challenge previousFailureCount]);
+        [[challenge sender] cancelAuthenticationChallenge:challenge];
+    }
+}
+
+- (void)connection:(NSURLConnection *)connection didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+{
+    hasError = true;
+    [self authError];
+    //[self autorelease];
+}
+
+- (void)WeiboConnectionDidFinishLoading:(NSData*)content
+{
+    switch (statusCode) {
+        case 401: // Not Authorized: either you need to provide authentication credentials, or the credentials provided aren't valid.
+			hasError = true;
+            [self authError];
+            //goto out;
+			return;
+        case 403: // Forbidden: we understand your request, but are refusing to fulfill it.  An accompanying error message should explain why.
+        case 40302:
+			hasError = true;
+            [self authError];
+            break;            
+        case 304: // Not Modified: there was no new data to return.
+            [delegate performSelector:action withObject:self withObject:nil];
+            //goto out;
+			return;
+            
+        case 400: // Bad Request: your request is invalid, and we'll return an error message that tells you why. This is the status code returned if you've exceeded the rate limit
+        case 200: // OK: everything went awesome.
+            break;
+			
+        case 404: // Not Found: either you're requesting an invalid URI or the resource in question doesn't exist (ex: no such user). 
+        case 500: // Internal Server Error: we did something wrong.  Please post to the group about it and the Weibo team will investigate.
+        case 502: // Bad Gateway: returned if Weibo is down or being upgraded.
+        case 503: // Service Unavailable: the Weibo servers are up, but are overloaded with requests.  Try again later.
+        default:
+        {
+            hasError = true;
+            self.errorMessage = @"Server responded with an error";
+            self.errorDetail  = [NSHTTPURLResponse localizedStringForStatusCode:statusCode];
+            [delegate performSelector:action withObject:self withObject:nil];
+            //goto out;
+			return;
+        }
+    }
+
+    //NSObject *obj = [content JSONValue];
+	NSObject *obj = [[CJSONDeserializer deserializer] deserialize:content
+														 error:nil];
+    
+    if ([obj isKindOfClass:[NSDictionary class]]) {
+        NSDictionary* dic = (NSDictionary*)obj;
+        NSString *msg = [dic objectForKey:@"error"];
+        if (msg) {
+            NSLog(@"Weibo responded with an error: %@", msg);
+			int errorCode = 0;//[[dic objectForKey:@"error_code"] intValue];
+			NSRange range = [msg rangeOfString:@":"];
+			if (range.length == 1 && range.location != NSNotFound) {
+				errorCode = [[msg substringToIndex:range.location] intValue];
+			}
+            hasError = true;
+			switch (errorCode) {
+				case 40033:
+					self.errorMessage = @"用户不存在";
+					self.errorDetail  = @"用户没有找到，请检查后重试。";
+					break;
+				case 40031:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"调用的微博不存在。";
+					break;
+				case 40036:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"调用的微博不是当前用户发布的微博。";
+					break;
+				case 40034:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"不能转发自己的微博。";
+					break;
+				case 40038:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"不合法的微博。";
+					break;
+				case 40037:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"不合法的评论。";
+					break;
+				case 40015:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"该条评论不是当前登录用户发布的评论。";
+					break;
+				case 40017:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"不能给不是你粉丝的人发私信。";
+					break;
+				case 40019:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"不合法的私信。";
+					break;
+				case 40021:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"不是属于你的私信。";
+					break;
+				case 40022:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"source参数(appkey)缺失。";
+					break;
+				case 40007:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"格式不支持，仅仅支持XML或JSON格式。";
+					break;
+				case 40009:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"图片错误，请确保使用multipart上传了图片。";
+					break;
+				case 40011:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"私信发布超过上限。";
+					break;
+				case 40012:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"内容为空。";
+					break;
+				case 40016:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"微博id为空。";
+					break;
+				case 40018:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"ids参数为空。";
+					break;
+				case 40020:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"评论ID为空。";
+					break;
+				case 40023:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"用户不存在。";
+					break;
+				case 40024:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"ids过多，请参考API文档。";
+					break;
+				case 40025:
+					self.errorMessage = @"微博发布失败";
+					self.errorDetail  = @"发送失败的微博已保存至草稿箱。不能同时发布两条相同的微博，请修改后重试。";
+					break;
+				case 40026:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"请传递正确的目标用户uid或者screen name。";
+					break;
+				case 40045:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"不支持的图片类型,支持的图片类型有JPG,GIF,PNG。";
+					break;
+				case 40008:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"图片大小错误，上传的图片大小上限为5M。";
+					break;
+				case 40001:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"参数错误，请参考API文档。";
+					break;
+				case 40002:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"不是对象所属者，没有操作权限。";
+					break;
+				case 40010:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"私信不存在。";
+					break;
+				case 40013:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"微博太长，请确认不超过140个字符。";
+					break;
+				case 40039:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"地理信息输入错误。";
+					break;
+				case 40040:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"IP限制，不能请求该资源。";
+					break;
+				case 40041:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"uid参数为空。";
+					break;
+				case 40042:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"token参数为空。";
+					break;
+				case 40043:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"domain参数错误。";
+					break;
+				case 40044:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"appkey参数缺失。";
+					break;
+				case 40029:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"verifier错误。";
+					break;
+				case 40027:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"标签参数为空。";
+					break;
+				case 40032:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"列表名太长，请确保输入的文本不超过10个字符。";
+					break;
+				case 40030:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"列表描述太长，请确保输入的文本不超过70个字符。";
+					break;
+				case 40035:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"列表不存在。";
+					break;
+				case 40053:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"权限不足，只有创建者有相关权限。";
+					break;
+				case 40054:
+					self.errorMessage = @"系统错误";
+					self.errorDetail  = @"参数错误，请参考API文档。";
+					break;
+				default: 
+					self.errorMessage = @"Weibo Server Error";
+					self.errorDetail  = msg;
+					break;
+			}
+		}
+		
+    }
+    
+	if (delegate) {
+		[delegate performSelector:action withObject:self withObject:obj];
+	}
+    
+	//out:
+    //[self autorelease];
+}
+
+- (void)alert
+{
+    [[ZhiWeiboAppDelegate getAppDelegate] alert:errorMessage message:errorDetail];
+}
+
+
+
+
+@end

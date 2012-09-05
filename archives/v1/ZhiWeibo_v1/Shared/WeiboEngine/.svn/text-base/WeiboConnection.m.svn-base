@@ -1,0 +1,231 @@
+//
+//  WeiboConnection.m
+//  ZhiWeibo
+//
+//  Created by junmin liu on 10-11-20.
+//  Copyright 2010 Openlab. All rights reserved.
+//
+
+#import "WeiboConnection.h"
+#import "StringUtil.h"
+#import "WeiboEngine.h"
+
+#define NETWORK_TIMEOUT 120.0
+
+
+
+@implementation WeiboConnection
+@synthesize buf;
+@synthesize statusCode;
+@synthesize requestURL;
+@synthesize delegate;
+
+NSString *WEIBO_FORM_BOUNDARY = @"0194784892923";
+
+- (id)initWithDelegate:(id)aDelegate
+{
+	if (self = [super init]) {
+		delegate = aDelegate;
+		statusCode = 0;
+		needAuth = YES;
+	}
+	return self;
+}
+
+- (void)dealloc
+{
+    [requestURL release];
+	[self cancel];
+	[buf release];
+	delegate = nil;
+	[super dealloc];
+}
+
+- (void)addAuthHeader:(NSMutableURLRequest*)req
+{
+    if (!needAuth) return;
+    
+    NSString *username = [WeiboEngine username];
+	NSString *password = [WeiboEngine password];
+    
+    NSString* auth = [NSString stringWithFormat:@"%@:%@", username, password];
+    NSString* basicauth = [NSString stringWithFormat:@"Basic %@", [NSString base64encode:auth]];
+    [req setValue:basicauth forHTTPHeaderField:@"Authorization"];
+}
+
+- (void)get:(NSString*)aURL
+{
+    [connection release];
+	[buf release];
+    statusCode = 0;
+    
+    self.requestURL = aURL;
+    
+    NSString *URL = (NSString*)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)aURL, (CFStringRef)@"%", NULL, kCFStringEncodingUTF8);
+	
+	[URL autorelease];
+
+	NSURL *finalURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@source=%@", 
+											URL,
+											([URL rangeOfString:@"?"].location != NSNotFound) ? @"&" : @"?" , 
+											[WeiboEngine consumerKey]]];
+	NSMutableURLRequest* req = [NSMutableURLRequest requestWithURL:finalURL
+													   cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
+												   timeoutInterval:NETWORK_TIMEOUT];
+	
+    [self addAuthHeader:req];
+    
+  	buf = [[NSMutableData data] retain];
+	connection = [[NSURLConnection alloc] initWithRequest:req delegate:self];
+	NSLog(@"%@",[req.URL absoluteURL]);
+    //[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+	[ZhiWeiboAppDelegate increaseNetworkActivityIndicator];
+}
+
+-(void)post:(NSString*)aURL body:(NSString*)body
+{
+    [connection release];
+	[buf release];
+    statusCode = 0;
+    
+    self.requestURL = aURL;
+    
+    NSString *URL = (NSString*)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)aURL, (CFStringRef)@"%", NULL, kCFStringEncodingUTF8);
+    [URL autorelease];
+	NSURL *finalURL = [NSURL URLWithString:URL];
+	NSMutableURLRequest* req = [NSMutableURLRequest requestWithURL:finalURL
+                                                       cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+                                                   timeoutInterval:NETWORK_TIMEOUT];
+    
+    
+    [req setHTTPMethod:@"POST"];
+    [req setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    
+    [self addAuthHeader:req];
+	
+	NSString *finalBody;
+	if (body) {
+		finalBody = [body stringByAppendingString:[NSString stringWithFormat:@"&source=%@", 
+												   [WeiboEngine consumerKey]]];
+	}
+	else {
+		finalBody = [NSString stringWithFormat:@"source=%@", 
+					 [WeiboEngine consumerKey]];
+	}
+
+    
+    int contentLength = [finalBody lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
+    
+    [req setValue:[NSString stringWithFormat:@"%d", contentLength] forHTTPHeaderField:@"Content-Length"];
+    [req setHTTPBody:[NSData dataWithBytes:[finalBody UTF8String] length:contentLength]];
+    
+	buf = [[NSMutableData data] retain];
+	connection = [[NSURLConnection alloc] initWithRequest:req delegate:self];
+    //[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+	[ZhiWeiboAppDelegate increaseNetworkActivityIndicator];
+}
+
+-(void)post:(NSString*)aURL data:(NSData*)data
+{
+    [connection release];
+	[buf release];
+    statusCode = 0;
+	
+    self.requestURL = aURL;
+	
+    NSString *URL = (NSString*)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)aURL, (CFStringRef)@"%", NULL, kCFStringEncodingUTF8);
+    [URL autorelease];
+	NSURL *finalURL = [NSURL URLWithString:URL];
+	NSMutableURLRequest* req = [NSMutableURLRequest requestWithURL:finalURL
+                                                       cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+                                                   timeoutInterval:NETWORK_TIMEOUT];
+    
+	
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", WEIBO_FORM_BOUNDARY];
+    [req setHTTPMethod:@"POST"];
+    [req setValue:contentType forHTTPHeaderField:@"Content-Type"];
+    [req setValue:[NSString stringWithFormat:@"%d", [data length]] forHTTPHeaderField:@"Content-Length"];
+    [req setHTTPBody:data];
+    [self addAuthHeader:req];
+    
+	buf = [[NSMutableData data] retain];
+	connection = [[NSURLConnection alloc] initWithRequest:req delegate:self];
+    
+    //[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+	[ZhiWeiboAppDelegate increaseNetworkActivityIndicator];
+}
+
+- (void)cancel
+{
+    if (connection) {
+		//[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;  
+		[ZhiWeiboAppDelegate decreaseNetworkActivityIndicator];
+        [connection cancel];
+        [connection autorelease];
+        connection = nil;
+    }
+}
+
+- (void)connection:(NSURLConnection *)aConnection didReceiveResponse:(NSURLResponse *)aResponse
+{
+    NSHTTPURLResponse *resp = (NSHTTPURLResponse*)aResponse;
+    if (resp) {
+        statusCode = resp.statusCode;
+    }
+	[buf setLength:0];
+}
+
+- (void)connection:(NSURLConnection *)aConn didReceiveData:(NSData *)data
+{
+	[buf appendData:data];
+}
+
+- (void)connection:(NSURLConnection *)aConn didFailWithError:(NSError *)error
+{
+    //[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    [ZhiWeiboAppDelegate decreaseNetworkActivityIndicator];
+	
+	[connection autorelease];
+	connection = nil;
+	[buf autorelease];
+	buf = nil;
+    
+    NSString* msg = [NSString stringWithFormat:@"Error: %@ %@",
+                     [error localizedDescription],
+                     [[error userInfo] objectForKey:NSErrorFailingURLStringKey]];
+    
+    NSLog(@"Connection failed: %@", msg);
+    
+    [self WeiboConnectionDidFailWithError:error];
+    
+}
+
+
+- (void)WeiboConnectionDidFailWithError:(NSError*)error
+{
+    // To be implemented in subclass
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)aConn
+{
+    
+    //[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    [ZhiWeiboAppDelegate decreaseNetworkActivityIndicator];
+    //NSString* s = [[[NSString alloc] initWithData:buf encoding:NSUTF8StringEncoding] autorelease];
+    //NSLog(@"%@", s);
+	
+    [self WeiboConnectionDidFinishLoading:buf];
+	
+    [connection autorelease];
+    connection = nil;
+    [buf autorelease];
+    buf = nil;
+}
+
+- (void)WeiboConnectionDidFinishLoading:(NSData*)content
+{
+    // To be implemented in subclass
+}
+
+
+@end
