@@ -72,7 +72,7 @@
 	imgAttachment.image = nil;
 	sendingView.hidden = YES;
 	
-	[self.parentViewController dismissModalViewControllerAnimated:YES];
+	[self dismissModalViewControllerAnimated:YES];
 }
 
 - (IBAction)insert:(id)sender {
