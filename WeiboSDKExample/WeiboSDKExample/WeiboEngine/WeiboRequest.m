@@ -34,10 +34,19 @@ static const int kGeneralErrorCode = 10000;
     return self;
 }
 
-- (id)initWithAccessToken:(NSString *)accessToken {
+- (id)initWithDelegate:(id<WeiboRequestDelegate>)delegate {
+    self = [self init];
+    if (self) {
+        self.delegate = delegate;
+    }
+    return self;
+}
+
+- (id)initWithAccessToken:(NSString *)accessToken delegate:(id<WeiboRequestDelegate>)delegate {
     self = [super init];
     if (self) {
         self.accessToken = accessToken;
+        self.delegate = delegate;
     }
     return self;
 }
@@ -124,6 +133,12 @@ static const int kGeneralErrorCode = 10000;
     }
 }
 
+- (void)loadSuccess:(id)result {
+    if ([_delegate respondsToSelector:@selector(request:didLoad:)]) {
+        [_delegate request:self didLoad:result];
+    }
+}
+
 - (void)handleResponseData:(NSData *)data {
     NSError* error = nil;
     
@@ -134,10 +149,10 @@ static const int kGeneralErrorCode = 10000;
         [_delegate respondsToSelector:@selector(request:didFailWithError:)]) {
             
             if (error) {
-                [self failWithError:error];
+                [self performSelectorOnMainThread:@selector(failWithError:) withObject:error waitUntilDone:YES];
             }
-            else if ([_delegate respondsToSelector:@selector(request:didLoad:)]) {
-                [_delegate request:self didLoad:result];
+            else {
+                [self performSelectorOnMainThread:@selector(loadSuccess:) withObject:result waitUntilDone:YES];
             }
             
         }

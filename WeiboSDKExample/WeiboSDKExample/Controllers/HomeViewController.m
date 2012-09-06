@@ -82,7 +82,7 @@
         [_query release];
     }
     [_statuses removeAllObjects];
-    
+    _failedToLoad = NO;
     
     _query = [[TimelineQuery alloc] init];
     _query.completionBlock = ^(WeiboRequest *request, NSMutableArray *statuses, NSError *error) {
@@ -90,6 +90,10 @@
             //
             NSLog(@"TimelineQuery error: %@", error);
             _failedToLoad = YES;
+            if (request.sessionDidExpire) { // session expired
+                [self displayAccountsViewController];
+            }
+            
         }
         else {
             for (Status *status in statuses) {
@@ -100,12 +104,14 @@
         _query = nil;
         [self.tableView reloadData];
     };
-    [_query queryFriendsTimelineWithCount:100];
+    [_query queryFriendsTimelineWithCount:20];
     [self.tableView reloadData];
 }
 
 - (IBAction)compose:(id)sender {
-    
+    ComposeViewController *composeViewController = [[[ComposeViewController alloc]initWithNibName:@"ComposeViewController" bundle:nil]autorelease];
+    composeViewController.statusText = @"Test #Zhiweibo#";
+    [self presentModalViewController:composeViewController animated:YES];
 }
 
 - (IBAction)displayAccountsController:(id)sender {

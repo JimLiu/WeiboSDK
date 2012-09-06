@@ -31,7 +31,9 @@
     NSString *_accessToken;
 }
 
-- (id)initWithAccessToken:(NSString *)accessToken;
+- (id)initWithDelegate:(id<WeiboRequestDelegate>)delegate;
+
+- (id)initWithAccessToken:(NSString *)accessToken delegate:(id<WeiboRequestDelegate>)delegate;
 
 @property(nonatomic,assign) id<WeiboRequestDelegate> delegate;
 @property(nonatomic,retain) NSError* error;

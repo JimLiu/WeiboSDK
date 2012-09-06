@@ -60,8 +60,7 @@ static NSMutableArray *_queries;
     if (_request) {
         [self cancel];
     }
-    _request = [[WeiboRequest alloc]init];
-    _request.delegate = self;
+    _request = [[WeiboRequest alloc]initWithDelegate:self];
     [[self class]addQuery:self];
 }
 

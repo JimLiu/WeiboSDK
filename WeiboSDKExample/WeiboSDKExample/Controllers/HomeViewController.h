@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AccountsViewController.h"
+#import "ComposeViewController.h"
 #import "TimelineQuery.h"
 
 @interface HomeViewController : UITableViewController {

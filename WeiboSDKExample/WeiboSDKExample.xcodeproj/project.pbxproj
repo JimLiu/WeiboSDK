@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B57A750F15F82B310056ACA7 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B57A750D15F82B310056ACA7 /* ComposeViewController.m */; };
+		B57A751015F82B310056ACA7 /* ComposeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B57A750E15F82B310056ACA7 /* ComposeViewController.xib */; };
+		B57A751515F82B740056ACA7 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B57A751315F82B740056ACA7 /* Icon.png */; };
+		B57A751615F82B740056ACA7 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B57A751415F82B740056ACA7 /* Icon@2x.png */; };
 		B580E36415F79A89002B03DF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B580E36315F79A89002B03DF /* UIKit.framework */; };
 		B580E36615F79A89002B03DF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B580E36515F79A89002B03DF /* Foundation.framework */; };
 		B580E36815F79A89002B03DF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B580E36715F79A89002B03DF /* CoreGraphics.framework */; };
@@ -70,6 +74,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B57A750C15F82B310056ACA7 /* ComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
+		B57A750D15F82B310056ACA7 /* ComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
+		B57A750E15F82B310056ACA7 /* ComposeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposeViewController.xib; sourceTree = "<group>"; };
+		B57A751315F82B740056ACA7 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		B57A751415F82B740056ACA7 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		B580E35F15F79A89002B03DF /* WeiboSDKExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeiboSDKExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B580E36315F79A89002B03DF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B580E36515F79A89002B03DF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -208,10 +217,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B57A751215F82B740056ACA7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B57A751315F82B740056ACA7 /* Icon.png */,
+				B57A751415F82B740056ACA7 /* Icon@2x.png */,
+			);
+			name = Resources;
+			path = WeiboSDKExample/Resources;
+			sourceTree = "<group>";
+		};
 		B580E35415F79A89002B03DF = {
 			isa = PBXGroup;
 			children = (
 				B580E36915F79A89002B03DF /* WeiboSDKExample */,
+				B57A751215F82B740056ACA7 /* Resources */,
 				B580E3CC15F79B2F002B03DF /* ThirdParts */,
 				B580E36215F79A89002B03DF /* Frameworks */,
 				B580E36015F79A89002B03DF /* Products */,
@@ -439,6 +459,9 @@
 		B580E47715F79C28002B03DF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B57A750C15F82B310056ACA7 /* ComposeViewController.h */,
+				B57A750D15F82B310056ACA7 /* ComposeViewController.m */,
+				B57A750E15F82B310056ACA7 /* ComposeViewController.xib */,
 				B580E47815F79C28002B03DF /* AccountsViewController.h */,
 				B580E47915F79C28002B03DF /* AccountsViewController.m */,
 				B580E47B15F79E23002B03DF /* HomeViewController.h */,
@@ -501,6 +524,9 @@
 				B580E36E15F79A89002B03DF /* InfoPlist.strings in Resources */,
 				B580E37A15F79A89002B03DF /* ViewController.xib in Resources */,
 				B580E3B915F79ABF002B03DF /* WeiboSignInViewController.xib in Resources */,
+				B57A751015F82B310056ACA7 /* ComposeViewController.xib in Resources */,
+				B57A751515F82B740056ACA7 /* Icon.png in Resources */,
+				B57A751615F82B740056ACA7 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,6 +582,7 @@
 				B580E47615F79B73002B03DF /* PathHelper.m in Sources */,
 				B580E47A15F79C28002B03DF /* AccountsViewController.m in Sources */,
 				B580E47D15F79E23002B03DF /* HomeViewController.m in Sources */,
+				B57A750F15F82B310056ACA7 /* ComposeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -669,6 +696,7 @@
 				B580E37F15F79A89002B03DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
