@@ -6,10 +6,10 @@
 
 ##截图##
 首页
-![首页](WeiboSDKExample/ScreenShots/Home.png)
+![首页](/WeiboSDKExample/ScreenShots/Home.png)
 
 帐号管理
-![帐号管理](WeiboSDKExample/ScreenShots/Accounts.png)
+![帐号管理](/WeiboSDKExample/ScreenShots/Accounts.png)
 
 撰写微博
-![撰写微博](WeiboSDKExample/ScreenShots/Compose.png)
+![撰写微博](/WeiboSDKExample/ScreenShots/Compose.png)
