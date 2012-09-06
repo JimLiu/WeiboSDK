@@ -6,10 +6,10 @@
 
 ##截图##
 首页
-![首页](https://github.com/JimLiu/WeiboSDK/blob/master/WeiboSDKExample/ScreenShots/Home.png)
+![首页](https://github.com/JimLiu/WeiboSDK/blob/master/WeiboSDKExample/ScreenShots/Home.png?raw=true)
 
 帐号管理
 ![帐号管理](https://github.com/JimLiu/WeiboSDK/blob/master/WeiboSDKExample/ScreenShots/Accounts.png?raw=true)
 
 撰写微博
-![撰写微博](https://github.com/JimLiu/WeiboSDK/blob/master/WeiboSDKExample/ScreenShots/Compose.png)
+![撰写微博](https://github.com/JimLiu/WeiboSDK/blob/master/WeiboSDKExample/ScreenShots/Compose.png?raw=true)
