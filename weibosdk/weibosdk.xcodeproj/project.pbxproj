@@ -1,0 +1,240 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B55C4AEF160007FE00DE368A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55C4AEE160007FE00DE368A /* Foundation.framework */; };
+		B55C4AF4160007FE00DE368A /* weibosdk.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B55C4AF3160007FE00DE368A /* weibosdk.h */; };
+		B55C4AF6160007FE00DE368A /* weibosdk.m in Sources */ = {isa = PBXBuildFile; fileRef = B55C4AF5160007FE00DE368A /* weibosdk.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B55C4AE9160007FE00DE368A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+				B55C4AF4160007FE00DE368A /* weibosdk.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B55C4AEB160007FE00DE368A /* libweibosdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libweibosdk.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B55C4AEE160007FE00DE368A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B55C4AF2160007FE00DE368A /* weibosdk-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "weibosdk-Prefix.pch"; sourceTree = "<group>"; };
+		B55C4AF3160007FE00DE368A /* weibosdk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = weibosdk.h; sourceTree = "<group>"; };
+		B55C4AF5160007FE00DE368A /* weibosdk.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = weibosdk.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B55C4AE8160007FE00DE368A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B55C4AEF160007FE00DE368A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B55C4AE0160007FE00DE368A = {
+			isa = PBXGroup;
+			children = (
+				B55C4AF0160007FE00DE368A /* weibosdk */,
+				B55C4AED160007FE00DE368A /* Frameworks */,
+				B55C4AEC160007FE00DE368A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B55C4AEC160007FE00DE368A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B55C4AEB160007FE00DE368A /* libweibosdk.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B55C4AED160007FE00DE368A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B55C4AEE160007FE00DE368A /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B55C4AF0160007FE00DE368A /* weibosdk */ = {
+			isa = PBXGroup;
+			children = (
+				B55C4AF3160007FE00DE368A /* weibosdk.h */,
+				B55C4AF5160007FE00DE368A /* weibosdk.m */,
+				B55C4AF1160007FE00DE368A /* Supporting Files */,
+			);
+			path = weibosdk;
+			sourceTree = "<group>";
+		};
+		B55C4AF1160007FE00DE368A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B55C4AF2160007FE00DE368A /* weibosdk-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B55C4AEA160007FE00DE368A /* weibosdk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B55C4AF9160007FE00DE368A /* Build configuration list for PBXNativeTarget "weibosdk" */;
+			buildPhases = (
+				B55C4AE7160007FE00DE368A /* Sources */,
+				B55C4AE8160007FE00DE368A /* Frameworks */,
+				B55C4AE9160007FE00DE368A /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = weibosdk;
+			productName = weibosdk;
+			productReference = B55C4AEB160007FE00DE368A /* libweibosdk.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B55C4AE2160007FE00DE368A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = idfsoft;
+			};
+			buildConfigurationList = B55C4AE5160007FE00DE368A /* Build configuration list for PBXProject "weibosdk" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B55C4AE0160007FE00DE368A;
+			productRefGroup = B55C4AEC160007FE00DE368A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B55C4AEA160007FE00DE368A /* weibosdk */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B55C4AE7160007FE00DE368A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B55C4AF6160007FE00DE368A /* weibosdk.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		B55C4AF7160007FE00DE368A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B55C4AF8160007FE00DE368A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B55C4AFA160007FE00DE368A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/weibosdk.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "weibosdk/weibosdk-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		B55C4AFB160007FE00DE368A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/weibosdk.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "weibosdk/weibosdk-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B55C4AE5160007FE00DE368A /* Build configuration list for PBXProject "weibosdk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B55C4AF7160007FE00DE368A /* Debug */,
+				B55C4AF8160007FE00DE368A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B55C4AF9160007FE00DE368A /* Build configuration list for PBXNativeTarget "weibosdk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B55C4AFA160007FE00DE368A /* Debug */,
+				B55C4AFB160007FE00DE368A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B55C4AE2160007FE00DE368A /* Project object */;
+}
