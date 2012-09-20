@@ -7,7 +7,6 @@
 //
 
 #import "Status.h"
-#import "NSDictionaryAdditions.h"
 
 @implementation Status
 @synthesize statusIdString = _statusIdString;
@@ -40,15 +39,15 @@
     if (self) {
         self.statusIdString = [dic stringValueForKey:@"idstr"];
         self.createdAt = [dic timeValueForKey:@"created_at"];
-        self.statusId = [dic longLongValueForKey:@"id"];
+        self.statusId = [dic longLongValueValueForKey:@"id"];
         self.text = [dic stringValueForKey:@"text"];
         self.source = [dic stringValueForKey:@"source"];
         self.favorited = [dic boolValueForKey:@"favorited"];
         self.truncated = [dic boolValueForKey:@"truncated"];
-        self.inReplyToStatusId = [dic longLongValueForKey:@"in_reply_to_status_id"];
-        self.inReplyToUserId = [dic longLongValueForKey:@"in_reply_to_user_id"];
+        self.inReplyToStatusId = [dic longLongValueValueForKey:@"in_reply_to_status_id"];
+        self.inReplyToUserId = [dic longLongValueValueForKey:@"in_reply_to_user_id"];
         self.inReplyToScreenName = [dic stringValueForKey:@"in_reply_to_screen_name"];
-        self.mid = [dic longLongValueForKey:@"mid"];
+        self.mid = [dic longLongValueValueForKey:@"mid"];
         self.middleImageUrl = [dic stringValueForKey:@"bmiddle_pic"];
         self.originalImageUrl = [dic stringValueForKey:@"original_pic"];
         self.thumbnailImageUrl = [dic stringValueForKey:@"thumbnail_pic"];
@@ -150,10 +149,16 @@
     [_geo release];
     [_user release];
     [_retweetedStatus release];
+    [_statusKey release];
     
     [super dealloc];
 }
 
-
+- (NSNumber *)statusKey {
+    if (_statusKey) {
+        _statusKey = [[NSNumber numberWithLongLong:_statusId]retain];
+    }
+    return _statusKey;
+}
 
 @end

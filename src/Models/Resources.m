@@ -7,7 +7,6 @@
 //
 
 #import "Resources.h"
-#import "JSONKit.h"
 
 static NSMutableDictionary *gProvinces;
 
@@ -21,8 +20,8 @@ static NSMutableDictionary *gProvinces;
 + (NSMutableDictionary *)provinces {
 	if (!gProvinces) {
 		gProvinces = [[NSMutableDictionary alloc] init];
-        
-        NSDictionary *dic = [[Resources provincesJson] objectFromJSONString];
+
+        NSDictionary *dic = [[Resources provincesJson] JSONValue];
         if (dic) {
             NSArray *provinces = [dic objectForKey:@"provinces"];
             if (provinces) {

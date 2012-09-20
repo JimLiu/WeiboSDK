@@ -71,6 +71,8 @@
 		B55992B81608E6A00037448E /* WeiboSDK-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = B559916B1608DB8E0037448E /* WeiboSDK-Prefix.pch */; };
 		B55992D11608E92F0037448E /* ASIAuthenticationDialog.h in Headers */ = {isa = PBXBuildFile; fileRef = B55992CF1608E92F0037448E /* ASIAuthenticationDialog.h */; };
 		B55992D21608E92F0037448E /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B55992D01608E92F0037448E /* ASIAuthenticationDialog.m */; };
+		B5B7FEA4160A364000A085C4 /* MBProgressHUD.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B559921B1608DC0D0037448E /* MBProgressHUD.h */; };
+		B5B7FEA5160A36D300A085C4 /* NSDictionaryAdditions.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B559917D1608DBD50037448E /* NSDictionaryAdditions.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -80,6 +82,8 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				B5B7FEA5160A36D300A085C4 /* NSDictionaryAdditions.h in CopyFiles */,
+				B5B7FEA4160A364000A085C4 /* MBProgressHUD.h in CopyFiles */,
 				B55992451608DDA20037448E /* GeoInfo.h in CopyFiles */,
 				B55992461608DDA20037448E /* Province.h in CopyFiles */,
 				B55992471608DDA20037448E /* Resources.h in CopyFiles */,

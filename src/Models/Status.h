@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSDictionaryAdditions.h"
 #import "GeoInfo.h"
 #import "User.h"
 
-@interface Status : NSObject {
+@interface Status : NSObject<NSCoding> {
     NSString *_statusIdString; //字符串型的微博ID
     time_t _createdAt;  //创建时间
     long long _statusId; //微博ID
@@ -30,6 +31,8 @@
     GeoInfo *_geo;                  //地理信息字段
     User *_user;                    //微博作者的用户信息字段
     Status *_retweetedStatus;  // 转发微博
+    
+    NSNumber *_statusKey;
 }
 
 + (Status *)statusWithJsonDictionary:(NSDictionary*)dic;
@@ -54,5 +57,6 @@
 @property (nonatomic, retain) GeoInfo *geo;
 @property (nonatomic, retain) User *user;
 @property (nonatomic, retain) Status *retweetedStatus;
+@property (nonatomic, readonly) NSNumber *statusKey;
 
 @end

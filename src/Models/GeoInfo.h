@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSDictionaryAdditions.h"
 
-@interface GeoInfo : NSObject {
+@interface GeoInfo : NSObject<NSCoding> {
     double _latitude;               //纬度
 	double _longitude;              //经度
 }

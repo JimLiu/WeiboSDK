@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "WeiboAuthentication.h"
+#import "MBProgressHUD.h"
 
 @class MBProgressHUD;
 
-@interface WeiboSignInViewController : UIViewController<UIWebViewDelegate> {
+@interface WeiboSignInViewController : UIViewController<UIWebViewDelegate, MBProgressHUDDelegate> {
     UIWebView *_webView;
     UIBarButtonItem *_cancelButton;
     UIBarButtonItem *_stopButton;

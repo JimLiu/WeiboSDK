@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSDictionaryAdditions.h"
 
 typedef enum {
     GenderUnknow = 0,
@@ -19,7 +20,7 @@ typedef enum {
     OnlineStatusOnline = 1,
 } OnlineStatus;
 
-@interface User : NSObject {
+@interface User : NSObject<NSCoding> {
     long long   _userId; //用户UID
 	NSString*   _screenName; //微博昵称
     NSString*   _name; //友好显示名称，如Bill Gates(此特性暂不支持)

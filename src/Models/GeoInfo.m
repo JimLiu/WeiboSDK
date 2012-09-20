@@ -7,7 +7,6 @@
 //
 
 #import "GeoInfo.h"
-#import "NSDictionaryAdditions.h"
 
 @implementation GeoInfo
 @synthesize latitude = _latitude;
@@ -22,6 +21,26 @@
             self.latitude = [[coordinatesArray objectAtIndex:0] doubleValue];
             self.longitude = [[coordinatesArray objectAtIndex:1] doubleValue];
         }
+    }
+    return self;
+}
+
+//===========================================================
+//  Keyed Archiving
+//
+//===========================================================
+- (void)encodeWithCoder:(NSCoder *)encoder
+{
+    [encoder encodeDouble:self.latitude forKey:@"latitude"];
+    [encoder encodeDouble:self.longitude forKey:@"longitude"];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder
+{
+    self = [super init];
+    if (self) {
+        self.latitude = [decoder decodeDoubleForKey:@"latitude"];
+        self.longitude = [decoder decodeDoubleForKey:@"longitude"];
     }
     return self;
 }

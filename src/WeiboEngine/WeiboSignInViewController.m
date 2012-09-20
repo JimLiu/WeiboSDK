@@ -41,7 +41,7 @@
 - (void)cancel:(id)sender {
     [HUD hide:YES];
     _closed = YES;
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (void)stop:(id)sender {

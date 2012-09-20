@@ -44,7 +44,7 @@ NSString *WeiboOAuth2ErrorDomain = @"com.zhiweibo.OAuth2";
     signInWeiboController.authentication = self.authentication;
     UINavigationController *navController = [[[UINavigationController alloc]initWithRootViewController:signInWeiboController] autorelease];
     [signInWeiboController release];
-    [viewController presentModalViewController:navController animated:YES];
+    [viewController presentViewController:navController animated:YES completion:NULL];
 }
 
 

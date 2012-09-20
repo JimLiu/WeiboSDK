@@ -30,6 +30,27 @@
     return self;
 }
 
+//===========================================================
+//  Keyed Archiving
+//
+//===========================================================
+- (void)encodeWithCoder:(NSCoder *)encoder
+{
+    [encoder encodeObject:self.name forKey:@"name"];
+    [encoder encodeObject:self.provinceId forKey:@"provinceId"];
+    [encoder encodeObject:self.cities forKey:@"cities"];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder
+{
+    self = [super init];
+    if (self) {
+        self.name = [decoder decodeObjectForKey:@"name"];
+        self.provinceId = [decoder decodeObjectForKey:@"provinceId"];
+        self.cities = [decoder decodeObjectForKey:@"cities"];
+    }
+    return self;
+}
 
 //===========================================================
 // dealloc

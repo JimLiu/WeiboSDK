@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SBJson.h"
 #import "Province.h"
 
 @interface Resources : NSObject

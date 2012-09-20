@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Province : NSObject {
+@interface Province : NSObject<NSCoding> {
 	NSString *_name;
 	NSString *_provinceId;
 	NSMutableDictionary *_cities;
