@@ -111,7 +111,7 @@
 {
 	self = [super init];
     if (self) {
-        self.userId = [dic longLongValueValueForKey:@"id"];
+        self.userId = [dic longLongValueForKey:@"id"];
         self.screenName = [dic stringValueForKey:@"screen_name"];
         self.name = [dic stringValueForKey:@"name"];
         NSString *provinceId = [dic stringValueForKey:@"province"];
