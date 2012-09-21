@@ -128,10 +128,17 @@ static WeiboAccounts *gInstance;
             return account;
         }
     }
-    if (_accounts.count > 0) {
-        return [_accounts objectAtIndex:0];
-    }
+    //if (_accounts.count > 0) {
+        //return [_accounts objectAtIndex:0];
+    //}
     return nil;
+}
+
+- (void)signOut {
+    WeiboAccount *currentAccount = [self currentAccount];
+    if (currentAccount) {
+        [self removeWeiboAccount:currentAccount];
+    }
 }
 
 - (NSMutableArray *)accounts {

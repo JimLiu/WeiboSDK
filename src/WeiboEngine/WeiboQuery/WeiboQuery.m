@@ -85,12 +85,12 @@ static NSMutableArray *_queries;
 }
 
 - (void)request:(WeiboRequest *)request didFailWithError:(NSError *)error {
-    [self performSelectorOnMainThread:@selector(requestFailedWithError:) withObject:error waitUntilDone:NO];
+    [self performSelectorOnMainThread:@selector(requestFailedWithError:) withObject:error waitUntilDone:YES];
     [self clearRequest];
 }
 
 - (void)request:(WeiboRequest *)request didLoad:(id)result {
-    [self performSelectorOnMainThread:@selector(requestFinishedWithObject:) withObject:result waitUntilDone:NO];
+    [self performSelectorOnMainThread:@selector(requestFinishedWithObject:) withObject:result waitUntilDone:YES];
     [self clearRequest];
 }
 

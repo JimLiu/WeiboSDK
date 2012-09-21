@@ -34,4 +34,6 @@
 
 - (void)syncAccount:(WeiboAccount *)account;
 
+- (void)signOut;
+
 @end

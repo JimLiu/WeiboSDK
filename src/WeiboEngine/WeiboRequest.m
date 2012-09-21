@@ -124,11 +124,14 @@ static const int kGeneralErrorCode = 10000;
 }
 
 - (void)failWithError:(NSError *)error {
-    if ([error code] == 21314
+    if (   [error code] == 21301
+        || [error code] == 21314
         || [error code] == 21315
         || [error code] == 21316
         || [error code] == 21317) {
         self.sessionDidExpire = YES;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"authError"
+                                                            object:error];
     }
     if ([_delegate respondsToSelector:@selector(request:didFailWithError:)]) {
         [_delegate request:self didFailWithError:error];
