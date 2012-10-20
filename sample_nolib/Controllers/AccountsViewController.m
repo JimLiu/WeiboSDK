@@ -46,7 +46,7 @@
 }
 
 - (IBAction)close:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)add:(id)sender {
@@ -189,7 +189,7 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     WeiboAccount *account = [[[WeiboAccounts shared]accounts] objectAtIndex:indexPath.row];
     [[WeiboAccounts shared] setCurrentAccount:account];
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

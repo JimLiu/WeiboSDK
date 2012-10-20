@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'WeiboSDK' target in the 'WeiboSDK' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif

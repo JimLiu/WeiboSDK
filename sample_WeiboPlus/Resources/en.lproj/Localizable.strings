@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  ZhiWeiboPhone
+
+  Created by junmin liu on 12-8-20.
+  Copyright (c) 2012年 idfsoft. All rights reserved.
+*/
+
+"Button_Close" = "Close";
+
+"AccountsViewController_Title" = "Accounts";
+
+"WebView_Loading" = "Loading...";
+"WebView_FailedToLoad" = "Failed to load web page";
+
+"SignInWebView_InitialMessageHTMLString" = "Loading authorize page...";
+

@@ -58,7 +58,7 @@
     AccountsViewController *accountsViewController = [[[AccountsViewController alloc]initWithNibName:nil bundle:nil]autorelease];
     UINavigationController *accountsNavigationController = [[[UINavigationController alloc]initWithRootViewController:accountsViewController] autorelease];
     accountsNavigationController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [self presentModalViewController:accountsNavigationController animated:YES];
+    [self presentViewController:accountsNavigationController animated:YES completion:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -104,14 +104,14 @@
         _query = nil;
         [self.tableView reloadData];
     };
-    [_query queryFriendsTimelineWithCount:20];
+    [_query queryTimeline:StatusTimelineFriends count:20];
     [self.tableView reloadData];
 }
 
 - (IBAction)compose:(id)sender {
     ComposeViewController *composeViewController = [[[ComposeViewController alloc]initWithNibName:@"ComposeViewController" bundle:nil]autorelease];
     composeViewController.statusText = @"Test #Zhiweibo#";
-    [self presentModalViewController:composeViewController animated:YES];
+    [self presentViewController:composeViewController animated:YES completion:nil];
 }
 
 - (IBAction)displayAccountsController:(id)sender {

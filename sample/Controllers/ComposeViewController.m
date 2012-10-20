@@ -80,7 +80,7 @@
 	imgAttachment.image = nil;
 	sendingView.hidden = YES;
 	
-	[self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)insert:(id)sender {
@@ -138,7 +138,7 @@
     Status *status = [Status statusWithJsonDictionary:result];
     NSLog(@"status id: %lld", status.statusId);
     sendingView.hidden = YES;
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
     [request release];
 }
 
