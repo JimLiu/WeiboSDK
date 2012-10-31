@@ -231,7 +231,7 @@ static inline CTLineBreakMode CTLineBreakModeFromNSLineBreakMode(NSLineBreakMode
     //[a-zA-Z0-9%_.+\\-]+@[a-zA-Z0-9.\\-]+?\\.[a-zA-Z]{2,6}|@[a-zA-Z0-9_\\u4e00-\\u9fa5]+|#[^#]+#|https?://[a-zA-Z0-9\\-.]+(?:(?:/[a-zA-Z0-9\\-._?,'+\\&%$=~*!():@\\\\]*)+)?
     
     NSString *emailReg = @"([a-zA-Z0-9%_.+\\-]+@[a-zA-Z0-9.\\-]+?\\.[a-zA-Z]{2,6})";
-    NSString *usernameReg = @"(@[a-zA-Z0-9_?-=\\u4e00-\\u9fa5]+)";
+    NSString *usernameReg = @"(@[a-zA-Z0-9_\\-\\u4e00-\\u9fa5]+)";
     NSString *hashtagReg = @"(#[^#]+#)";
     //@"(#[a-zA-Z0-9_-]+)", // hash tags for twitter
     NSString *urlReg = @"(https?://[a-zA-Z0-9\\-.]+(?:(?:/[a-zA-Z0-9\\-._?,'+\\&%$=~*!():@\\\\]*)+)?)";
