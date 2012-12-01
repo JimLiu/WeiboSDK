@@ -20,7 +20,7 @@
         self.wrapped = YES;
         self.rasterizationScale = [[UIScreen mainScreen] scale];
         self.contentsScale = [[UIScreen mainScreen] scale];
-        //self.drawsAsynchronously = YES;
+        self.drawsAsynchronously = YES;
         
         _activeLinkBackgroundLayers = [[NSMutableArray array] retain];
     }

@@ -1,30 +1,27 @@
 //
-//  TweetViewCell.m
+//  TweetViewCell1.m
 //  WeiboPlus
 //
-//  Created by junmin liu on 12-10-20.
+//  Created by junmin liu on 12-11-21.
 //  Copyright (c) 2012年 idfsoft. All rights reserved.
 //
 
-#import "TweetViewCell.h"
+#import "TweetViewCell1.h"
 
-@interface TweetViewCell() {
+@interface TweetViewCell1() {
 }
 
 @property (nonatomic, retain) UIImage *tweetAuthorImage;
 @property (nonatomic, retain) UIImage *retweetAuthorImage;
-@property (nonatomic, retain) UIImage *drawedImage;
 
 @end
 
-@implementation TweetViewCell
-@synthesize layout = _layout;
-@synthesize drawedImage = _drawedImage;
+
+@implementation TweetViewCell1
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        contentView.backgroundColor = [UIColor whiteColor];
         _downloader = [ImageDownloader profileImagesDownloader];
         _tweetAuthorImageDownloadReceiver = [[ImageDownloadReceiver alloc]init];
         _tweetAuthorImageDownloadReceiver.completionBlock = ^(NSData *imageData, NSString *url, NSError *error) {
@@ -37,12 +34,23 @@
         _tweetAuthorImage = nil;
         _retweetAuthorImage = nil;
         
-        
         _tweetAuthorProfileImageLayer = [self profileImageLayer];
         _retweetAuthorProfileImageLayer = [self profileImageLayer];
         [contentView.layer addSublayer:_tweetAuthorProfileImageLayer];
         [contentView.layer addSublayer:_retweetAuthorProfileImageLayer];
-         
+        
+        _tweetTextLayer = [[[TweetLayer alloc]init] autorelease];
+        _retweetTextLayer = [[[TweetLayer alloc]init] autorelease];
+        _tweetAuthorLayer = [[[TweetLayer alloc]init] autorelease];
+        _retweetAuthorLayer = [[[TweetLayer alloc]init] autorelease];
+        _tweetTimeLayer = [self textLayer];
+        _retweetTimeLayer = [self textLayer];
+        [contentView.layer addSublayer:_tweetTextLayer];
+        [contentView.layer addSublayer:_retweetTextLayer];
+        [contentView.layer addSublayer:_tweetAuthorLayer];
+        [contentView.layer addSublayer:_retweetAuthorLayer];
+        [contentView.layer addSublayer:_tweetTimeLayer];
+        [contentView.layer addSublayer:_retweetTimeLayer];
     }
     return self;
 }
@@ -55,7 +63,6 @@
     [_retweetAuthorImageDownloadReceiver release];
     [_tweetAuthorImage release];
     [_retweetAuthorImage release];
-    [_drawedImage release];
     
     [super dealloc];
 }
@@ -64,18 +71,38 @@
     CALayer *layer = [CALayer layer];
     layer.shouldRasterize = YES;
     layer.frame = CGRectMake(10, 10, 34, 34);
-    //layer.masksToBounds = YES;
+    layer.masksToBounds = YES;
     layer.rasterizationScale = [[UIScreen mainScreen] scale];
     layer.drawsAsynchronously = YES;
+    return layer;
+}
+
+- (CATextLayer *)textLayer {
+    CATextLayer *layer = [CATextLayer layer];
+    layer.shouldRasterize = YES;
+    layer.wrapped = YES;
+    layer.rasterizationScale = [[UIScreen mainScreen] scale];
+    layer.contentsScale = [[UIScreen mainScreen] scale];
+    layer.drawsAsynchronously = YES;
+    layer.foregroundColor = [UIColor colorWithWhite:187/255.f alpha:1.0].CGColor;
+    layer.fontSize = 11;
     NSDictionary *actions = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNull null], @"contents", nil];
     layer.actions = actions;
     [actions release];
     return layer;
 }
 
-- (void)resetProfileImageLayers {
-    _tweetAuthorProfileImageLayer.contents = (id)[self profileHolderImage].CGImage;
-    _retweetAuthorProfileImageLayer.contents = (id)[self profileHolderImage].CGImage;
+- (void)setTweetLayers {
+    _tweetTextLayer.document = _layout.tweetDocument;
+    _retweetTextLayer.document = _layout.retweetDocument;
+    _tweetAuthorLayer.document = _layout.tweetAuthorDocument;
+    _retweetAuthorLayer.document = _layout.retweetAuthorDocument;
+    NSString *timeText = [NSString stringWithFormat:@"%@・%@", [_layout.status statusTimeString], [_layout.status source]];
+    _tweetTimeLayer.string = timeText;
+    if (_layout.status.retweetedStatus) {
+        timeText = [NSString stringWithFormat:@"%@・%@", [_layout.status.retweetedStatus statusTimeString], [_layout.status.retweetedStatus source]];
+        _retweetTimeLayer.string = timeText;
+    }
 }
 
 - (void)setLayout:(TweetViewCellLayout *)layout {
@@ -86,23 +113,27 @@
         }
         self.tweetAuthorImage = nil;
         self.retweetAuthorImage = nil;
-        _isDrawing = NO;
-        self.drawedImage = nil;
-        [self performSelectorInBackground:@selector(resetProfileImageLayers) withObject:nil];
+        _tweetAuthorProfileImageLayer.contents = (id)[self profileHolderImage].CGImage;
+        _retweetAuthorProfileImageLayer.contents = (id)[self profileHolderImage].CGImage;
         [_layout release];
         _layout = [layout retain];
-        
+        [self performSelectorInBackground:@selector(setTweetLayers) withObject:nil];
         [CATransaction begin];
         [CATransaction setAnimationDuration:0];
         _tweetAuthorProfileImageLayer.frame = _layout.tweetAuthorProfileImageRect;
         _retweetAuthorProfileImageLayer.frame = _layout.retweetAuthorProfileImageRect;
+        _tweetTextLayer.frame = _layout.tweetTextRect;
+        _retweetTextLayer.frame = _layout.retweetTextRect;
+        _tweetAuthorLayer.frame = _layout.tweetAuthorTextRect;
+        _retweetAuthorLayer.frame = _layout.retweetAuthorTextRect;
+        _tweetTimeLayer.frame = _layout.tweetTimeTextRect;
+        _retweetTimeLayer.frame = _layout.retweetTimeTextRect;
         [CATransaction commit];
-         
         [_downloader activeRequest:_layout.status.user.profileImageUrl delegate:_tweetAuthorImageDownloadReceiver];
         if (_layout.status.retweetedStatus) {
             [_downloader activeRequest:_layout.status.retweetedStatus.user.profileImageUrl delegate:_retweetAuthorImageDownloadReceiver];
         }
-
+        
         [self setNeedsDisplay];
         [self setNeedsLayout];
     }
@@ -142,38 +173,20 @@
             
             UIGraphicsEndImageContext();
         }
-
+        
     }
     return profileHolderImage;
     
 }
 
-- (void)displayProfileImages {
-    if (!_isDrawing) {
-        if (self.tweetAuthorImage) {
-            [_tweetAuthorProfileImageLayer performSelectorInBackground:@selector(setContents:) withObject:(id)self.tweetAuthorImage.CGImage];
-        }
-        if (self.retweetAuthorImage) {
-            [_retweetAuthorProfileImageLayer performSelectorInBackground:@selector(setContents:) withObject:(id)self.retweetAuthorImage.CGImage];
-        }
-    }
-
-}
-
 - (void)processTweetAuthorImageData:(NSData *)imageData {
     self.tweetAuthorImage = [self processImageData:imageData rect:_layout.tweetAuthorProfileImageRect];
-    //_tweetAuthorProfileImageLayer.contents = (id)self.tweetAuthorImage.CGImage;
-    [self displayProfileImages];
-    //self.drawedImage = nil;
-    //[self setNeedsDisplayInRect:_layout.tweetAuthorProfileImageRect];
+    _tweetAuthorProfileImageLayer.contents = (id)self.tweetAuthorImage.CGImage;
 }
 
 - (void)processRetweetAuthorImageData:(NSData *)imageData {
     self.retweetAuthorImage = [self processImageData:imageData rect:_layout.retweetAuthorProfileImageRect];
-    //_retweetAuthorProfileImageLayer.contents = (id)self.retweetAuthorImage.CGImage;
-    [self displayProfileImages];
-    //self.drawedImage = nil;
-    //[self setNeedsDisplayInRect:_layout.retweetAuthorProfileImageRect];
+    _retweetAuthorProfileImageLayer.contents = (id)self.retweetAuthorImage.CGImage;
 }
 
 - (void)receiver:(ImageDownloadReceiver *)receiver didDownloadWithImageData:(NSData *)imageData
@@ -191,71 +204,16 @@
     }
 }
 
-- (void)drawOnImage {
-    if (!_isDrawing) {
-        _isDrawing = YES;
-        UIImage *image = nil;
-        CGRect bounds = self.bounds;
-        UIGraphicsBeginImageContextWithOptions(bounds.size, YES, 0);
-        CGContextRef context = UIGraphicsGetCurrentContext();
-        [self drawContentInContext:context];
-        image = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        self.drawedImage = image;
-        [self performSelectorOnMainThread:@selector(setNeedsDisplay) withObject:nil waitUntilDone:NO];
-        _isDrawing = NO;
-        [self displayProfileImages];
-    }
-}
-
-- (void)drawContentInContext:(CGContextRef)context {
+/*
+- (void)drawContentView:(CGRect)rect highlighted:(BOOL)highlighted {
+    //CGContextRef context = UIGraphicsGetCurrentContext();
     [[Images tweetOuterBackgroundImage]drawInRect:self.bounds];
     if (_layout.status.retweetedStatus) {
         [[Images tweetInnerBackgroundImage] drawInRect:_layout.retweetRect];
     }
-    CGContextSaveGState(context);
-    CGContextSetTextMatrix(context, CGAffineTransformIdentity);
-    
-    CGContextTranslateCTM(context, 0.0f, self.bounds.size.height);
-    CGContextScaleCTM(context, 1.0f, -1.0f);
-    
-    [_layout.tweetDocument drawTextInRect:self.bounds textRect:_layout.tweetTextRect context:context];
-    [_layout.tweetAuthorDocument drawTextInRect:self.bounds textRect:_layout.tweetAuthorTextRect context:context];
-    if (_layout.status.retweetedStatus) {
-        [_layout.retweetDocument drawTextInRect:self.bounds textRect:_layout.retweetTextRect context:context];
-        [_layout.retweetAuthorDocument drawTextInRect:self.bounds textRect:_layout.retweetAuthorTextRect context:context];
-    }
-    CGContextRestoreGState(context);
-    
-    CGContextSaveGState(context);
-    CGContextSetRGBFillColor(context, 187/255.f, 187/255.f, 187/255.f, 1.f);
-    
-    NSString *timeText = [NSString stringWithFormat:@"%@・%@", [_layout.status statusTimeString], [_layout.status source]];
-    [timeText drawInRect:_layout.tweetTimeTextRect withFont:[Fonts statusTimeFont]];
-    //UIImage *profileImage = self.tweetAuthorImage ? self.tweetAuthorImage : [self profileHolderImage];
-    //[profileImage drawInRect:_layout.tweetAuthorProfileImageRect];
-    if (_layout.status.retweetedStatus) {
-        timeText = [NSString stringWithFormat:@"%@・%@", [_layout.status.retweetedStatus statusTimeString], [_layout.status.retweetedStatus source]];
-        [timeText drawInRect:_layout.retweetTimeTextRect withFont:[Fonts statusTimeFont]];
-        //profileImage = self.retweetAuthorImage ? self.retweetAuthorImage : [self profileHolderImage];
-        //[profileImage drawInRect:_layout.retweetAuthorProfileImageRect];
-    }
-    CGContextRestoreGState(context);
-}
 
-- (void)drawContentView:(CGRect)rect highlighted:(BOOL)highlighted {
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    [self drawContentInContext:context];
-    /*
-    [[Images tweetOuterBackgroundImage]drawInRect:self.bounds];
-    if (self.drawedImage) {
-        [self.drawedImage drawInRect:self.bounds];
-    }
-    else {
-        [self performSelectorInBackground:@selector(drawOnImage) withObject:nil];
-    }
-     */
 }
+*/
 
 
 @end

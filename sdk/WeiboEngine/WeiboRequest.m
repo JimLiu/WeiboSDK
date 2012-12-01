@@ -128,7 +128,8 @@ static const int kGeneralErrorCode = 10000;
         || [error code] == 21314
         || [error code] == 21315
         || [error code] == 21316
-        || [error code] == 21317) {
+        || [error code] == 21317
+        || [error code] == 21332) {
         self.sessionDidExpire = YES;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"authError"
                                                             object:error];

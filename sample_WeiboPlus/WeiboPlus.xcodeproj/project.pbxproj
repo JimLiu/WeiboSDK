@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B5268BC7165D2BFA009D2721 /* TweetViewCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = B5268BC6165D2BFA009D2721 /* TweetViewCell1.m */; };
 		B574A2A9160D61D8000866FF /* WrapedStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = B574A2A8160D61D8000866FF /* WrapedStatus.m */; };
 		B57FB3D6162B17A9005BFFBB /* Fonts.m in Sources */ = {isa = PBXBuildFile; fileRef = B57FB3D5162B17A9005BFFBB /* Fonts.m */; };
 		B5B7FC9F1609AE6400A085C4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5B7FC9E1609AE6400A085C4 /* UIKit.framework */; };
@@ -144,6 +145,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B5268BC5165D2BFA009D2721 /* TweetViewCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetViewCell1.h; sourceTree = "<group>"; };
+		B5268BC6165D2BFA009D2721 /* TweetViewCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetViewCell1.m; sourceTree = "<group>"; };
 		B574A2A7160D61D8000866FF /* WrapedStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WrapedStatus.h; sourceTree = "<group>"; };
 		B574A2A8160D61D8000866FF /* WrapedStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WrapedStatus.m; sourceTree = "<group>"; };
 		B57FB3D4162B17A9005BFFBB /* Fonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fonts.h; sourceTree = "<group>"; };
@@ -800,6 +803,8 @@
 				B5F8271A16326B5900D3EE24 /* TweetLayer.m */,
 				B5F8271B16326B5900D3EE24 /* TweetLink.h */,
 				B5F8271C16326B5900D3EE24 /* TweetLink.m */,
+				B5268BC5165D2BFA009D2721 /* TweetViewCell1.h */,
+				B5268BC6165D2BFA009D2721 /* TweetViewCell1.m */,
 				B5F8272916326C3A00D3EE24 /* TweetViewCell.h */,
 				B5F8272A16326C3A00D3EE24 /* TweetViewCell.m */,
 				B5F8272116326B5900D3EE24 /* TweetViewCellLayout.h */,
@@ -993,6 +998,7 @@
 				B5E35FA51632F64500947A19 /* ImageDownloader.m in Sources */,
 				B5E35FA61632F64500947A19 /* ImageDownloadReceiver.m in Sources */,
 				B5E35FA71632F64500947A19 /* ImageRequest.m in Sources */,
+				B5268BC7165D2BFA009D2721 /* TweetViewCell1.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
