@@ -14,3 +14,7 @@ profile
 *.moved-aside
 .svn/*
 .DS_Store
+build/Debug-iphoneos
+build/Debug-iphonesimulator
+build/Debug-universal
+build/WeiboSDK.build

@@ -7,413 +7,339 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B559916D1608DB8E0037448E /* WeiboSDK.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B559916C1608DB8E0037448E /* WeiboSDK.h */; };
-		B55991A71608DBD50037448E /* NSDictionaryAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B559917E1608DBD50037448E /* NSDictionaryAdditions.m */; };
-		B55991A81608DBD50037448E /* GeoInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B55991811608DBD50037448E /* GeoInfo.m */; };
-		B55991A91608DBD50037448E /* Province.m in Sources */ = {isa = PBXBuildFile; fileRef = B55991831608DBD50037448E /* Province.m */; };
-		B55991AA1608DBD50037448E /* Resources.m in Sources */ = {isa = PBXBuildFile; fileRef = B55991851608DBD50037448E /* Resources.m */; };
-		B55991AB1608DBD50037448E /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = B55991871608DBD50037448E /* Status.m */; };
-		B55991AC1608DBD50037448E /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = B55991891608DBD50037448E /* User.m */; };
-		B55991AD1608DBD50037448E /* PathHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B559918C1608DBD50037448E /* PathHelper.m */; };
-		B55991AE1608DBD50037448E /* WeiboAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = B559918F1608DBD50037448E /* WeiboAccount.m */; };
-		B55991AF1608DBD50037448E /* WeiboAccounts.m in Sources */ = {isa = PBXBuildFile; fileRef = B55991911608DBD50037448E /* WeiboAccounts.m */; };
-		B55991B01608DBD50037448E /* WeiboAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = B55991931608DBD50037448E /* WeiboAuthentication.m */; };
-		B55991B11608DBD50037448E /* WeiboEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B55991961608DBD50037448E /* WeiboEngine.m */; };
-		B55991B21608DBD50037448E /* StatusQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = B55991991608DBD50037448E /* StatusQuery.m */; };
-		B55991B31608DBD50037448E /* TimelineQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = B559919B1608DBD50037448E /* TimelineQuery.m */; };
-		B55991B41608DBD50037448E /* UserQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = B559919D1608DBD50037448E /* UserQuery.m */; };
-		B55991B51608DBD50037448E /* WeiboQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = B559919F1608DBD50037448E /* WeiboQuery.m */; };
-		B55991B61608DBD50037448E /* WeiboRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B55991A11608DBD50037448E /* WeiboRequest.m */; };
-		B55991B71608DBD50037448E /* WeiboSignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = B55991A31608DBD50037448E /* WeiboSignIn.m */; };
-		B55991B81608DBD50037448E /* WeiboSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55991A51608DBD50037448E /* WeiboSignInViewController.m */; };
-		B559921E1608DC0D0037448E /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = B55991C41608DC0D0037448E /* ASIDataCompressor.m */; };
-		B559921F1608DC0D0037448E /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = B55991C61608DC0D0037448E /* ASIDataDecompressor.m */; };
-		B55992201608DC0D0037448E /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B55991C81608DC0D0037448E /* ASIDownloadCache.m */; };
-		B55992211608DC0D0037448E /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B55991CA1608DC0D0037448E /* ASIFormDataRequest.m */; };
-		B55992221608DC0D0037448E /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B55991CC1608DC0D0037448E /* ASIHTTPRequest.m */; };
-		B55992231608DC0D0037448E /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = B55991D01608DC0D0037448E /* ASIInputStream.m */; };
-		B55992241608DC0D0037448E /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B55991D21608DC0D0037448E /* ASINetworkQueue.m */; };
-		B559922D1608DC0D0037448E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B55991E81608DC0D0037448E /* Reachability.m */; };
-		B55992431608DC0D0037448E /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = B55992181608DC0D0037448E /* JSONKit.m */; };
-		B55992441608DC0D0037448E /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B559921C1608DC0D0037448E /* MBProgressHUD.m */; };
-		B55992451608DDA20037448E /* GeoInfo.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B55991801608DBD50037448E /* GeoInfo.h */; };
-		B55992461608DDA20037448E /* Province.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B55991821608DBD50037448E /* Province.h */; };
-		B55992471608DDA20037448E /* Resources.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B55991841608DBD50037448E /* Resources.h */; };
-		B55992481608DDA20037448E /* Status.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B55991861608DBD50037448E /* Status.h */; };
-		B55992491608DDA20037448E /* User.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B55991881608DBD50037448E /* User.h */; };
-		B559924A1608DDA20037448E /* WeiboAccount.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B559918E1608DBD50037448E /* WeiboAccount.h */; };
-		B559924B1608DDA20037448E /* WeiboAccounts.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B55991901608DBD50037448E /* WeiboAccounts.h */; };
-		B559924C1608DDA20037448E /* WeiboAuthentication.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B55991921608DBD50037448E /* WeiboAuthentication.h */; };
-		B559924D1608DDA20037448E /* WeiboConfig.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B55991941608DBD50037448E /* WeiboConfig.h */; };
-		B559924E1608DDA20037448E /* WeiboEngine.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B55991951608DBD50037448E /* WeiboEngine.h */; };
-		B559924F1608DDA20037448E /* StatusQuery.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B55991981608DBD50037448E /* StatusQuery.h */; };
-		B55992501608DDA20037448E /* TimelineQuery.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B559919A1608DBD50037448E /* TimelineQuery.h */; };
-		B55992511608DDA20037448E /* UserQuery.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B559919C1608DBD50037448E /* UserQuery.h */; };
-		B55992521608DDA20037448E /* WeiboQuery.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B559919E1608DBD50037448E /* WeiboQuery.h */; };
-		B55992531608DDA20037448E /* WeiboRequest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B55991A01608DBD50037448E /* WeiboRequest.h */; };
-		B55992541608DDA20037448E /* WeiboSignIn.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B55991A21608DBD50037448E /* WeiboSignIn.h */; };
-		B55992551608DDA20037448E /* WeiboSignInViewController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B55991A41608DBD50037448E /* WeiboSignInViewController.h */; };
-		B55992A61608E0640037448E /* GeoInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = B55991801608DBD50037448E /* GeoInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B55992A71608E0640037448E /* Province.h in Headers */ = {isa = PBXBuildFile; fileRef = B55991821608DBD50037448E /* Province.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B55992A81608E0640037448E /* Resources.h in Headers */ = {isa = PBXBuildFile; fileRef = B55991841608DBD50037448E /* Resources.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B55992A91608E0640037448E /* Status.h in Headers */ = {isa = PBXBuildFile; fileRef = B55991861608DBD50037448E /* Status.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B55992AA1608E0640037448E /* User.h in Headers */ = {isa = PBXBuildFile; fileRef = B55991881608DBD50037448E /* User.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B55992AB1608E07B0037448E /* WeiboAccount.h in Headers */ = {isa = PBXBuildFile; fileRef = B559918E1608DBD50037448E /* WeiboAccount.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B55992AC1608E07B0037448E /* WeiboAccounts.h in Headers */ = {isa = PBXBuildFile; fileRef = B55991901608DBD50037448E /* WeiboAccounts.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B55992AD1608E07B0037448E /* WeiboAuthentication.h in Headers */ = {isa = PBXBuildFile; fileRef = B55991921608DBD50037448E /* WeiboAuthentication.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B55992AE1608E07B0037448E /* WeiboConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = B55991941608DBD50037448E /* WeiboConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B55992AF1608E07B0037448E /* WeiboEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = B55991951608DBD50037448E /* WeiboEngine.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B55992B01608E07B0037448E /* WeiboRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B55991A01608DBD50037448E /* WeiboRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B55992B11608E07B0037448E /* WeiboSignIn.h in Headers */ = {isa = PBXBuildFile; fileRef = B55991A21608DBD50037448E /* WeiboSignIn.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B55992B21608E07B0037448E /* WeiboSignInViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B55991A41608DBD50037448E /* WeiboSignInViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B55992B71608E6A00037448E /* WeiboSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = B559916C1608DB8E0037448E /* WeiboSDK.h */; };
-		B55992B81608E6A00037448E /* WeiboSDK-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = B559916B1608DB8E0037448E /* WeiboSDK-Prefix.pch */; };
-		B55992D11608E92F0037448E /* ASIAuthenticationDialog.h in Headers */ = {isa = PBXBuildFile; fileRef = B55992CF1608E92F0037448E /* ASIAuthenticationDialog.h */; };
-		B55992D21608E92F0037448E /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B55992D01608E92F0037448E /* ASIAuthenticationDialog.m */; };
-		B5B7FEA4160A364000A085C4 /* MBProgressHUD.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B559921B1608DC0D0037448E /* MBProgressHUD.h */; };
-		B5B7FEA5160A36D300A085C4 /* NSDictionaryAdditions.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B559917D1608DBD50037448E /* NSDictionaryAdditions.h */; };
+		151006DD17ACE45B006F9275 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151006DC17ACE45B006F9275 /* Foundation.framework */; };
+		151006EC17ACE45B006F9275 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151006EB17ACE45B006F9275 /* SenTestingKit.framework */; };
+		151006EF17ACE45B006F9275 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151006DC17ACE45B006F9275 /* Foundation.framework */; };
+		151006F217ACE45B006F9275 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 151006D917ACE45B006F9275 /* libWeiboSDK.a */; };
+		151006F817ACE45B006F9275 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 151006F617ACE45B006F9275 /* InfoPlist.strings */; };
+		151006FB17ACE45B006F9275 /* WeiboSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 151006FA17ACE45B006F9275 /* WeiboSDKTests.m */; };
+		1510070817ACE767006F9275 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510070717ACE767006F9275 /* User.m */; };
+		1510070F17ACE90D006F9275 /* NSDictionary+Json.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510070E17ACE90D006F9275 /* NSDictionary+Json.m */; };
+		1510071817ACEF23006F9275 /* Resources.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510071717ACEF23006F9275 /* Resources.m */; };
+		1510071B17ACEF36006F9275 /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510071A17ACEF36006F9275 /* Status.m */; };
+		1510071E17ACEF84006F9275 /* GeoInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510071D17ACEF84006F9275 /* GeoInfo.m */; };
+		1510072117ACF35B006F9275 /* StatusVisible.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510072017ACF35B006F9275 /* StatusVisible.m */; };
+		1510072417ACF766006F9275 /* StatusImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510072317ACF765006F9275 /* StatusImage.m */; };
+		1510073217AD02AF006F9275 /* WeiboAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510072F17AD02AE006F9275 /* WeiboAccount.m */; };
+		1510073317AD02AF006F9275 /* WeiboAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510073117AD02AE006F9275 /* WeiboAuthentication.m */; };
+		1510073817AD0A7A006F9275 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1510073717AD0A79006F9275 /* UIKit.framework */; };
+		1510073F17AD3D12006F9275 /* WeiboDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510073E17AD3D12006F9275 /* WeiboDialog.m */; };
+		1510074617AD4DCD006F9275 /* WeiboLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510074517AD4DCD006F9275 /* WeiboLoginDialog.m */; };
+		1510074917AD54B3006F9275 /* WeiboAccounts.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510074817AD54B3006F9275 /* WeiboAccounts.m */; };
+		1510074C17AD56FC006F9275 /* PathHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510074B17AD56FB006F9275 /* PathHelper.m */; };
+		1510074F17AD6451006F9275 /* WeiboSignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510074E17AD6451006F9275 /* WeiboSignIn.m */; };
+		1510075117AD711D006F9275 /* User.h in Headers */ = {isa = PBXBuildFile; fileRef = 1510070617ACE767006F9275 /* User.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1510075217AD714D006F9275 /* Status.h in Headers */ = {isa = PBXBuildFile; fileRef = 1510071917ACEF36006F9275 /* Status.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1510075317AD714D006F9275 /* GeoInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 1510071C17ACEF84006F9275 /* GeoInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1510075417AD714D006F9275 /* StatusVisible.h in Headers */ = {isa = PBXBuildFile; fileRef = 1510071F17ACF35B006F9275 /* StatusVisible.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1510075517AD714D006F9275 /* StatusImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 1510072217ACF765006F9275 /* StatusImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1510075617AD714D006F9275 /* WeiboAccount.h in Headers */ = {isa = PBXBuildFile; fileRef = 1510072E17AD02AE006F9275 /* WeiboAccount.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1510075717AD714D006F9275 /* WeiboAuthentication.h in Headers */ = {isa = PBXBuildFile; fileRef = 1510073017AD02AE006F9275 /* WeiboAuthentication.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1510075917AD714D006F9275 /* WeiboAccounts.h in Headers */ = {isa = PBXBuildFile; fileRef = 1510074717AD54B3006F9275 /* WeiboAccounts.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1510075A17AD714D006F9275 /* WeiboSignIn.h in Headers */ = {isa = PBXBuildFile; fileRef = 1510074D17AD6451006F9275 /* WeiboSignIn.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1510075B17AD714D006F9275 /* WeiboConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 1510072D17AD026A006F9275 /* WeiboConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1510075C17AD714D006F9275 /* WeiboSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 151006E117ACE45B006F9275 /* WeiboSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1510075D17AD7163006F9275 /* WeiboDialog.h in Headers */ = {isa = PBXBuildFile; fileRef = 1510073D17AD3D12006F9275 /* WeiboDialog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1510075E17AD7163006F9275 /* WeiboLoginDialog.h in Headers */ = {isa = PBXBuildFile; fileRef = 1510074417AD4DCD006F9275 /* WeiboLoginDialog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1510075F17AD7170006F9275 /* PathHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 1510074A17AD56FB006F9275 /* PathHelper.h */; };
+		1510076017AD7170006F9275 /* Resources.h in Headers */ = {isa = PBXBuildFile; fileRef = 1510071617ACEF23006F9275 /* Resources.h */; };
+		1510076117AD7170006F9275 /* NSDictionary+Json.h in Headers */ = {isa = PBXBuildFile; fileRef = 1510070D17ACE90D006F9275 /* NSDictionary+Json.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1510076917AD7758006F9275 /* ImageResourceLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 1510076717AD7758006F9275 /* ImageResourceLoader.h */; };
+		1510076A17AD7758006F9275 /* ImageResourceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510076817AD7758006F9275 /* ImageResourceLoader.m */; };
+		1510076D17AD77F5006F9275 /* WeiboDialogClosePNG.h in Headers */ = {isa = PBXBuildFile; fileRef = 1510076B17AD77F3006F9275 /* WeiboDialogClosePNG.h */; };
+		1510076E17AD77F5006F9275 /* WeiboDialogClosePNG.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510076C17AD77F4006F9275 /* WeiboDialogClosePNG.m */; };
+		151007F917AE70A3006F9275 /* WeiboRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 151007F717AE70A2006F9275 /* WeiboRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		151007FA17AE70A3006F9275 /* WeiboRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 151007F817AE70A2006F9275 /* WeiboRequestOperation.m */; };
+		151007FD17AE751E006F9275 /* WeiboRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 151007FB17AE751C006F9275 /* WeiboRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		151007FE17AE751E006F9275 /* WeiboRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 151007FC17AE751C006F9275 /* WeiboRequest.m */; };
+		1510080517AE85F1006F9275 /* URLRequestHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 1510080317AE85EF006F9275 /* URLRequestHelper.h */; };
+		1510080617AE85F1006F9275 /* URLRequestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510080417AE85F0006F9275 /* URLRequestHelper.m */; };
+		1510080917AE8D8D006F9275 /* Weibo.h in Headers */ = {isa = PBXBuildFile; fileRef = 1510080717AE8D87006F9275 /* Weibo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1510080A17AE8D8D006F9275 /* Weibo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510080817AE8D89006F9275 /* Weibo.m */; };
+		1510089F17AEAD32006F9275 /* WeiboSDK-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 1510089E17AEAD32006F9275 /* WeiboSDK-Prefix.pch */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		B55991621608DB8E0037448E /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/${PRODUCT_NAME}";
-			dstSubfolderSpec = 16;
-			files = (
-				B5B7FEA5160A36D300A085C4 /* NSDictionaryAdditions.h in CopyFiles */,
-				B5B7FEA4160A364000A085C4 /* MBProgressHUD.h in CopyFiles */,
-				B55992451608DDA20037448E /* GeoInfo.h in CopyFiles */,
-				B55992461608DDA20037448E /* Province.h in CopyFiles */,
-				B55992471608DDA20037448E /* Resources.h in CopyFiles */,
-				B55992481608DDA20037448E /* Status.h in CopyFiles */,
-				B55992491608DDA20037448E /* User.h in CopyFiles */,
-				B559924A1608DDA20037448E /* WeiboAccount.h in CopyFiles */,
-				B559924B1608DDA20037448E /* WeiboAccounts.h in CopyFiles */,
-				B559924C1608DDA20037448E /* WeiboAuthentication.h in CopyFiles */,
-				B559924D1608DDA20037448E /* WeiboConfig.h in CopyFiles */,
-				B559924E1608DDA20037448E /* WeiboEngine.h in CopyFiles */,
-				B559924F1608DDA20037448E /* StatusQuery.h in CopyFiles */,
-				B55992501608DDA20037448E /* TimelineQuery.h in CopyFiles */,
-				B55992511608DDA20037448E /* UserQuery.h in CopyFiles */,
-				B55992521608DDA20037448E /* WeiboQuery.h in CopyFiles */,
-				B55992531608DDA20037448E /* WeiboRequest.h in CopyFiles */,
-				B55992541608DDA20037448E /* WeiboSignIn.h in CopyFiles */,
-				B55992551608DDA20037448E /* WeiboSignInViewController.h in CopyFiles */,
-				B559916D1608DB8E0037448E /* WeiboSDK.h in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
+/* Begin PBXContainerItemProxy section */
+		151006F017ACE45B006F9275 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 151006D117ACE45B006F9275 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 151006D817ACE45B006F9275;
+			remoteInfo = WeiboSDK;
 		};
-/* End PBXCopyFilesBuildPhase section */
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B55991641608DB8E0037448E /* libWeiboSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libWeiboSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		B55991671608DB8E0037448E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		B559916B1608DB8E0037448E /* WeiboSDK-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WeiboSDK-Prefix.pch"; sourceTree = "<group>"; };
-		B559916C1608DB8E0037448E /* WeiboSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
-		B559917D1608DBD50037448E /* NSDictionaryAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDictionaryAdditions.h; sourceTree = "<group>"; };
-		B559917E1608DBD50037448E /* NSDictionaryAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDictionaryAdditions.m; sourceTree = "<group>"; };
-		B55991801608DBD50037448E /* GeoInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoInfo.h; sourceTree = "<group>"; };
-		B55991811608DBD50037448E /* GeoInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoInfo.m; sourceTree = "<group>"; };
-		B55991821608DBD50037448E /* Province.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Province.h; sourceTree = "<group>"; };
-		B55991831608DBD50037448E /* Province.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Province.m; sourceTree = "<group>"; };
-		B55991841608DBD50037448E /* Resources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Resources.h; sourceTree = "<group>"; };
-		B55991851608DBD50037448E /* Resources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Resources.m; sourceTree = "<group>"; };
-		B55991861608DBD50037448E /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
-		B55991871608DBD50037448E /* Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Status.m; sourceTree = "<group>"; };
-		B55991881608DBD50037448E /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		B55991891608DBD50037448E /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		B559918B1608DBD50037448E /* PathHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathHelper.h; sourceTree = "<group>"; };
-		B559918C1608DBD50037448E /* PathHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathHelper.m; sourceTree = "<group>"; };
-		B559918E1608DBD50037448E /* WeiboAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboAccount.h; sourceTree = "<group>"; };
-		B559918F1608DBD50037448E /* WeiboAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboAccount.m; sourceTree = "<group>"; };
-		B55991901608DBD50037448E /* WeiboAccounts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboAccounts.h; sourceTree = "<group>"; };
-		B55991911608DBD50037448E /* WeiboAccounts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboAccounts.m; sourceTree = "<group>"; };
-		B55991921608DBD50037448E /* WeiboAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboAuthentication.h; sourceTree = "<group>"; };
-		B55991931608DBD50037448E /* WeiboAuthentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboAuthentication.m; sourceTree = "<group>"; };
-		B55991941608DBD50037448E /* WeiboConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboConfig.h; sourceTree = "<group>"; };
-		B55991951608DBD50037448E /* WeiboEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboEngine.h; sourceTree = "<group>"; };
-		B55991961608DBD50037448E /* WeiboEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboEngine.m; sourceTree = "<group>"; };
-		B55991981608DBD50037448E /* StatusQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusQuery.h; sourceTree = "<group>"; };
-		B55991991608DBD50037448E /* StatusQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusQuery.m; sourceTree = "<group>"; };
-		B559919A1608DBD50037448E /* TimelineQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineQuery.h; sourceTree = "<group>"; };
-		B559919B1608DBD50037448E /* TimelineQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineQuery.m; sourceTree = "<group>"; };
-		B559919C1608DBD50037448E /* UserQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserQuery.h; sourceTree = "<group>"; };
-		B559919D1608DBD50037448E /* UserQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserQuery.m; sourceTree = "<group>"; };
-		B559919E1608DBD50037448E /* WeiboQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboQuery.h; sourceTree = "<group>"; };
-		B559919F1608DBD50037448E /* WeiboQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboQuery.m; sourceTree = "<group>"; };
-		B55991A01608DBD50037448E /* WeiboRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboRequest.h; sourceTree = "<group>"; };
-		B55991A11608DBD50037448E /* WeiboRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboRequest.m; sourceTree = "<group>"; };
-		B55991A21608DBD50037448E /* WeiboSignIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSignIn.h; sourceTree = "<group>"; };
-		B55991A31608DBD50037448E /* WeiboSignIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboSignIn.m; sourceTree = "<group>"; };
-		B55991A41608DBD50037448E /* WeiboSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSignInViewController.h; sourceTree = "<group>"; };
-		B55991A51608DBD50037448E /* WeiboSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboSignInViewController.m; sourceTree = "<group>"; };
-		B55991A61608DBD50037448E /* WeiboSignInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeiboSignInViewController.xib; sourceTree = "<group>"; };
-		B55991C21608DC0D0037448E /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
-		B55991C31608DC0D0037448E /* ASIDataCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataCompressor.h; sourceTree = "<group>"; };
-		B55991C41608DC0D0037448E /* ASIDataCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataCompressor.m; sourceTree = "<group>"; };
-		B55991C51608DC0D0037448E /* ASIDataDecompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataDecompressor.h; sourceTree = "<group>"; };
-		B55991C61608DC0D0037448E /* ASIDataDecompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataDecompressor.m; sourceTree = "<group>"; };
-		B55991C71608DC0D0037448E /* ASIDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDownloadCache.h; sourceTree = "<group>"; };
-		B55991C81608DC0D0037448E /* ASIDownloadCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDownloadCache.m; sourceTree = "<group>"; };
-		B55991C91608DC0D0037448E /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIFormDataRequest.h; sourceTree = "<group>"; };
-		B55991CA1608DC0D0037448E /* ASIFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIFormDataRequest.m; sourceTree = "<group>"; };
-		B55991CB1608DC0D0037448E /* ASIHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequest.h; sourceTree = "<group>"; };
-		B55991CC1608DC0D0037448E /* ASIHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIHTTPRequest.m; sourceTree = "<group>"; };
-		B55991CD1608DC0D0037448E /* ASIHTTPRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestConfig.h; sourceTree = "<group>"; };
-		B55991CE1608DC0D0037448E /* ASIHTTPRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestDelegate.h; sourceTree = "<group>"; };
-		B55991CF1608DC0D0037448E /* ASIInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIInputStream.h; sourceTree = "<group>"; };
-		B55991D01608DC0D0037448E /* ASIInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIInputStream.m; sourceTree = "<group>"; };
-		B55991D11608DC0D0037448E /* ASINetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINetworkQueue.h; sourceTree = "<group>"; };
-		B55991D21608DC0D0037448E /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINetworkQueue.m; sourceTree = "<group>"; };
-		B55991D31608DC0D0037448E /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
-		B55991E71608DC0D0037448E /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		B55991E81608DC0D0037448E /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		B55992171608DC0D0037448E /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
-		B55992181608DC0D0037448E /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
-		B559921B1608DC0D0037448E /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		B559921C1608DC0D0037448E /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		B55992CF1608E92F0037448E /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
-		B55992D01608E92F0037448E /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
+		151006D917ACE45B006F9275 /* libWeiboSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libWeiboSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		151006DC17ACE45B006F9275 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		151006E117ACE45B006F9275 /* WeiboSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
+		151006EA17ACE45B006F9275 /* WeiboSDKTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeiboSDKTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		151006EB17ACE45B006F9275 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		151006F517ACE45B006F9275 /* WeiboSDKTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WeiboSDKTests-Info.plist"; sourceTree = "<group>"; };
+		151006F717ACE45B006F9275 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		151006F917ACE45B006F9275 /* WeiboSDKTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeiboSDKTests.h; sourceTree = "<group>"; };
+		151006FA17ACE45B006F9275 /* WeiboSDKTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeiboSDKTests.m; sourceTree = "<group>"; };
+		1510070617ACE767006F9275 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		1510070717ACE767006F9275 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		1510070D17ACE90D006F9275 /* NSDictionary+Json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Json.h"; sourceTree = "<group>"; };
+		1510070E17ACE90D006F9275 /* NSDictionary+Json.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Json.m"; sourceTree = "<group>"; };
+		1510071617ACEF23006F9275 /* Resources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Resources.h; sourceTree = "<group>"; };
+		1510071717ACEF23006F9275 /* Resources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Resources.m; sourceTree = "<group>"; };
+		1510071917ACEF36006F9275 /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
+		1510071A17ACEF36006F9275 /* Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Status.m; sourceTree = "<group>"; };
+		1510071C17ACEF84006F9275 /* GeoInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoInfo.h; sourceTree = "<group>"; };
+		1510071D17ACEF84006F9275 /* GeoInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoInfo.m; sourceTree = "<group>"; };
+		1510071F17ACF35B006F9275 /* StatusVisible.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusVisible.h; sourceTree = "<group>"; };
+		1510072017ACF35B006F9275 /* StatusVisible.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusVisible.m; sourceTree = "<group>"; };
+		1510072217ACF765006F9275 /* StatusImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusImage.h; sourceTree = "<group>"; };
+		1510072317ACF765006F9275 /* StatusImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusImage.m; sourceTree = "<group>"; };
+		1510072D17AD026A006F9275 /* WeiboConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboConfig.h; sourceTree = "<group>"; };
+		1510072E17AD02AE006F9275 /* WeiboAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboAccount.h; sourceTree = "<group>"; };
+		1510072F17AD02AE006F9275 /* WeiboAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboAccount.m; sourceTree = "<group>"; };
+		1510073017AD02AE006F9275 /* WeiboAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboAuthentication.h; sourceTree = "<group>"; };
+		1510073117AD02AE006F9275 /* WeiboAuthentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboAuthentication.m; sourceTree = "<group>"; };
+		1510073717AD0A79006F9275 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1510073D17AD3D12006F9275 /* WeiboDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboDialog.h; sourceTree = "<group>"; };
+		1510073E17AD3D12006F9275 /* WeiboDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboDialog.m; sourceTree = "<group>"; };
+		1510074417AD4DCD006F9275 /* WeiboLoginDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboLoginDialog.h; sourceTree = "<group>"; };
+		1510074517AD4DCD006F9275 /* WeiboLoginDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboLoginDialog.m; sourceTree = "<group>"; };
+		1510074717AD54B3006F9275 /* WeiboAccounts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboAccounts.h; sourceTree = "<group>"; };
+		1510074817AD54B3006F9275 /* WeiboAccounts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboAccounts.m; sourceTree = "<group>"; };
+		1510074A17AD56FB006F9275 /* PathHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathHelper.h; sourceTree = "<group>"; };
+		1510074B17AD56FB006F9275 /* PathHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathHelper.m; sourceTree = "<group>"; };
+		1510074D17AD6451006F9275 /* WeiboSignIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSignIn.h; sourceTree = "<group>"; };
+		1510074E17AD6451006F9275 /* WeiboSignIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboSignIn.m; sourceTree = "<group>"; };
+		1510076717AD7758006F9275 /* ImageResourceLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageResourceLoader.h; sourceTree = "<group>"; };
+		1510076817AD7758006F9275 /* ImageResourceLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageResourceLoader.m; sourceTree = "<group>"; };
+		1510076B17AD77F3006F9275 /* WeiboDialogClosePNG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboDialogClosePNG.h; sourceTree = "<group>"; };
+		1510076C17AD77F4006F9275 /* WeiboDialogClosePNG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboDialogClosePNG.m; sourceTree = "<group>"; };
+		151007F717AE70A2006F9275 /* WeiboRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboRequestOperation.h; sourceTree = "<group>"; };
+		151007F817AE70A2006F9275 /* WeiboRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboRequestOperation.m; sourceTree = "<group>"; };
+		151007FB17AE751C006F9275 /* WeiboRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboRequest.h; sourceTree = "<group>"; };
+		151007FC17AE751C006F9275 /* WeiboRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboRequest.m; sourceTree = "<group>"; };
+		1510080317AE85EF006F9275 /* URLRequestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLRequestHelper.h; sourceTree = "<group>"; };
+		1510080417AE85F0006F9275 /* URLRequestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLRequestHelper.m; sourceTree = "<group>"; };
+		1510080717AE8D87006F9275 /* Weibo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Weibo.h; sourceTree = "<group>"; };
+		1510080817AE8D89006F9275 /* Weibo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Weibo.m; sourceTree = "<group>"; };
+		1510089E17AEAD32006F9275 /* WeiboSDK-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WeiboSDK-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		151008A117AEAD45006F9275 /* WeiboDialogClose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WeiboDialogClose.png; sourceTree = "<group>"; };
+		151008A217AEAD45006F9275 /* WeiboDialogClose@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WeiboDialogClose@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		B55991611608DB8E0037448E /* Frameworks */ = {
+		151006D617ACE45B006F9275 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1510073817AD0A7A006F9275 /* UIKit.framework in Frameworks */,
+				151006DD17ACE45B006F9275 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		151006E617ACE45B006F9275 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				151006EC17ACE45B006F9275 /* SenTestingKit.framework in Frameworks */,
+				151006EF17ACE45B006F9275 /* Foundation.framework in Frameworks */,
+				151006F217ACE45B006F9275 /* libWeiboSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B55991591608DB8E0037448E = {
+		151006D017ACE45B006F9275 = {
 			isa = PBXGroup;
 			children = (
-				B55991691608DB8E0037448E /* WeiboSDK */,
-				B55991BD1608DBF20037448E /* ThirdParts */,
-				B55991661608DB8E0037448E /* Frameworks */,
-				B55991651608DB8E0037448E /* Products */,
+				151006DE17ACE45B006F9275 /* WeiboSDK */,
+				151006F317ACE45B006F9275 /* WeiboSDKTests */,
+				151006DB17ACE45B006F9275 /* Frameworks */,
+				151006DA17ACE45B006F9275 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		B55991651608DB8E0037448E /* Products */ = {
+		151006DA17ACE45B006F9275 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B55991641608DB8E0037448E /* libWeiboSDK.a */,
+				151006D917ACE45B006F9275 /* libWeiboSDK.a */,
+				151006EA17ACE45B006F9275 /* WeiboSDKTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B55991661608DB8E0037448E /* Frameworks */ = {
+		151006DB17ACE45B006F9275 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B55991671608DB8E0037448E /* Foundation.framework */,
+				1510073717AD0A79006F9275 /* UIKit.framework */,
+				151006DC17ACE45B006F9275 /* Foundation.framework */,
+				151006EB17ACE45B006F9275 /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B55991691608DB8E0037448E /* WeiboSDK */ = {
+		151006DE17ACE45B006F9275 /* WeiboSDK */ = {
 			isa = PBXGroup;
 			children = (
-				B559917C1608DBD50037448E /* Additions */,
-				B559917F1608DBD50037448E /* Models */,
-				B559918A1608DBD50037448E /* Utilities */,
-				B559918D1608DBD50037448E /* WeiboEngine */,
-				B559916C1608DB8E0037448E /* WeiboSDK.h */,
-				B559916A1608DB8E0037448E /* Supporting Files */,
+				1510073C17AD3D02006F9275 /* Views */,
+				1510070417ACE709006F9275 /* Models */,
+				1510072517AD0077006F9275 /* Engine */,
+				1510070C17ACE8FB006F9275 /* Utilities */,
+				151008A017AEAD42006F9275 /* Resources */,
+				1510072D17AD026A006F9275 /* WeiboConfig.h */,
+				151006E117ACE45B006F9275 /* WeiboSDK.h */,
+				1510080717AE8D87006F9275 /* Weibo.h */,
+				1510080817AE8D89006F9275 /* Weibo.m */,
+				151006DF17ACE45B006F9275 /* Supporting Files */,
 			);
 			path = WeiboSDK;
 			sourceTree = "<group>";
 		};
-		B559916A1608DB8E0037448E /* Supporting Files */ = {
+		151006DF17ACE45B006F9275 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B559916B1608DB8E0037448E /* WeiboSDK-Prefix.pch */,
+				1510089E17AEAD32006F9275 /* WeiboSDK-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B559917C1608DBD50037448E /* Additions */ = {
+		151006F317ACE45B006F9275 /* WeiboSDKTests */ = {
 			isa = PBXGroup;
 			children = (
-				B559917D1608DBD50037448E /* NSDictionaryAdditions.h */,
-				B559917E1608DBD50037448E /* NSDictionaryAdditions.m */,
+				151006F917ACE45B006F9275 /* WeiboSDKTests.h */,
+				151006FA17ACE45B006F9275 /* WeiboSDKTests.m */,
+				151006F417ACE45B006F9275 /* Supporting Files */,
 			);
-			path = Additions;
-			sourceTree = SOURCE_ROOT;
+			path = WeiboSDKTests;
+			sourceTree = "<group>";
 		};
-		B559917F1608DBD50037448E /* Models */ = {
+		151006F417ACE45B006F9275 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B55991801608DBD50037448E /* GeoInfo.h */,
-				B55991811608DBD50037448E /* GeoInfo.m */,
-				B55991821608DBD50037448E /* Province.h */,
-				B55991831608DBD50037448E /* Province.m */,
-				B55991841608DBD50037448E /* Resources.h */,
-				B55991851608DBD50037448E /* Resources.m */,
-				B55991861608DBD50037448E /* Status.h */,
-				B55991871608DBD50037448E /* Status.m */,
-				B55991881608DBD50037448E /* User.h */,
-				B55991891608DBD50037448E /* User.m */,
+				151006F517ACE45B006F9275 /* WeiboSDKTests-Info.plist */,
+				151006F617ACE45B006F9275 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1510070417ACE709006F9275 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1510070617ACE767006F9275 /* User.h */,
+				1510070717ACE767006F9275 /* User.m */,
+				1510071917ACEF36006F9275 /* Status.h */,
+				1510071A17ACEF36006F9275 /* Status.m */,
+				1510071C17ACEF84006F9275 /* GeoInfo.h */,
+				1510071D17ACEF84006F9275 /* GeoInfo.m */,
+				1510071F17ACF35B006F9275 /* StatusVisible.h */,
+				1510072017ACF35B006F9275 /* StatusVisible.m */,
+				1510072217ACF765006F9275 /* StatusImage.h */,
+				1510072317ACF765006F9275 /* StatusImage.m */,
+				1510072E17AD02AE006F9275 /* WeiboAccount.h */,
+				1510072F17AD02AE006F9275 /* WeiboAccount.m */,
+				1510073017AD02AE006F9275 /* WeiboAuthentication.h */,
+				1510073117AD02AE006F9275 /* WeiboAuthentication.m */,
 			);
 			path = Models;
-			sourceTree = SOURCE_ROOT;
+			sourceTree = "<group>";
 		};
-		B559918A1608DBD50037448E /* Utilities */ = {
+		1510070C17ACE8FB006F9275 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				B559918B1608DBD50037448E /* PathHelper.h */,
-				B559918C1608DBD50037448E /* PathHelper.m */,
+				1510076B17AD77F3006F9275 /* WeiboDialogClosePNG.h */,
+				1510076C17AD77F4006F9275 /* WeiboDialogClosePNG.m */,
+				1510074A17AD56FB006F9275 /* PathHelper.h */,
+				1510074B17AD56FB006F9275 /* PathHelper.m */,
+				1510071617ACEF23006F9275 /* Resources.h */,
+				1510071717ACEF23006F9275 /* Resources.m */,
+				1510070D17ACE90D006F9275 /* NSDictionary+Json.h */,
+				1510070E17ACE90D006F9275 /* NSDictionary+Json.m */,
+				1510076717AD7758006F9275 /* ImageResourceLoader.h */,
+				1510076817AD7758006F9275 /* ImageResourceLoader.m */,
+				1510080317AE85EF006F9275 /* URLRequestHelper.h */,
+				1510080417AE85F0006F9275 /* URLRequestHelper.m */,
 			);
 			path = Utilities;
-			sourceTree = SOURCE_ROOT;
-		};
-		B559918D1608DBD50037448E /* WeiboEngine */ = {
-			isa = PBXGroup;
-			children = (
-				B559918E1608DBD50037448E /* WeiboAccount.h */,
-				B559918F1608DBD50037448E /* WeiboAccount.m */,
-				B55991901608DBD50037448E /* WeiboAccounts.h */,
-				B55991911608DBD50037448E /* WeiboAccounts.m */,
-				B55991921608DBD50037448E /* WeiboAuthentication.h */,
-				B55991931608DBD50037448E /* WeiboAuthentication.m */,
-				B55991941608DBD50037448E /* WeiboConfig.h */,
-				B55991951608DBD50037448E /* WeiboEngine.h */,
-				B55991961608DBD50037448E /* WeiboEngine.m */,
-				B55991971608DBD50037448E /* WeiboQuery */,
-				B55991A01608DBD50037448E /* WeiboRequest.h */,
-				B55991A11608DBD50037448E /* WeiboRequest.m */,
-				B55991A21608DBD50037448E /* WeiboSignIn.h */,
-				B55991A31608DBD50037448E /* WeiboSignIn.m */,
-				B55991A41608DBD50037448E /* WeiboSignInViewController.h */,
-				B55991A51608DBD50037448E /* WeiboSignInViewController.m */,
-				B55991A61608DBD50037448E /* WeiboSignInViewController.xib */,
-			);
-			path = WeiboEngine;
-			sourceTree = SOURCE_ROOT;
-		};
-		B55991971608DBD50037448E /* WeiboQuery */ = {
-			isa = PBXGroup;
-			children = (
-				B55991981608DBD50037448E /* StatusQuery.h */,
-				B55991991608DBD50037448E /* StatusQuery.m */,
-				B559919A1608DBD50037448E /* TimelineQuery.h */,
-				B559919B1608DBD50037448E /* TimelineQuery.m */,
-				B559919C1608DBD50037448E /* UserQuery.h */,
-				B559919D1608DBD50037448E /* UserQuery.m */,
-				B559919E1608DBD50037448E /* WeiboQuery.h */,
-				B559919F1608DBD50037448E /* WeiboQuery.m */,
-			);
-			path = WeiboQuery;
 			sourceTree = "<group>";
 		};
-		B55991BD1608DBF20037448E /* ThirdParts */ = {
+		1510072517AD0077006F9275 /* Engine */ = {
 			isa = PBXGroup;
 			children = (
-				B55991BF1608DC0D0037448E /* ASIHTTPRequest */,
-				B55992151608DC0D0037448E /* JSONKit */,
-				B559921A1608DC0D0037448E /* MBProgressHUD */,
+				151007FB17AE751C006F9275 /* WeiboRequest.h */,
+				151007FC17AE751C006F9275 /* WeiboRequest.m */,
+				151007F717AE70A2006F9275 /* WeiboRequestOperation.h */,
+				151007F817AE70A2006F9275 /* WeiboRequestOperation.m */,
+				1510074717AD54B3006F9275 /* WeiboAccounts.h */,
+				1510074817AD54B3006F9275 /* WeiboAccounts.m */,
+				1510074D17AD6451006F9275 /* WeiboSignIn.h */,
+				1510074E17AD6451006F9275 /* WeiboSignIn.m */,
 			);
-			name = ThirdParts;
+			path = Engine;
 			sourceTree = "<group>";
 		};
-		B55991BF1608DC0D0037448E /* ASIHTTPRequest */ = {
+		1510073C17AD3D02006F9275 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B55992CF1608E92F0037448E /* ASIAuthenticationDialog.h */,
-				B55992D01608E92F0037448E /* ASIAuthenticationDialog.m */,
-				B55991C21608DC0D0037448E /* ASICacheDelegate.h */,
-				B55991C31608DC0D0037448E /* ASIDataCompressor.h */,
-				B55991C41608DC0D0037448E /* ASIDataCompressor.m */,
-				B55991C51608DC0D0037448E /* ASIDataDecompressor.h */,
-				B55991C61608DC0D0037448E /* ASIDataDecompressor.m */,
-				B55991C71608DC0D0037448E /* ASIDownloadCache.h */,
-				B55991C81608DC0D0037448E /* ASIDownloadCache.m */,
-				B55991C91608DC0D0037448E /* ASIFormDataRequest.h */,
-				B55991CA1608DC0D0037448E /* ASIFormDataRequest.m */,
-				B55991CB1608DC0D0037448E /* ASIHTTPRequest.h */,
-				B55991CC1608DC0D0037448E /* ASIHTTPRequest.m */,
-				B55991CD1608DC0D0037448E /* ASIHTTPRequestConfig.h */,
-				B55991CE1608DC0D0037448E /* ASIHTTPRequestDelegate.h */,
-				B55991CF1608DC0D0037448E /* ASIInputStream.h */,
-				B55991D01608DC0D0037448E /* ASIInputStream.m */,
-				B55991D11608DC0D0037448E /* ASINetworkQueue.h */,
-				B55991D21608DC0D0037448E /* ASINetworkQueue.m */,
-				B55991D31608DC0D0037448E /* ASIProgressDelegate.h */,
-				B55991E61608DC0D0037448E /* Reachability */,
+				1510073D17AD3D12006F9275 /* WeiboDialog.h */,
+				1510073E17AD3D12006F9275 /* WeiboDialog.m */,
+				1510074417AD4DCD006F9275 /* WeiboLoginDialog.h */,
+				1510074517AD4DCD006F9275 /* WeiboLoginDialog.m */,
 			);
-			name = ASIHTTPRequest;
-			path = ../thirdparts/ASIHTTPRequest;
+			path = Views;
 			sourceTree = "<group>";
 		};
-		B55991E61608DC0D0037448E /* Reachability */ = {
+		151008A017AEAD42006F9275 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B55991E71608DC0D0037448E /* Reachability.h */,
-				B55991E81608DC0D0037448E /* Reachability.m */,
+				151008A117AEAD45006F9275 /* WeiboDialogClose.png */,
+				151008A217AEAD45006F9275 /* WeiboDialogClose@2x.png */,
 			);
-			path = Reachability;
-			sourceTree = "<group>";
-		};
-		B55992151608DC0D0037448E /* JSONKit */ = {
-			isa = PBXGroup;
-			children = (
-				B55992171608DC0D0037448E /* JSONKit.h */,
-				B55992181608DC0D0037448E /* JSONKit.m */,
-			);
-			name = JSONKit;
-			path = ../thirdparts/JSONKit;
-			sourceTree = "<group>";
-		};
-		B559921A1608DC0D0037448E /* MBProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				B559921B1608DC0D0037448E /* MBProgressHUD.h */,
-				B559921C1608DC0D0037448E /* MBProgressHUD.m */,
-			);
-			name = MBProgressHUD;
-			path = ../thirdparts/MBProgressHUD;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		B55992A41608E0270037448E /* Headers */ = {
+		1510075017AD70DC006F9275 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B55992A61608E0640037448E /* GeoInfo.h in Headers */,
-				B55992A71608E0640037448E /* Province.h in Headers */,
-				B55992A81608E0640037448E /* Resources.h in Headers */,
-				B55992A91608E0640037448E /* Status.h in Headers */,
-				B55992AA1608E0640037448E /* User.h in Headers */,
-				B55992AB1608E07B0037448E /* WeiboAccount.h in Headers */,
-				B55992AC1608E07B0037448E /* WeiboAccounts.h in Headers */,
-				B55992AD1608E07B0037448E /* WeiboAuthentication.h in Headers */,
-				B55992AE1608E07B0037448E /* WeiboConfig.h in Headers */,
-				B55992AF1608E07B0037448E /* WeiboEngine.h in Headers */,
-				B55992B01608E07B0037448E /* WeiboRequest.h in Headers */,
-				B55992B11608E07B0037448E /* WeiboSignIn.h in Headers */,
-				B55992B21608E07B0037448E /* WeiboSignInViewController.h in Headers */,
-				B55992B71608E6A00037448E /* WeiboSDK.h in Headers */,
-				B55992B81608E6A00037448E /* WeiboSDK-Prefix.pch in Headers */,
-				B55992D11608E92F0037448E /* ASIAuthenticationDialog.h in Headers */,
+				1510075217AD714D006F9275 /* Status.h in Headers */,
+				1510075317AD714D006F9275 /* GeoInfo.h in Headers */,
+				1510075417AD714D006F9275 /* StatusVisible.h in Headers */,
+				1510075517AD714D006F9275 /* StatusImage.h in Headers */,
+				1510075617AD714D006F9275 /* WeiboAccount.h in Headers */,
+				1510075717AD714D006F9275 /* WeiboAuthentication.h in Headers */,
+				1510075917AD714D006F9275 /* WeiboAccounts.h in Headers */,
+				1510075A17AD714D006F9275 /* WeiboSignIn.h in Headers */,
+				1510075B17AD714D006F9275 /* WeiboConfig.h in Headers */,
+				1510075C17AD714D006F9275 /* WeiboSDK.h in Headers */,
+				1510075E17AD7163006F9275 /* WeiboLoginDialog.h in Headers */,
+				1510075D17AD7163006F9275 /* WeiboDialog.h in Headers */,
+				1510076117AD7170006F9275 /* NSDictionary+Json.h in Headers */,
+				1510080917AE8D8D006F9275 /* Weibo.h in Headers */,
+				151007FD17AE751E006F9275 /* WeiboRequest.h in Headers */,
+				1510075117AD711D006F9275 /* User.h in Headers */,
+				151007F917AE70A3006F9275 /* WeiboRequestOperation.h in Headers */,
+				1510075F17AD7170006F9275 /* PathHelper.h in Headers */,
+				1510076017AD7170006F9275 /* Resources.h in Headers */,
+				1510076917AD7758006F9275 /* ImageResourceLoader.h in Headers */,
+				1510076D17AD77F5006F9275 /* WeiboDialogClosePNG.h in Headers */,
+				1510080517AE85F1006F9275 /* URLRequestHelper.h in Headers */,
+				1510089F17AEAD32006F9275 /* WeiboSDK-Prefix.pch in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		B55991631608DB8E0037448E /* WeiboSDK */ = {
+		151006D817ACE45B006F9275 /* WeiboSDK */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B55991721608DB8E0037448E /* Build configuration list for PBXNativeTarget "WeiboSDK" */;
+			buildConfigurationList = 151006FE17ACE45B006F9275 /* Build configuration list for PBXNativeTarget "WeiboSDK" */;
 			buildPhases = (
-				B55991601608DB8E0037448E /* Sources */,
-				B55991611608DB8E0037448E /* Frameworks */,
-				B55991621608DB8E0037448E /* CopyFiles */,
-				B55992A41608E0270037448E /* Headers */,
+				151006D517ACE45B006F9275 /* Sources */,
+				151006D617ACE45B006F9275 /* Frameworks */,
+				1510075017AD70DC006F9275 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -421,82 +347,151 @@
 			);
 			name = WeiboSDK;
 			productName = WeiboSDK;
-			productReference = B55991641608DB8E0037448E /* libWeiboSDK.a */;
+			productReference = 151006D917ACE45B006F9275 /* libWeiboSDK.a */;
 			productType = "com.apple.product-type.library.static";
+		};
+		151006E917ACE45B006F9275 /* WeiboSDKTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1510070117ACE45B006F9275 /* Build configuration list for PBXNativeTarget "WeiboSDKTests" */;
+			buildPhases = (
+				151006E517ACE45B006F9275 /* Sources */,
+				151006E617ACE45B006F9275 /* Frameworks */,
+				151006E717ACE45B006F9275 /* Resources */,
+				151006E817ACE45B006F9275 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				151006F117ACE45B006F9275 /* PBXTargetDependency */,
+			);
+			name = WeiboSDKTests;
+			productName = WeiboSDKTests;
+			productReference = 151006EA17ACE45B006F9275 /* WeiboSDKTests.octest */;
+			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		B559915B1608DB8E0037448E /* Project object */ = {
+		151006D117ACE45B006F9275 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
-				ORGANIZATIONNAME = idfsoft;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = openlab;
 			};
-			buildConfigurationList = B559915E1608DB8E0037448E /* Build configuration list for PBXProject "WeiboSDK" */;
+			buildConfigurationList = 151006D417ACE45B006F9275 /* Build configuration list for PBXProject "WeiboSDK" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = B55991591608DB8E0037448E;
-			productRefGroup = B55991651608DB8E0037448E /* Products */;
+			mainGroup = 151006D017ACE45B006F9275;
+			productRefGroup = 151006DA17ACE45B006F9275 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B55991631608DB8E0037448E /* WeiboSDK */,
+				151006D817ACE45B006F9275 /* WeiboSDK */,
+				151006E917ACE45B006F9275 /* WeiboSDKTests */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		151006E717ACE45B006F9275 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				151006F817ACE45B006F9275 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		151006E817ACE45B006F9275 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		B55991601608DB8E0037448E /* Sources */ = {
+		151006D517ACE45B006F9275 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B55991A71608DBD50037448E /* NSDictionaryAdditions.m in Sources */,
-				B55991A81608DBD50037448E /* GeoInfo.m in Sources */,
-				B55991A91608DBD50037448E /* Province.m in Sources */,
-				B55991AA1608DBD50037448E /* Resources.m in Sources */,
-				B55991AB1608DBD50037448E /* Status.m in Sources */,
-				B55991AC1608DBD50037448E /* User.m in Sources */,
-				B55991AD1608DBD50037448E /* PathHelper.m in Sources */,
-				B55991AE1608DBD50037448E /* WeiboAccount.m in Sources */,
-				B55991AF1608DBD50037448E /* WeiboAccounts.m in Sources */,
-				B55991B01608DBD50037448E /* WeiboAuthentication.m in Sources */,
-				B55991B11608DBD50037448E /* WeiboEngine.m in Sources */,
-				B55991B21608DBD50037448E /* StatusQuery.m in Sources */,
-				B55991B31608DBD50037448E /* TimelineQuery.m in Sources */,
-				B55991B41608DBD50037448E /* UserQuery.m in Sources */,
-				B55991B51608DBD50037448E /* WeiboQuery.m in Sources */,
-				B55991B61608DBD50037448E /* WeiboRequest.m in Sources */,
-				B55991B71608DBD50037448E /* WeiboSignIn.m in Sources */,
-				B55991B81608DBD50037448E /* WeiboSignInViewController.m in Sources */,
-				B559921E1608DC0D0037448E /* ASIDataCompressor.m in Sources */,
-				B559921F1608DC0D0037448E /* ASIDataDecompressor.m in Sources */,
-				B55992201608DC0D0037448E /* ASIDownloadCache.m in Sources */,
-				B55992211608DC0D0037448E /* ASIFormDataRequest.m in Sources */,
-				B55992221608DC0D0037448E /* ASIHTTPRequest.m in Sources */,
-				B55992231608DC0D0037448E /* ASIInputStream.m in Sources */,
-				B55992241608DC0D0037448E /* ASINetworkQueue.m in Sources */,
-				B559922D1608DC0D0037448E /* Reachability.m in Sources */,
-				B55992431608DC0D0037448E /* JSONKit.m in Sources */,
-				B55992441608DC0D0037448E /* MBProgressHUD.m in Sources */,
-				B55992D21608E92F0037448E /* ASIAuthenticationDialog.m in Sources */,
+				1510070817ACE767006F9275 /* User.m in Sources */,
+				1510070F17ACE90D006F9275 /* NSDictionary+Json.m in Sources */,
+				1510071817ACEF23006F9275 /* Resources.m in Sources */,
+				1510071B17ACEF36006F9275 /* Status.m in Sources */,
+				1510071E17ACEF84006F9275 /* GeoInfo.m in Sources */,
+				1510072117ACF35B006F9275 /* StatusVisible.m in Sources */,
+				1510072417ACF766006F9275 /* StatusImage.m in Sources */,
+				1510073217AD02AF006F9275 /* WeiboAccount.m in Sources */,
+				1510073317AD02AF006F9275 /* WeiboAuthentication.m in Sources */,
+				1510073F17AD3D12006F9275 /* WeiboDialog.m in Sources */,
+				1510074617AD4DCD006F9275 /* WeiboLoginDialog.m in Sources */,
+				1510074917AD54B3006F9275 /* WeiboAccounts.m in Sources */,
+				1510074C17AD56FC006F9275 /* PathHelper.m in Sources */,
+				1510074F17AD6451006F9275 /* WeiboSignIn.m in Sources */,
+				1510076A17AD7758006F9275 /* ImageResourceLoader.m in Sources */,
+				1510076E17AD77F5006F9275 /* WeiboDialogClosePNG.m in Sources */,
+				151007FA17AE70A3006F9275 /* WeiboRequestOperation.m in Sources */,
+				151007FE17AE751E006F9275 /* WeiboRequest.m in Sources */,
+				1510080617AE85F1006F9275 /* URLRequestHelper.m in Sources */,
+				1510080A17AE8D8D006F9275 /* Weibo.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		151006E517ACE45B006F9275 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				151006FB17ACE45B006F9275 /* WeiboSDKTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		151006F117ACE45B006F9275 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 151006D817ACE45B006F9275 /* WeiboSDK */;
+			targetProxy = 151006F017ACE45B006F9275 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		151006F617ACE45B006F9275 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				151006F717ACE45B006F9275 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
-		B55991701608DB8E0037448E /* Debug */ = {
+		151006FC17ACE45B006F9275 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -510,78 +505,124 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
-		B55991711608DB8E0037448E /* Release */ = {
+		151006FD17ACE45B006F9275 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		B55991731608DB8E0037448E /* Debug */ = {
+		151006FF17ACE45B006F9275 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/WeiboSDK.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "WeiboSDK/WeiboSDK-Prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				GCC_PREFIX_HEADER = "WeiboSDK-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
-		B55991741608DB8E0037448E /* Release */ = {
+		1510070017ACE45B006F9275 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/WeiboSDK.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "WeiboSDK/WeiboSDK-Prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				GCC_PREFIX_HEADER = "WeiboSDK-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		1510070217ACE45B006F9275 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WeiboSDK/WeiboSDK-Prefix.pch";
+				INFOPLIST_FILE = "WeiboSDKTests/WeiboSDKTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		1510070317ACE45B006F9275 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WeiboSDK/WeiboSDK-Prefix.pch";
+				INFOPLIST_FILE = "WeiboSDKTests/WeiboSDKTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B559915E1608DB8E0037448E /* Build configuration list for PBXProject "WeiboSDK" */ = {
+		151006D417ACE45B006F9275 /* Build configuration list for PBXProject "WeiboSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B55991701608DB8E0037448E /* Debug */,
-				B55991711608DB8E0037448E /* Release */,
+				151006FC17ACE45B006F9275 /* Debug */,
+				151006FD17ACE45B006F9275 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B55991721608DB8E0037448E /* Build configuration list for PBXNativeTarget "WeiboSDK" */ = {
+		151006FE17ACE45B006F9275 /* Build configuration list for PBXNativeTarget "WeiboSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B55991731608DB8E0037448E /* Debug */,
-				B55991741608DB8E0037448E /* Release */,
+				151006FF17ACE45B006F9275 /* Debug */,
+				1510070017ACE45B006F9275 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1510070117ACE45B006F9275 /* Build configuration list for PBXNativeTarget "WeiboSDKTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1510070217ACE45B006F9275 /* Debug */,
+				1510070317ACE45B006F9275 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = B559915B1608DB8E0037448E /* Project object */;
+	rootObject = 151006D117ACE45B006F9275 /* Project object */;
 }
