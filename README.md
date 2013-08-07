@@ -13,6 +13,7 @@ WeiboSDK
 
 - 在你项目App的target设置, 找到 "Build Phases" 选项并打开 "Link Binary With Libraries":
 - 点击 "+" 按钮，然后点击 "Add Other...", 浏览到WeiboSDK根目录的"build"目录，选择 "WeiboSDK.framework" 并添加到项目中
+- 在你项目设置, 找到 "Build Settings" 选项，找到 "Other Linker Flags" 项，添加 `-ObjC` 值
 
 #### 引用头文件
 
