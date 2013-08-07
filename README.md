@@ -7,14 +7,14 @@ WeiboSDK
 安装
 ------------
 
-## 方法一：静态库引用
+### 方法一：静态库引用
 
-### 添加依赖项
+#### 添加依赖项
 
 - 在你项目App的target设置, 找到 "Build Phases" 选项并打开 "Link Binary With Libraries":
 - 点击 "+" 按钮，然后点击 "Add Other...", 浏览到WeiboSDK根目录的"build"目录，选择 "WeiboSDK.framework" 并添加到项目中
 
-### 引用头文件
+#### 引用头文件
 
 在需要使用WeiboSDK的代码中引用头文件。
 
@@ -22,13 +22,13 @@ WeiboSDK
 #import <WeiboSDK/WeiboSDK.h>
 ```
 
-## 方法二：代码引用
+### 方法二：代码引用
 
-### 添加项目文件
+#### 添加项目文件
 
 到将项目根目录下的"src"目录，将下面的 "WeiboSDK" 目录拷贝到项目中即可。
 
-### 引用头文件
+#### 引用头文件
 
 在需要使用WeiboSDK的代码中引用头文件。
 
