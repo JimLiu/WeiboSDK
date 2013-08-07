@@ -30,7 +30,7 @@
     if (![Weibo.weibo isAuthenticated]) {
         [Weibo.weibo authorizeWithCompleted:^(WeiboAccount *account, NSError *error) {
             if (!error) {
-                NSLog(@"Sign in successed: %@", account.user.screenName);
+                NSLog(@"Sign in successful: %@", account.user.screenName);
             }
             else {
                 NSLog(@"Failed to sign in: %@", error);
