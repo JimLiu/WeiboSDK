@@ -126,7 +126,7 @@
 - (WeiboRequestOperation*)postToPath:(NSString *)apiPath
                               params:(NSDictionary *)params
                            completed:(WeiboRequestCompletedBlock)completedBlock {
-    NSString * fullURL = [kWeiboAPIBaseUrl stringByAppendingString:apiPath];
+    NSString * fullURL = [apiPath hasSuffix:@"upload.json"] ? [kWeiboUploadAPIBaseUrl stringByAppendingString:apiPath] : [kWeiboAPIBaseUrl stringByAppendingString:apiPath];
     return [self postToUrl:fullURL params:params completed:completedBlock];
 }
 

@@ -13,7 +13,7 @@ WeiboSDK
 
 - 在你项目App的target设置, 找到 "Build Phases" 选项并打开 "Link Binary With Libraries":
 - 点击 "+" 按钮，然后点击 "Add Other...", 浏览到WeiboSDK根目录的"build"目录，选择 "WeiboSDK.framework" 并添加到项目中
-- 在你项目设置, 找到 "Build Settings" 选项，找到 "Other Linker Flags" 项，添加 `-ObjC` 值
+- 在你项目设置, 找到 "Build Settings" 选项，找到 "Other Linker Flags" 项，添加值 `-ObjC` 
 
 #### 引用头文件
 
@@ -101,6 +101,34 @@ WeiboSDK
 ```
 
 
+#### 发新微博
+通过Weibo实例中的newStatus方法可以发表微博
+
+不带附件发微博
+```objective-c
+    [weibo newStatus:@"test weibo" pic:nil completed:^(Status *status, NSError *error) {
+        if (error) {
+            NSLog(@"failed to post:%@", error);
+        }
+        else {
+            NSLog(@"success: %lld.%@", status.statusId, status.text);
+        }
+    }];
+```
+
+带附件发微博
+```objective-c
+    NSData *img = UIImagePNGRepresentation([UIImage imageNamed:@"Icon"]);
+    [weibo newStatus:@"test weibo with image" pic:img completed:^(Status *status, NSError *error) {
+        if (error) {
+            NSLog(@"failed to upload:%@", error);
+        }
+        else {
+            StatusImage *statusImage = [status.images objectAtIndex:0];
+            NSLog(@"success: %lld.%@.%@", status.statusId, status.text, statusImage.originalImageUrl);
+        }
+    }];
+```
 
 项目参考代码
 ----------

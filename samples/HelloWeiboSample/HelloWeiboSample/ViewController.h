@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <WeiboSDK/WeiboSDK.h>
+#import "Weibo.h"
 
 @interface ViewController : UITableViewController
 

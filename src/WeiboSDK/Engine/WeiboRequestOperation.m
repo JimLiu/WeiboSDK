@@ -218,6 +218,7 @@ static const int kGeneralErrorCode = 10000;
         dispatch_async(self.queue, ^
         {
             NSError* error = nil;
+            //NSString *responseString = [[NSString alloc] initWithData:self.responseData encoding:NSUTF8StringEncoding];
             id result = [self parseJsonResponse:self.responseData error:&error];
 
             dispatch_async(dispatch_get_main_queue(), ^
@@ -236,7 +237,7 @@ static const int kGeneralErrorCode = 10000;
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-    
+    //NSString *responseString = [[NSString alloc] initWithData:self.responseData encoding:NSUTF8StringEncoding];
     if (self.completedBlock)
     {
         self.completedBlock(nil, nil, error);

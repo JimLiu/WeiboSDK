@@ -15,6 +15,32 @@
     Weibo *weibo = [[Weibo alloc] initWithAppKey:@"3326691039" withAppSecret:@"75dd27596a081b28651d214e246c1b15"];
     [Weibo setWeibo:weibo];
     // Override point for customization after application launch.
+    
+    if (weibo.isAuthenticated) {
+        /*
+        [weibo newStatus:@"test weibo" pic:nil completed:^(Status *status, NSError *error) {
+            if (error) {
+                NSLog(@"failed to post:%@", error);
+            }
+            else {
+                NSLog(@"success: %lld.%@", status.statusId, status.text);
+            }
+        }];
+        
+        NSData *img = UIImagePNGRepresentation([UIImage imageNamed:@"Icon"]);
+        [weibo newStatus:@"test weibo with image" pic:img completed:^(Status *status, NSError *error) {
+            if (error) {
+                NSLog(@"failed to upload:%@", error);
+            }
+            else {
+                StatusImage *statusImage = [status.images objectAtIndex:0];
+                NSLog(@"success: %lld.%@.%@", status.statusId, status.text, statusImage.originalImageUrl);
+            }
+        }];
+         */
+    }
+    
+    
     return YES;
 }
 							

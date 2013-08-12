@@ -21,6 +21,7 @@ enum {
 typedef void(^WeiboTimelineQueryCompletedBlock)(NSMutableArray *statuses, NSError *error);
 typedef void(^WeiboUserQueryCompletedBlock)(User *user, NSError *error);
 typedef void(^WeiboUserAuthenticationCompletedBlock)(WeiboAccount *account, NSError *error);
+typedef void(^WeiboNewStatusCompletedBlock)(Status *status, NSError *error);
 
 
 typedef enum {
@@ -76,5 +77,10 @@ typedef enum {
                                completed:(WeiboTimelineQueryCompletedBlock)completedBlock;
 
 
+#pragma mark - Post
+
+- (WeiboRequestOperation *)newStatus:(NSString *)status
+                                 pic:(NSData *)picData
+                           completed:(WeiboNewStatusCompletedBlock)completedBlock;
 
 @end

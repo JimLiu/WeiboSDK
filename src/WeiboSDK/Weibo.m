@@ -119,7 +119,9 @@ static Weibo *g_weibo = nil;
                                          completedBlock(user, nil);
                                      }
                                      @catch (NSException *exception) {
-                                         completedBlock(nil, [NSError errorWithDomain:WeiboErrorDomain code:kJsonParseUserErrorCode userInfo:@{NSLocalizedDescriptionKey: @"Failed to parse responsed object."}]);
+                                         NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                                         NSString *msg = [NSString stringWithFormat:@"Failed to parse responsed object. responseString: %@", responseString];
+                                         completedBlock(nil, [NSError errorWithDomain:WeiboErrorDomain code:kJsonParseUserErrorCode userInfo:@{NSLocalizedDescriptionKey: msg}]);
                                      }
                                      @finally {
                                          
@@ -233,6 +235,57 @@ static Weibo *g_weibo = nil;
                                    count:(int)count
                                completed:(WeiboTimelineQueryCompletedBlock)completedBlock {
     return [self queryTimeline:timeline sinceId:0 maxId:0 count:count completed:completedBlock];
+}
+
+
+#pragma mark - Post
+
+
+- (WeiboRequestOperation *)newStatus:(NSString *)status
+                                 pic:(NSData *)picData
+                           completed:(WeiboNewStatusCompletedBlock)completedBlock {
+    NSString *path = picData.length ? @"statuses/upload.json" : @"statuses/update.json";
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:status forKey:@"status"];
+    if (picData.length) {
+        [params setObject:picData forKey:@"pic"];
+    }
+    WeiboRequestOperation *operation =
+    [[WeiboRequest shared] postToPath:path
+                               params:params
+                            completed:^(id result, NSData *data, NSError *error) {
+                                 if (error) {
+                                     completedBlock(nil, error);
+                                 }
+                                 else {
+                                     Status *status = nil;
+                                     if ([result isKindOfClass:[NSDictionary class]]) {
+                                         @try {
+                                             status = [[Status alloc] initWithJsonDictionary:result];
+                                         }
+                                         @catch (NSException *exception) {
+                                             NSLog(@"newStatus exception: %@", exception);
+                                         }
+                                         @finally {
+                                             
+                                         }
+                                     }
+                                     if (status) {
+                                         completedBlock(status, nil);
+                                     }
+                                     else {
+                                         NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                                         NSString *msg = [NSString stringWithFormat:@"Failed to parse responsed object. responseString: %@", responseString];
+                                         
+                                         completedBlock(nil, [NSError errorWithDomain:WeiboErrorDomain code:kJsonParseTimelineErrorCode userInfo:@{NSLocalizedDescriptionKey: msg}]);
+                                     }
+                                 }
+                                 
+                                 
+                             }];
+    return operation;
+    
+    
 }
 
 

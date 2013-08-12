@@ -12,5 +12,7 @@
 #define kWeiboAuthorizeURL          @"https://api.weibo.com/oauth2/authorize"
 #define kWeiboAccessTokenURL        @"https://api.weibo.com/oauth2/access_token"
 #define kWeiboAPIBaseUrl            @"https://api.weibo.com/2/"
+#define kWeiboUploadAPIBaseUrl            @"https://upload.api.weibo.com/2/"
+
 
 

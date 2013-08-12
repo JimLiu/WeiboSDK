@@ -129,9 +129,9 @@ NSString *kUserAgent = @"Openlab WeiboSDK";
 
 + (NSMutableURLRequest *)postRequestWithUrl:(NSString *)url
                                      params:(NSDictionary *)params {
-    NSString* urlString = [self serializeURL:url params:params];
+    NSURL* postURL = [NSURL URLWithString:url];
     
-    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL: [NSURL URLWithString:urlString] cachePolicy: NSURLRequestReloadIgnoringCacheData timeoutInterval: 30.f];
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:postURL  cachePolicy: NSURLRequestReloadIgnoringCacheData timeoutInterval: 30.f];
     [request setHTTPMethod: @"POST"];
     [request setValue: kUserAgent forHTTPHeaderField: @"User-Agent"];
     
@@ -159,7 +159,7 @@ NSString *kUserAgent = @"Openlab WeiboSDK";
         requestData = [self buildURLEncodedPostBodyWithPostData:postData forRequest:request];
     }
     [request setValue: [NSString stringWithFormat: @"%d", [requestData length]] forHTTPHeaderField: @"Content-Length"];
-    
+    [request setHTTPBody:requestData];
     return request;
 }
 
