@@ -82,6 +82,7 @@ static Weibo *g_weibo = nil;
                                   //if (saveAccount) {
                                       [[WeiboAccounts shared] addAccount:account];
                                   //}
+                                  [[WeiboRequest shared] setAccessToken:auth.accessToken];
                                   completedBlock(account, nil);
                               }
             }];
@@ -99,6 +100,9 @@ static Weibo *g_weibo = nil;
     [[WeiboAccounts shared] signOut];
 }
 
+- (WeiboAccount *)currentAccount {
+    return [[WeiboAccounts shared]currentAccount];
+}
 
 #pragma mark - User Query
 

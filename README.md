@@ -60,27 +60,42 @@ WeiboSDK
 #### 判断是否登录
 
 ```objective-c
-    if (![Weibo.weibo isAuthenticated]) {
-        // 没有登录
-    }
-    else {
-        // 已经登录成功
-    }
+if (![Weibo.weibo isAuthenticated]) {
+    // 没有登录
+}
+else {
+    // 已经登录成功
+}
 ```
+
+#### 获取当前登录用户
+
+```objective-c
+WeiboAccount *account = [Weibo.weibo currentAccount];
+User *user = account.user; // current user
+
+```
+
+#### 注销登录
+
+```objective-c
+[Weibo.weibo signout];
+```
+
 
 #### 登录
 
 弹出登录界面登录，并对登录结果进行处理。
 
 ```objective-c
-	[Weibo.weibo authorizeWithCompleted:^(WeiboAccount *account, NSError *error) {
-	    if (!error) {
-	        NSLog(@"成功登录，登录名: %@", account.user.screenName);
-	    }
-	    else {
-	        NSLog(@"登录失败: %@", error);
-	    }
-	}];
+[Weibo.weibo authorizeWithCompleted:^(WeiboAccount *account, NSError *error) {
+    if (!error) {
+        NSLog(@"成功登录，登录名: %@", account.user.screenName);
+    }
+    else {
+        NSLog(@"登录失败: %@", error);
+    }
+}];
 ```
 
 ### 微博相关
@@ -90,14 +105,14 @@ WeiboSDK
 通过queryTimeline系列方法可以去查询微博列表，根据参数可以返回不同结果，使用Block对返回结果进行处理
 
 ```objective-c
-	[Weibo.weibo queryTimeline:StatusTimelineFriends count:50 completed:^(NSMutableArray *statuses, NSError *error) {
-        if (error) {
-            NSLog(@"获取失败，error:%@", error);
-        }
-        else {
-            NSLog(@"获取成功，微博条数:%d", self.statuses.count);
-        }
-    }];
+[Weibo.weibo queryTimeline:StatusTimelineFriends count:50 completed:^(NSMutableArray *statuses, NSError *error) {
+    if (error) {
+        NSLog(@"获取失败，error:%@", error);
+    }
+    else {
+        NSLog(@"获取成功，微博条数:%d", self.statuses.count);
+    }
+}];
 ```
 
 
@@ -106,28 +121,28 @@ WeiboSDK
 
 不带附件发微博
 ```objective-c
-    [weibo newStatus:@"test weibo" pic:nil completed:^(Status *status, NSError *error) {
-        if (error) {
-            NSLog(@"failed to post:%@", error);
-        }
-        else {
-            NSLog(@"success: %lld.%@", status.statusId, status.text);
-        }
-    }];
+[weibo newStatus:@"test weibo" pic:nil completed:^(Status *status, NSError *error) {
+    if (error) {
+        NSLog(@"failed to post:%@", error);
+    }
+    else {
+        NSLog(@"success: %lld.%@", status.statusId, status.text);
+    }
+}];
 ```
 
 带附件发微博
 ```objective-c
-    NSData *img = UIImagePNGRepresentation([UIImage imageNamed:@"Icon"]);
-    [weibo newStatus:@"test weibo with image" pic:img completed:^(Status *status, NSError *error) {
-        if (error) {
-            NSLog(@"failed to upload:%@", error);
-        }
-        else {
-            StatusImage *statusImage = [status.images objectAtIndex:0];
-            NSLog(@"success: %lld.%@.%@", status.statusId, status.text, statusImage.originalImageUrl);
-        }
-    }];
+NSData *img = UIImagePNGRepresentation([UIImage imageNamed:@"Icon"]);
+[weibo newStatus:@"test weibo with image" pic:img completed:^(Status *status, NSError *error) {
+    if (error) {
+        NSLog(@"failed to upload:%@", error);
+    }
+    else {
+        StatusImage *statusImage = [status.images objectAtIndex:0];
+        NSLog(@"success: %lld.%@.%@", status.statusId, status.text, statusImage.originalImageUrl);
+    }
+}];
 ```
 
 项目参考代码

@@ -17,6 +17,7 @@
     // Override point for customization after application launch.
     
     if (weibo.isAuthenticated) {
+        NSLog(@"current user: %@", weibo.currentAccount.user.name);
         /*
         [weibo newStatus:@"test weibo" pic:nil completed:^(Status *status, NSError *error) {
             if (error) {

@@ -45,6 +45,7 @@ typedef enum {
 - (BOOL)isAuthenticated;
 - (void)authorizeWithCompleted:(WeiboUserAuthenticationCompletedBlock)completedBlock;
 - (void)signOut;
+- (WeiboAccount *)currentAccount;
 
 #pragma mark - User Query
 
