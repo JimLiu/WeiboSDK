@@ -34,6 +34,8 @@ typedef enum {
 
 - (id)initWithAppKey:(NSString *)appKey withAppSecret:(NSString *)appSecret;
 + (Weibo*)weibo;
+// Used for Swift
++ (Weibo*)getWeibo;
 + (Weibo*)setWeibo:(Weibo*)weibo;
 
 

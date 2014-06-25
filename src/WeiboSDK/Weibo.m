@@ -47,6 +47,11 @@ static Weibo *g_weibo = nil;
     return g_weibo;
 }
 
+// Just invoke the weibo method
++ (Weibo*)getWeibo {
+    return [self weibo];
+}
+
 + (Weibo*)setWeibo:(Weibo*)weibo {
     
     if (weibo != g_weibo) {

@@ -12,7 +12,10 @@ NSString *const WeiboAPIErrorDomain = @"com.openlab.weibosdk.api";
 NSString *const WeiboAuthErrorNotification = @"WeiboAuthErrorNotification";
 static const int kGeneralErrorCode = 10000;
 
-@interface WeiboRequestOperation ()
+@interface WeiboRequestOperation () {
+    BOOL _executing;
+    BOOL _finished;
+}
 
 @property (nonatomic, copy) WeiboRequestCompletedBlock completedBlock;
 @property (nonatomic, copy) void (^cancelBlock)();
@@ -26,6 +29,9 @@ static const int kGeneralErrorCode = 10000;
 @end
 
 @implementation WeiboRequestOperation
+
+@synthesize executing=_executing;
+@synthesize finished=_finished;
 
 - (id)initWithRequest:(NSURLRequest *)request
                 queue:(dispatch_queue_t)queue
