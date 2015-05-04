@@ -25,7 +25,7 @@
     [encoder encodeObject:self.province forKey:@"province"];
     [encoder encodeObject:self.city forKey:@"city"];
     [encoder encodeObject:self.location forKey:@"location"];
-    [encoder encodeObject:self.description forKey:@"description"];
+    [encoder encodeObject:self.userDescription forKey:@"description"];
     [encoder encodeObject:self.url forKey:@"url"];
     [encoder encodeObject:self.profileImageUrl forKey:@"profileImageUrl"];
     [encoder encodeObject:self.profileLargeImageUrl forKey:@"profileLargeImageUrl"];
@@ -59,7 +59,7 @@
         self.province = [decoder decodeObjectForKey:@"province"];
         self.city = [decoder decodeObjectForKey:@"city"];
         self.location = [decoder decodeObjectForKey:@"location"];
-        self.description = [decoder decodeObjectForKey:@"description"];
+        self.userDescription = [decoder decodeObjectForKey:@"description"];
         self.url = [decoder decodeObjectForKey:@"url"];
         self.profileImageUrl = [decoder decodeObjectForKey:@"profileImageUrl"];
         self.profileLargeImageUrl = [decoder decodeObjectForKey:@"profileLargeImageUrl"];
@@ -97,7 +97,7 @@
         self.province = [Resources getProvinceName:provinceId];
         self.city = [Resources getCityNameWithProvinceId:provinceId withCityId:cityId];
         self.location = [dic stringValueForKey:@"location"];
-        self.description = [dic stringValueForKey:@"description"];
+        self.userDescription = [dic stringValueForKey:@"description"];
         self.url = [dic stringValueForKey:@"url"];
         self.profileImageUrl = [dic stringValueForKey:@"profile_image_url"];
         self.profileLargeImageUrl = [dic stringValueForKey:@"avatar_large"];
