@@ -30,7 +30,7 @@ typedef enum {
 @property (nonatomic, copy) NSString *province; //用户所在省级
 @property (nonatomic, copy) NSString *city; //用户所在城市
 @property (nonatomic, copy) NSString *location; //用户所在地
-@property (nonatomic, copy) NSString *description; //用户个人描述
+@property (nonatomic, copy) NSString *userDescription; //用户个人描述
 @property (nonatomic, copy) NSString *url; //用户博客地址
 @property (nonatomic, copy) NSString *profileImageUrl; //用户头像地址
 @property (nonatomic, copy) NSString *profileLargeImageUrl; //用户大头像地址
