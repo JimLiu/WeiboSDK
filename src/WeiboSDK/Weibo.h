@@ -32,7 +32,7 @@ typedef enum {
 
 @interface Weibo : NSObject
 
-- (id)initWithAppKey:(NSString *)appKey withAppSecret:(NSString *)appSecret;
+- (id)initWithAppKey:(NSString *)appKey withAppSecret:(NSString *)appSecret withRedirectURI: (NSString *)redirectURI;
 + (Weibo*)weibo;
 // Used for Swift
 + (Weibo*)getWeibo;
@@ -41,6 +41,7 @@ typedef enum {
 
 @property (nonatomic, copy) NSString *appKey;
 @property (nonatomic, copy) NSString *appSecret;
+@property (nonatomic, copy) NSString *redirectURI;
 
 #pragma mark - Auth
 

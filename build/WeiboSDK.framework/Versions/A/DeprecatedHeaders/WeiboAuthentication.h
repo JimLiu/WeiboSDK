@@ -11,7 +11,7 @@
 @interface WeiboAuthentication : NSObject 
 
 - (id)initWithAuthorizeURL:(NSString *)authorizeURL accessTokenURL:(NSString *)accessTokenURL
-                    AppKey:(NSString *)appKey appSecret:(NSString *)appSecret;
+                    appKey:(NSString *)appKey appSecret:(NSString *)appSecret redirectURI:(NSString *)redirectURI;
 
 @property (nonatomic, copy) NSString *appKey;
 @property (nonatomic, copy) NSString *appSecret;

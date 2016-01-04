@@ -11,15 +11,18 @@
 @implementation WeiboAuthentication
 
 
-- (id)initWithAuthorizeURL:(NSString *)authorizeURL accessTokenURL:(NSString *)accessTokenURL
-                    AppKey:(NSString *)appKey appSecret:(NSString *)appSecret {
+- (id)initWithAuthorizeURL:(NSString *)authorizeURL
+            accessTokenURL:(NSString *)accessTokenURL
+                    appKey:(NSString *)appKey
+                 appSecret:(NSString *)appSecret
+              redirectURI:(NSString *)redirectURI {
     self = [super init];
     if (self) {
         self.authorizeURL = authorizeURL;
         self.accessTokenURL = accessTokenURL;
         self.appKey = appKey;
         self.appSecret = appSecret;
-        self.redirectURI = @"http://";
+        self.redirectURI = redirectURI;
     }
     return self;
 }

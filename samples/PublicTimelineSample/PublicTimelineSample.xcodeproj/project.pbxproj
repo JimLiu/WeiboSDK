@@ -19,7 +19,7 @@
 		151007E117AD7D60006F9275 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 151007DF17AD7D60006F9275 /* MainStoryboard_iPhone.storyboard */; };
 		151007E417AD7D60006F9275 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 151007E217AD7D60006F9275 /* MainStoryboard_iPad.storyboard */; };
 		151007E717AD7D60006F9275 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 151007E617AD7D60006F9275 /* ViewController.m */; };
-		151007EE17AD7D79006F9275 /* WeiboSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151007ED17AD7D79006F9275 /* WeiboSDK.framework */; };
+		CB8851F41C3B2E2A004841E1 /* WeiboSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8851F31C3B2E2A004841E1 /* WeiboSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +40,7 @@
 		151007E317AD7D60006F9275 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		151007E517AD7D60006F9275 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		151007E617AD7D60006F9275 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		151007ED17AD7D79006F9275 /* WeiboSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WeiboSDK.framework; path = ../../build/WeiboSDK.framework; sourceTree = "<group>"; };
+		CB8851F31C3B2E2A004841E1 /* WeiboSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WeiboSDK.framework; path = ../../build/WeiboSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,7 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				151007EE17AD7D79006F9275 /* WeiboSDK.framework in Frameworks */,
+				CB8851F41C3B2E2A004841E1 /* WeiboSDK.framework in Frameworks */,
 				151007C817AD7D60006F9275 /* UIKit.framework in Frameworks */,
 				151007CA17AD7D60006F9275 /* Foundation.framework in Frameworks */,
 				151007CC17AD7D60006F9275 /* CoreGraphics.framework in Frameworks */,
@@ -78,7 +78,7 @@
 		151007C617AD7D60006F9275 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				151007ED17AD7D79006F9275 /* WeiboSDK.framework */,
+				CB8851F31C3B2E2A004841E1 /* WeiboSDK.framework */,
 				151007C717AD7D60006F9275 /* UIKit.framework */,
 				151007C917AD7D60006F9275 /* Foundation.framework */,
 				151007CB17AD7D60006F9275 /* CoreGraphics.framework */,
@@ -140,7 +140,7 @@
 		151007BC17AD7D60006F9275 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = openlab;
 			};
 			buildConfigurationList = 151007BF17AD7D60006F9275 /* Build configuration list for PBXProject "PublicTimelineSample" */;
@@ -231,6 +231,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -280,13 +281,11 @@
 		151007EB17AD7D60006F9275 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../build\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../build";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PublicTimelineSample/PublicTimelineSample-Prefix.pch";
 				INFOPLIST_FILE = "PublicTimelineSample/PublicTimelineSample-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.openlab.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -295,13 +294,11 @@
 		151007EC17AD7D60006F9275 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../build\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../build";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PublicTimelineSample/PublicTimelineSample-Prefix.pch";
 				INFOPLIST_FILE = "PublicTimelineSample/PublicTimelineSample-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.openlab.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -326,6 +323,7 @@
 				151007EC17AD7D60006F9275 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

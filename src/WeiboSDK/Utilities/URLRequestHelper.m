@@ -158,7 +158,7 @@ NSString *kUserAgent = @"Openlab WeiboSDK";
     else {
         requestData = [self buildURLEncodedPostBodyWithPostData:postData forRequest:request];
     }
-    [request setValue: [NSString stringWithFormat: @"%d", [requestData length]] forHTTPHeaderField: @"Content-Length"];
+    [request setValue: [NSString stringWithFormat: @"%lu", (unsigned long)[requestData length]] forHTTPHeaderField: @"Content-Length"];
     [request setHTTPBody:requestData];
     return request;
 }

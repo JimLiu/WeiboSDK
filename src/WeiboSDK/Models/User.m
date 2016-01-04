@@ -39,7 +39,7 @@
     [encoder encodeInt:self.statusesCount forKey:@"statusesCount"];
     [encoder encodeInt:self.favoritesCount forKey:@"favoritesCount"];
     [encoder encodeInt:self.biFollowersCount forKey:@"biFollowersCount"];
-    [encoder encodeInt:self.createdAt forKey:@"createdAt"];
+    [encoder encodeInt64:self.createdAt forKey:@"createdAt"];
     [encoder encodeBool:self.following forKey:@"following"];
     [encoder encodeBool:self.followedBy forKey:@"followedBy"];
     [encoder encodeBool:self.verified forKey:@"verified"];

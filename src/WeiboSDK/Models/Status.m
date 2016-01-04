@@ -69,7 +69,7 @@
 		if (r.location != NSNotFound) {
 			NSRange start = [src rangeOfString:@"<a href=\""];
 			if (start.location != NSNotFound) {
-				int l = [src length];
+				NSUInteger l = [src length];
 				NSRange fromRang = NSMakeRange(start.location + start.length, l-start.length-start.location);
 				end   = [src rangeOfString:@"\"" options:NSCaseInsensitiveSearch
                                      range:fromRang];
@@ -112,7 +112,7 @@
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
     [encoder encodeObject:self.statusIdString forKey:@"statusIdString"];
-    [encoder encodeInt:self.createdAt forKey:@"createdAt"];
+    [encoder encodeInt64:self.createdAt forKey:@"createdAt"];
     [encoder encodeObject:[NSNumber numberWithLongLong:self.statusId] forKey:@"statusId"];
     [encoder encodeObject:self.text forKey:@"text"];
     [encoder encodeObject:self.source forKey:@"source"];

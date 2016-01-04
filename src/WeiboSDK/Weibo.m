@@ -27,12 +27,14 @@ static Weibo *g_weibo = nil;
 @implementation Weibo
 
 - (id)initWithAppKey:(NSString *)appKey
-       withAppSecret:(NSString *)appSecret {
+       withAppSecret:(NSString *)appSecret
+       withRedirectURI: (NSString *)redirectURI {
     self = [super init];
     if (self) {
         self.appKey = appKey;
         self.appSecret = appSecret;
-        self.authentication = [[WeiboAuthentication alloc]initWithAuthorizeURL:kWeiboAuthorizeURL accessTokenURL:kWeiboAccessTokenURL AppKey:self.appKey appSecret:self.appSecret];
+        self.redirectURI = redirectURI;
+        self.authentication = [[WeiboAuthentication alloc]initWithAuthorizeURL:kWeiboAuthorizeURL accessTokenURL:kWeiboAccessTokenURL appKey:self.appKey appSecret:self.appSecret redirectURI: self.redirectURI];
 
     }
     return self;
@@ -41,7 +43,7 @@ static Weibo *g_weibo = nil;
 
 + (Weibo*)weibo {
     if (!g_weibo) {
-        Weibo *weibo = [[Weibo alloc] initWithAppKey:kAppKey withAppSecret:kAppSecret];
+        Weibo *weibo = [[Weibo alloc] initWithAppKey:kAppKey withAppSecret:kAppSecret withRedirectURI:kRedirectURI];
         [[self class] setWeibo:weibo];
     }
     return g_weibo;

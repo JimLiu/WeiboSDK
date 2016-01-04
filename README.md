@@ -47,7 +47,7 @@ WeiboSDK
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 	// ...
-    Weibo *weibo = [[Weibo alloc] initWithAppKey:@"您的AppKey" withAppSecret:@"您的AppSecret"];
+    Weibo *weibo = [[Weibo alloc] initWithAppKey:@"您的AppKey" withAppSecret:@"您的AppSecret" withRedirectURI:@"您的AppSecret RedirectURI"];
     [Weibo setWeibo:weibo];
     // ...
     return YES;

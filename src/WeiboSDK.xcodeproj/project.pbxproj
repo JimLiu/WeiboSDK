@@ -11,8 +11,6 @@
 		151006EC17ACE45B006F9275 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151006EB17ACE45B006F9275 /* SenTestingKit.framework */; };
 		151006EF17ACE45B006F9275 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151006DC17ACE45B006F9275 /* Foundation.framework */; };
 		151006F217ACE45B006F9275 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 151006D917ACE45B006F9275 /* libWeiboSDK.a */; };
-		151006F817ACE45B006F9275 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 151006F617ACE45B006F9275 /* InfoPlist.strings */; };
-		151006FB17ACE45B006F9275 /* WeiboSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 151006FA17ACE45B006F9275 /* WeiboSDKTests.m */; };
 		1510070817ACE767006F9275 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510070717ACE767006F9275 /* User.m */; };
 		1510070F17ACE90D006F9275 /* NSDictionary+Json.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510070E17ACE90D006F9275 /* NSDictionary+Json.m */; };
 		1510071817ACEF23006F9275 /* Resources.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510071717ACEF23006F9275 /* Resources.m */; };
@@ -75,10 +73,6 @@
 		151006E117ACE45B006F9275 /* WeiboSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
 		151006EA17ACE45B006F9275 /* WeiboSDKTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeiboSDKTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		151006EB17ACE45B006F9275 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		151006F517ACE45B006F9275 /* WeiboSDKTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WeiboSDKTests-Info.plist"; sourceTree = "<group>"; };
-		151006F717ACE45B006F9275 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		151006F917ACE45B006F9275 /* WeiboSDKTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeiboSDKTests.h; sourceTree = "<group>"; };
-		151006FA17ACE45B006F9275 /* WeiboSDKTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeiboSDKTests.m; sourceTree = "<group>"; };
 		1510070617ACE767006F9275 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		1510070717ACE767006F9275 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		1510070D17ACE90D006F9275 /* NSDictionary+Json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Json.h"; sourceTree = "<group>"; };
@@ -153,7 +147,6 @@
 			isa = PBXGroup;
 			children = (
 				151006DE17ACE45B006F9275 /* WeiboSDK */,
-				151006F317ACE45B006F9275 /* WeiboSDKTests */,
 				151006DB17ACE45B006F9275 /* Frameworks */,
 				151006DA17ACE45B006F9275 /* Products */,
 			);
@@ -199,25 +192,6 @@
 			isa = PBXGroup;
 			children = (
 				1510089E17AEAD32006F9275 /* WeiboSDK-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		151006F317ACE45B006F9275 /* WeiboSDKTests */ = {
-			isa = PBXGroup;
-			children = (
-				151006F917ACE45B006F9275 /* WeiboSDKTests.h */,
-				151006FA17ACE45B006F9275 /* WeiboSDKTests.m */,
-				151006F417ACE45B006F9275 /* Supporting Files */,
-			);
-			path = WeiboSDKTests;
-			sourceTree = "<group>";
-		};
-		151006F417ACE45B006F9275 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				151006F517ACE45B006F9275 /* WeiboSDKTests-Info.plist */,
-				151006F617ACE45B006F9275 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -367,7 +341,7 @@
 			name = WeiboSDKTests;
 			productName = WeiboSDKTests;
 			productReference = 151006EA17ACE45B006F9275 /* WeiboSDKTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -375,7 +349,8 @@
 		151006D117ACE45B006F9275 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastTestingUpgradeCheck = 0720;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = openlab;
 			};
 			buildConfigurationList = 151006D417ACE45B006F9275 /* Build configuration list for PBXProject "WeiboSDK" */;
@@ -401,7 +376,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				151006F817ACE45B006F9275 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,7 +429,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				151006FB17ACE45B006F9275 /* WeiboSDKTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,17 +441,6 @@
 			targetProxy = 151006F017ACE45B006F9275 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		151006F617ACE45B006F9275 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				151006F717ACE45B006F9275 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		151006FC17ACE45B006F9275 /* Debug */ = {
@@ -494,6 +456,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -506,9 +469,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
+				SYMROOT = build;
 			};
 			name = Debug;
 		};
@@ -525,13 +489,16 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
+				SYMROOT = build;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
